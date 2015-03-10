@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>openFB Sample</title>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+<link rel="stylesheet" href="css/ratchet.css" type="text/css" >
+<link rel="stylesheet" href="css/styles.css" type="text/css">
+<link href="css/pageslider.css" rel="stylesheet">
+</head>
+<body>
+
+<script id="login-tpl" type="text/template">
+<header class="bar bar-nav">
+<h1 class="title">GiftMe</h1>
+</header>
+
+<div class="content">
+<button id="login" class="btn btn-primary btn-block">
+  Login with Facebook
+</button>
+<a id="gohome" href="#home" style="display:none;" ></a>
+
+<div id="logo" class="bar bar-standard" style="height:100%;top:25%;left:25%;right:25%;text-align: center; position: fixed;" >
+<img src="img/logo.png" />
+</div>
+
+</div>
+
+</script>
+<!--<hr/> -->
+<script id="home-tpl" type="text/template">
+<header class="bar bar-nav">
+<h1 class="title">GiftMe</h1>
+</header>
+
+<div class="content">
+
+<button id="logout" class="btn btn-primary btn-block">
+  Logout
+</button>
+<a id="gologout" href="/" style="display:none;" ></a>
+
+
+<p> Hey <span id="userName"></span>!</p>
+<img id="userPic" class="pull-right" />
+
+
+<div id="actions" >
+    <p>Invite your friends to create a wishlist!</p>
+    <a href="sms:00353851524345?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme"><button class="btn btn-block">Invite by SMS</button></a>
+
+    <a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!"><button class="btn btn-block">Invite by WhatsApp</button></a>
+
+    <a href="mailto:timcallagy@gmail.com?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!"><button class="btn btn-block">Invite by email</button></a>
+
+</div>
+</div>
+
+</script>
+
+<!--cordova.js is automatically injected by the Cordova build process-->
+<script src="cordova.js"></script>
+<script src="js/jquery.js"></script>
+<script src="js/openfb.js"></script>
+<script src="js/pageslider.js"></script>
+<script src="js/router.js"></script>
+<script src="js/services/memory/EmployeeService.js"></script>
+<script src="js/handlebars.js"></script>
+<!--<script src="js/EmployeeListView.js"></script>
+<script src="js/EmployeeView.js"></script> -->
+<script src="js/LoginView.js"></script>
+<script src="js/HomeView.js"></script>
+<script src="js/index.js"></script>
+<script src="js/fastclick.js"></script>
+
+
+<script>
+/*
+// Defaults to sessionStorage for storing the Facebook token
+openFB.init({appId: '1533444716908405'});
+
+//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
+//  openFB.init({appId: 'YOUR_FB_APP_ID', tokenStore: window.localStorage});
+
+function login() {
+openFB.login(
+function(response) {
+if(response.status === 'connected') {
+openFB.api({
+path: '/me',
+success: function(data) {
+console.log(JSON.stringify(data));
+document.getElementById("userName").innerHTML = data.name;
+$('#userName').show();
+document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+$('#userPic').show();
+$('#login').hide();
+$('#actions').show();
+$('#logout').show();
+},
+error: errorHandler});
+} else {
+alert('Facebook login failed: ' + response.error);
+}
+}, {scope: 'email,read_stream,publish_stream, user_friends'});
+}
+
+function getContacts() {
+var options = new ContactFindOptions();
+options.filter = "Tim";
+var fields = ["displayName", "name", "phoneNumbers"];
+navigator.contacts.find(fields, onSuccess, onError, options);
+
+function onSuccess(contacts){
+names = "";
+for (var i = 0; i < contacts.length; i++) {
+names = names + contacts[i].displayName + ": " + contacts[i].phoneNumbers[0].value;
+}
+alert(names);
+}
+function onError(){
+alert('error!');
+}
+}
+
+function getInfo() {
+openFB.api({
+path: '/me',
+success: function(data) {
+console.log(JSON.stringify(data));
+document.getElementById("userName").innerHTML = data.name;
+document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+},
+error: errorHandler});
+}
+
+function logout() {
+openFB.logout(
+function() {
+alert('Logout successful');
+$('#userName').hide();
+$('#userPic').hide();
+$('#login').show();
+$('#actions').hide();
+$('#logout').hide();
+},
+errorHandler);
+}
+
+function errorHandler(error) {
+    alert(error.message);
+}
+*/
+</script>
+</body>
+</html>
