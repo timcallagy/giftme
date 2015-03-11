@@ -12,61 +12,95 @@
 </head>
 <body>
 
+
+<!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
 <script id="login-tpl" type="text/template">
 <header class="bar bar-nav">
 <h1 class="title">GiftMe</h1>
 </header>
 
 <div class="content">
-<button id="login" class="btn btn-primary btn-block">
-  Login with Facebook
-</button>
-<button id="logout" style="display:none;" class="btn btn-primary btn-block">
-  Logout
-</button>
-
-
+<a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
 <div id="logo" class="bar bar-standard" style="height:100%;top:25%;left:25%;right:25%;text-align: center; position: fixed;" >
 <img src="img/logo.png" />
 </div>
-
-<a id="gohome" href="#home" style="display:none;" ></a>
-
-<!--<button id="login" class="btn btn-block">Login with Facebook</button>
-<button id="logout" style="display:none;"  class="btn btn-block">Logout</button> -->
 </div>
 
 </script>
-<!--<hr/> -->
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+
+<!-- %%%%%%%%%%%%   HOME   %%%%%%%%%%%%%%%%% -->
 <script id="home-tpl" type="text/template">
 <header class="bar bar-nav">
 <h1 class="title">GiftMe</h1>
-<img id="userPic" class="pull-right" />
 </header>
 
 <div class="content">
 
-<button id="logout" class="btn btn-primary btn-block">
-  Logout
-</button>
-<a id="gologout" href="/" style="display:none;" ></a>
+<ul class="table-view">
+  <li class="table-view-cell media">
+      <img class="media-object pull-left emp-pic" src="http://graph.facebook.com/{{ id }}/picture?type=small">
+      <div class="media-body">
+          Hey {{ first_name }}!
+          <p>Welcome to GiftMe</p>
+      </div>
+  </li>
+</ul>
 
-
-<p> Hey <span id="userName"></span>!</p>
-
-
-<div id="actions" >
+<a href="#wishlist/"><button class="btn btn-positive btn-block ">Your Wishlist &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<a href="#friends/"><button class="btn btn-negative btn-block ">Your Friends &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<br>
+<br>
     <p>Invite your friends to create a wishlist!</p>
+
     <a href="sms:00353851524345?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme"><button class="btn btn-block">Invite by SMS</button></a>
 
     <a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!"><button class="btn btn-block">Invite by WhatsApp</button></a>
 
     <a href="mailto:timcallagy@gmail.com?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!"><button class="btn btn-block">Invite by email</button></a>
 
-</div>
+<a href=""><button class="btn btn-primary btn-block btn-outlined">Logout</button></a>
 </div>
 
 </script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+
+<!-- %%%%%%%%%%%%%%%   WISHLIST   %%%%%%%%%%%%%% -->
+<script id="wishlist-tpl" type="text/template">
+<header class="bar bar-nav">
+ <a class="btn btn-link btn-nav pull-left" href="#home/">
+      <span class="icon icon-left-nav"></span>
+  </a>
+
+<h1 class="title">GiftMe</h1>
+</header>
+
+<div class="content">
+   <ul class="table-view">
+        {{#each this}}
+        <li class="table-view-cell media">
+<!--            <a href="#gift/{{ id }}"> -->
+            <a href="{{url}}"> 
+                <img class="media-object pull-left" src="img/{{pic}}">
+                <div class="media-body">
+                    {{Name}}
+                    <p>Price: {{ price }}</p>
+                    <p>Amount crowfunded: {{ crowdfunded }}</p>
+                </div>
+            </a>
+        </li>
+        {{/each}}
+    </ul>
+<a href="wishlist"><button class="btn btn-positive btn-block ">Add item &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+</div>
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 
 <!--cordova.js is automatically injected by the Cordova build process-->
 <script src="cordova.js"></script>
@@ -74,93 +108,16 @@
 <script src="js/openfb.js"></script>
 <script src="js/pageslider.js"></script>
 <script src="js/router.js"></script>
-<script src="js/services/memory/EmployeeService.js"></script>
+<script src="js/services/memory/GiftService.js"></script>
 <script src="js/handlebars.js"></script>
 <!--<script src="js/EmployeeListView.js"></script>
 <script src="js/EmployeeView.js"></script> -->
 <script src="js/LoginView.js"></script>
 <script src="js/HomeView.js"></script>
-<script src="js/index.js"></script>
+<script src="js/WishlistView.js"></script>
 <script src="js/fastclick.js"></script>
+<script src="js/app.js"></script>
 
 
-<script>
-/*
-// Defaults to sessionStorage for storing the Facebook token
-openFB.init({appId: '1533444716908405'});
-
-//  Uncomment the line below to store the Facebook token in localStorage instead of sessionStorage
-//  openFB.init({appId: 'YOUR_FB_APP_ID', tokenStore: window.localStorage});
-
-function login() {
-openFB.login(
-function(response) {
-if(response.status === 'connected') {
-openFB.api({
-path: '/me',
-success: function(data) {
-console.log(JSON.stringify(data));
-document.getElementById("userName").innerHTML = data.name;
-$('#userName').show();
-document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-$('#userPic').show();
-$('#login').hide();
-$('#actions').show();
-$('#logout').show();
-},
-error: errorHandler});
-} else {
-alert('Facebook login failed: ' + response.error);
-}
-}, {scope: 'email,read_stream,publish_stream, user_friends'});
-}
-
-function getContacts() {
-var options = new ContactFindOptions();
-options.filter = "Tim";
-var fields = ["displayName", "name", "phoneNumbers"];
-navigator.contacts.find(fields, onSuccess, onError, options);
-
-function onSuccess(contacts){
-names = "";
-for (var i = 0; i < contacts.length; i++) {
-names = names + contacts[i].displayName + ": " + contacts[i].phoneNumbers[0].value;
-}
-alert(names);
-}
-function onError(){
-alert('error!');
-}
-}
-
-function getInfo() {
-openFB.api({
-path: '/me',
-success: function(data) {
-console.log(JSON.stringify(data));
-document.getElementById("userName").innerHTML = data.name;
-document.getElementById("userPic").src = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-},
-error: errorHandler});
-}
-
-function logout() {
-openFB.logout(
-function() {
-alert('Logout successful');
-$('#userName').hide();
-$('#userPic').hide();
-$('#login').show();
-$('#actions').hide();
-$('#logout').hide();
-},
-errorHandler);
-}
-
-function errorHandler(error) {
-    alert(error.message);
-}
-*/
-</script>
 </body>
 </html>

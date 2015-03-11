@@ -1,32 +1,38 @@
 var HomeView = function (service) {
 
+    self = this;
+
     this.initialize = function() {
         this.$el = $('<div/>');
-        this.render();
+        //this.render();
     };
 
 
     this.render = function() {
-        this.$el.html(this.template());
-        return this;
+        openFB.init({appId: '1533444716908405'});
+        name = "";
+        openFB.login(
+                function(response) {
+                    if(response.status === 'connected') {
+                        openFB.api({
+                            path: '/me',
+                            success: function(data) {
+                                userPic = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                                self.$el.html(self.template(data));
+                                return self;
+                            },
+                            error: errorHandler});
+                    } else {
+                        alert('Facebook login failed: ' + response.error);
+                    }
+                }, {scope: 'email,read_stream,publish_stream, user_friends'});
+
     };
     this.initialize();
 
-$("[id^=logout]").click(function(){
-    openFB.logout(
-        function() {
-            alert('Logout successful');
-            /*alert('Logout successful');
-              $('#userName').hide();
-              $('#userPic').hide();
-              $('#login').show();
-              $('#actions').hide();
-              $('#logout').hide();
-              */
-            var href = $('#gologout').attr('href');
-            window.location.href = href;
-        },
-        errorHandler);
-});
+    function errorHandler(error) {
+        alert(error.message);
+    }
+
 
 }
