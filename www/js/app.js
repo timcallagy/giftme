@@ -5,6 +5,8 @@
     LoginView.prototype.template = Handlebars.compile($("#login-tpl").html());
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     WishlistView.prototype.template = Handlebars.compile($("#wishlist-tpl").html());
+    FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
+    FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     var slider = new PageSlider($('body'));
     var service = new GiftService();
     service.initialize().done(function () {
@@ -19,6 +21,12 @@
         });
         router.addRoute('wishlist/', function() {
             slider.slidePage(new WishlistView(service).render().$el);
+        });
+        router.addRoute('friends/', function() {
+            slider.slidePage(new FriendsView(service).render().$el);
+        });
+        router.addRoute('friend-wishlist/:id/', function(id) {
+            slider.slidePage(new FriendWishlistView(service, id).render().$el);
         });
 
         router.start();
@@ -46,5 +54,16 @@
             };
         }
     }, false);
+
+    Handlebars.registerHelper('trueFalse', function(v1, options) {
+          if(v1 == "false" ) {
+              console.log("1");
+                console.log(options.inverse(this));
+              return options.fn(this);
+          }
+              console.log("2");
+                console.log(options.inverse(this));
+          return options.inverse(this);
+    });
 
 }());

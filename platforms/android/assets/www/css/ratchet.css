@@ -245,6 +245,11 @@ body {
   line-height: 21px;
   color: #000;
   background-color: #fff;
+  /*!background: url(../img/background.png) no-repeat center center fixed;
+  -webkit-background-size: cover;
+      -moz-background-size: cover;
+          -o-background-size: cover;
+              background-size: cover; */
 }
 
 a {
@@ -275,7 +280,8 @@ a:active {
 }
 
 .bar-nav ~ .content {
-  padding-top: 44px;
+  /*!padding-top: 44px;*/
+  padding-top: 32px;
 }
 
 .bar-header-secondary ~ .content {
@@ -299,6 +305,7 @@ a:active {
 }
 
 .content-padded {
+  /*! padding-top: 40px;  */
   margin: 10px;
 }
 
@@ -395,13 +402,35 @@ p {
 
 .btn-positive {
   color: #fff;
-  background-color: #5cb85c;
-  border: 1px solid #5cb85c;
+  background-color: #995c99;
+  border: 1px solid #995c99;
 }
 .btn-positive:active, .btn-positive.active {
   color: #fff;
-  background-color: #449d44;
-  border: 1px solid #449d44;
+  background-color: #5c375c;
+  border: 1px solid #5c375c;
+}
+
+.btn-purple {
+  color: #fff;
+  background-color: #995c99;
+  border: 1px solid #995c99;
+}
+.btn-purple:active, .btn-purple.active {
+  color: #fff;
+  background-color: #5c375c;
+  border: 1px solid #5c375c;
+}
+
+.btn-cyan {
+  color: #fff;
+  background-color: #61ACC6;
+  border: 1px solid #61ACC6;
+}
+.btn-cyan:active, .btn-cyan.active {
+  color: #fff;
+  background-color: #336680;
+  border: 1px solid #336680;
 }
 
 .btn-negative {
@@ -768,6 +797,7 @@ input[type="button"] {
 .table-view .media,
 .table-view .media-body {
   overflow: hidden;
+  padding-right: 20px;
 }
 
 .table-view .media-object.pull-left {
@@ -1431,4 +1461,16 @@ select {
 
 .icon-left:before {
   content: '\e822';
+}
+
+.text-center {
+  text-align: center;
+}
+
+.back-img {
+   background: url(../img/background.png) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+      -moz-background-size: cover;
+          -o-background-size: cover;
+              background-size: cover;
 }
