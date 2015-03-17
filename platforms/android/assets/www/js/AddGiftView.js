@@ -1,4 +1,4 @@
-var AddItemView = function (service) {
+var AddGiftView = function (service) {
 
     self = this;
 
@@ -9,7 +9,8 @@ var AddItemView = function (service) {
 
     this.render = function() {
             var id = window.localStorage.getItem("id");
-            self.$el.html(self.template(id));
+            var csrf_token = window.localStorage.getItem("csrf_token");
+            self.$el.html(self.template({id: id, csrf_token: csrf_token}));
             return self;
     };
     this.initialize();
@@ -17,6 +18,5 @@ var AddItemView = function (service) {
     function errorHandler(error) {
         alert(error.message);
     }
-
 
 }

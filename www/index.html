@@ -91,11 +91,11 @@ Add item
    <ul class="table-view">
         {{#each this}}
         <li class="table-view-cell media">
-            <a href="{{url}}"> 
+            <a href="{{this.url}}"> 
                 <img class="media-object pull-left" src="img/{{pic}}">
                 <div class="media-body">
-                    {{Name}}
-                    <p>Price: {{ price }}</p>
+                    {{this.fields.name}}
+                    <p>Price: {{ this.fields.price }}</p>
                     <p>Crowfunded: {{ crowdfunded }}</p>
                 </div>
             </a>
@@ -119,15 +119,16 @@ Add item
 <div class="content content-padded">
 <br>
 <h4 class="text-center">Add an Item</h4>
-<!--<form id="add-gift-form" action="https://giftmeserver.herokuapp.com/add_gift/" method="post" accept-charset="utf-8"> -->
-<form id="add-gift-form" action="http://127.0.0.1:8000/add_gift/" method="post" accept-charset="utf-8">
-  <input name="name" type="text" placeholder="Gift name">
-  <input name="url" type="text" placeholder="Link to website where you can buy it">
-  <input name="price" type="text" placeholder="Approximate Price (US$)">
-  <input name="id" type="hidden" value={{ id }}>
-  <input name="csrfmiddlewaretoken" type="hidden" value={{ csrf_token }}>
-  <button class="btn btn-positive btn-block">Add</button>
+<!-- <form id="add-gift-form" action="http://127.0.0.1:8000/add_gift/" method="post" accept-charset="utf-8"> -->
+<form id="add-gift-form" action="https://giftmeserver.herokuapp.com/add_gift/" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+  <input id="name" name="name" type="text" placeholder="Name e.g. 'Kingdom Sportmax Pro Inline Roller Skates'">
+  <input id="url" name="url" type="text" placeholder="Link e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
+
+    <button id="price-error" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
+  <input id="price" name="price" type="text" placeholder="Approximate Price (US$) e.g. 50">
+  <input id="owner_id" name="owner_id" type="hidden" value={{ id }}>
 </form>
+<button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
 </div>
 
 </script>
@@ -145,7 +146,7 @@ Add item
 <div class="text-center">
 <br>
 <a href="#friendsPopover"><img src="img/add_friend2.jpeg"/></a>
-    <h4>Invite your friends to create a wishlist!</h4>
+    <h4>Invite MORE friends to create wishlists!</h4>
 </div>
    <ul class="table-view">
         {{#each this}}

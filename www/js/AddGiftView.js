@@ -19,5 +19,4 @@ var AddGiftView = function (service) {
         alert(error.message);
     }
 
-
 }

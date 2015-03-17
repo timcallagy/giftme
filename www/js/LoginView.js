@@ -1,8 +1,19 @@
 var LoginView = function (service) {
 
+    self = this;
+
     this.initialize = function() {
         this.$el = $('<div/>');
-        this.render();
+        openFB.init({appId: '1533444716908405'});
+        openFB.api({
+            path: '/me',
+            success: function(data) {
+                window.location="#home/";
+            },
+            error: function(data) {
+                self.render();
+            }
+        });
     };
 
 
