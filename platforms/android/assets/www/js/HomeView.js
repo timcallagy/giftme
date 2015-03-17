@@ -4,7 +4,6 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
-        //this.render();
     };
 
 
@@ -18,6 +17,7 @@ var HomeView = function (service) {
                             path: '/me',
                             success: function(data) {
                                 userPic = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
+                                window.localStorage.setItem("id", data.id);
                                 self.$el.html(self.template(data));
                                 return self;
                             },

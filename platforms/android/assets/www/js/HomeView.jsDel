@@ -4,6 +4,7 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        //this.render();
     };
 
 
@@ -16,12 +17,7 @@ var HomeView = function (service) {
                         openFB.api({
                             path: '/me',
                             success: function(data) {
-                                response = $.get("https://giftmeserver.herokuapp.com/get_csrf_token/", function( data ) {
-                                    console.log(data);
-                                    window.localStorage.setItem("csrf_token", data);
-                                });
                                 userPic = 'http://graph.facebook.com/' + data.id + '/picture?type=small';
-                                window.localStorage.setItem("id", data.id);
                                 self.$el.html(self.template(data));
                                 return self;
                             },

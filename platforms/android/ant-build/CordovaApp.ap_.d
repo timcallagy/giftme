@@ -108,11 +108,13 @@
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/jquery.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/app.jsBKP \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/ratchet.min.js \
+/home/muwawa/workspace/giftme/platforms/android/assets/www/js/HomeView.jsDel \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/HomeView.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/router.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/FriendsView.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/FriendWishlistView.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/fastclick.js \
+/home/muwawa/workspace/giftme/platforms/android/assets/www/js/AddItemView.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/services \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/pageslider.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/app.js \

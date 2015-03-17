@@ -7,6 +7,7 @@
     WishlistView.prototype.template = Handlebars.compile($("#wishlist-tpl").html());
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
+    AddItemView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
     var slider = new PageSlider($('body'));
     var service = new GiftService();
     service.initialize().done(function () {
@@ -27,6 +28,9 @@
         });
         router.addRoute('friend-wishlist/:id/', function(id) {
             slider.slidePage(new FriendWishlistView(service, id).render().$el);
+        });
+        router.addRoute('addItem/', function() {
+            slider.slidePage(new AddItemView(service).render().$el);
         });
 
         router.start();

@@ -7,6 +7,7 @@
     WishlistView.prototype.template = Handlebars.compile($("#wishlist-tpl").html());
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
+    AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
     var slider = new PageSlider($('body'));
     var service = new GiftService();
     service.initialize().done(function () {
@@ -27,6 +28,11 @@
         });
         router.addRoute('friend-wishlist/:id/', function(id) {
             slider.slidePage(new FriendWishlistView(service, id).render().$el);
+        });
+        router.addRoute('addGift/', function() {
+            addGiftView = new AddGiftView();
+            addGiftView.render();
+            slider.slidePage(addGiftView.$el);
         });
 
         router.start();
@@ -55,15 +61,5 @@
         }
     }, false);
 
-    Handlebars.registerHelper('trueFalse', function(v1, options) {
-          if(v1 == "false" ) {
-              console.log("1");
-                console.log(options.inverse(this));
-              return options.fn(this);
-          }
-              console.log("2");
-                console.log(options.inverse(this));
-          return options.inverse(this);
-    });
 
 }());
