@@ -69,6 +69,7 @@
         return $("body").on("click", "#add-gift-btn", function() {
             form = $('#add-gift-form').serialize();
             $.ajax({
+                //url: 'http://127.0.0.1:8000/add_gift/',
                 url: 'https://giftmeserver.herokuapp.com/add_gift/',
                 type: 'post',
                 dataType: 'json',
@@ -96,6 +97,24 @@
             });
         });
     });
-
-
 }());
+
+function delete_gift(pk) {
+    gift = $("#gift-" + pk);
+    form = $("#delete-gift" + pk + "-form");
+    $.ajax({
+        url: 'https://giftmeserver.herokuapp.com/delete_gift/' + pk + "/",
+        type: 'post',
+        data: form,
+        success: function() {
+            gift.hide();
+            console.log('Success');
+            console.log(gift);
+        },
+        error: function() {
+            gift.hide();
+            console.log('Error');
+            console.log(gift);
+        }
+    });
+}
