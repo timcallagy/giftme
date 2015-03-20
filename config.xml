@@ -31,5 +31,6 @@
               <icon src="res/android/mipmap-xxhdpi/ic_launcher.png" density="xxhdpi" />
               <icon src="res/android/mipmap-xxxhdpi/ic_launcher.png" density="xxxhdpi" />
     </platform>
- 
+
+
 </widget>

@@ -59,7 +59,7 @@ var HomeView = function (service) {
                         } else {
                             alert('Facebook login failed: ' + response.error);
                         }
-                    }, {scope: 'email,read_stream,publish_stream, user_friends'});
+                    }, {scope: 'email,user_friends'});
             }
         });
     };

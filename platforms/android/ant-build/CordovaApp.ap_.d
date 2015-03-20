@@ -106,6 +106,7 @@
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/handlebars.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/LoginView.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/jquery.js \
+/home/muwawa/workspace/giftme/platforms/android/assets/www/js/openfb.jsBKP \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/app.jsBKP \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/ratchet.min.js \
 /home/muwawa/workspace/giftme/platforms/android/assets/www/js/AddGiftView.js \

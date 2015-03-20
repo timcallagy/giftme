@@ -134,7 +134,14 @@ var openFB = (function () {
             oauthRedirectURL = "https://www.facebook.com/connect/login_success.html";
         }
 
+        //Added by Tim
+        //    oauthRedirectURL = "https://www.facebook.com/connect/login_success.html";
+
+
         startTime = new Date().getTime();
+        //window.alert(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
+          //  '&response_type=token&scope=' + scope, '_blank', 'location=no');
+
         loginWindow = window.open(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
             '&response_type=token&scope=' + scope, '_blank', 'location=no');
 
