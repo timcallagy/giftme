@@ -99,6 +99,7 @@ var openFB = (function () {
 
         // Inappbrowser load start handler: Used when running in Cordova only
         function loginWindow_loadStartHandler(event) {
+            window.alert("LoadStartHandler fired");
             var url = event.url;
             if (url.indexOf("access_token=") > 0 || url.indexOf("error=") > 0) {
                 // When we get the access token fast, the login window (inappbrowser) is still opening with animation
