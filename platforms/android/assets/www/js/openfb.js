@@ -38,9 +38,9 @@ var openFB = (function () {
     console.log(oauthRedirectURL);
     console.log(logoutRedirectURL);
 
-    document.addEventListener("deviceready", function () {
+ //   document.addEventListener("deviceready", function () {
         runningInCordova = true;
-    }, false);
+ //   }, false);
 
     /**
      * Initialize the OpenFB module. You must use this function and initialize the module with an appId before you can
@@ -59,6 +59,7 @@ var openFB = (function () {
         if (params.tokenStore) {
             tokenStore = params.tokenStore;
         }
+        window.alert("openFB initialised");
     }
 
     /**
@@ -132,6 +133,7 @@ var openFB = (function () {
 
         if (runningInCordova) {
             oauthRedirectURL = "https://www.facebook.com/connect/login_success.html";
+            window.alert("Runnig in Cordova");
         }
 
         //Added by Tim
@@ -139,8 +141,8 @@ var openFB = (function () {
 
 
         startTime = new Date().getTime();
-        //window.alert(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
-          //  '&response_type=token&scope=' + scope, '_blank', 'location=no');
+        window.alert(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
+            '&response_type=token&scope=' + scope, '_blank', 'location=no');
 
         loginWindow = window.open(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
             '&response_type=token&scope=' + scope, '_blank', 'location=no');
