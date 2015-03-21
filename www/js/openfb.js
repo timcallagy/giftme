@@ -39,8 +39,9 @@ var openFB = (function () {
     console.log(logoutRedirectURL);
 
     document.addEventListener("deviceready", function () {
+            window.alert("DeviceReady");
         runningInCordova = true;
-    }, false);
+    }, true);
 
     /**
      * Initialize the OpenFB module. You must use this function and initialize the module with an appId before you can
