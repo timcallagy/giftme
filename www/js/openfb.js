@@ -39,7 +39,6 @@ var openFB = (function () {
     console.log(logoutRedirectURL);
 
     document.addEventListener("deviceready", function () {
-            window.alert("DeviceReady");
         runningInCordova = true;
     }, false);
 
@@ -60,7 +59,6 @@ var openFB = (function () {
         if (params.tokenStore) {
             tokenStore = params.tokenStore;
         }
-//        window.alert("openFB initialised");
     }
 
     /**
@@ -100,7 +98,6 @@ var openFB = (function () {
 
         // Inappbrowser load start handler: Used when running in Cordova only
         function loginWindow_loadStartHandler(event) {
-            window.alert("LoadStart event fired");
             var url = event.url;
             if (url.indexOf("access_token=") > 0 || url.indexOf("error=") > 0) {
                 // When we get the access token fast, the login window (inappbrowser) is still opening with animation
@@ -135,15 +132,9 @@ var openFB = (function () {
 
         if (runningInCordova) {
             oauthRedirectURL = "https://www.facebook.com/connect/login_success.html";
-            window.alert("Running in Cordova");
         }
 
-        //Added by Tim
-        //    oauthRedirectURL = "https://www.facebook.com/connect/login_success.html";
-
-
         startTime = new Date().getTime();
-        window.alert(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL + '&response_type=token&scope=' + scope, '_blank', 'location=no');
 
         loginWindow = window.open(FB_LOGIN_URL + '?client_id=' + fbAppId + '&redirect_uri=' + oauthRedirectURL +
             '&response_type=token&scope=' + scope, '_blank', 'location=yes');
@@ -151,7 +142,6 @@ var openFB = (function () {
         // If the app is running in Cordova, listen to URL changes in the InAppBrowser until we get a URL with an access_token or an error
         if (runningInCordova) {
             loginWindow.addEventListener('loadstart', loginWindow_loadStartHandler);
-            window.alert("Loadstart event listener added");
             loginWindow.addEventListener('exit', loginWindow_exitHandler);
         }
         // Note: if the app is running in the browser the loginWindow dialog will call back by invoking the
