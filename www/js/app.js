@@ -42,11 +42,6 @@ var runningInCordova;
         });
 
         router.start();
-        if (runningInCordova) {
-            url = "https://giftmeserver.herokuapp.com/get_gifts/";
-        } else {
-            url = "http://127.0.0.1:8000/get_gifts/";
-        }
 
     });
 
@@ -75,6 +70,12 @@ var runningInCordova;
         }
     }, false);
 
+    if (runningInCordova) {
+        url = "https://giftmeserver.herokuapp.com/get_gifts/";
+    } else {
+        url = "http://127.0.0.1:8000/get_gifts/";
+    }
+
     // This function must be structured this way to allow the button to fire multiple click events.
     $(function() {
         return $("body").on("click", "#add-gift-btn", function() {
@@ -83,6 +84,7 @@ var runningInCordova;
                 url = 'https://giftmeserver.herokuapp.com/add_gift/';
             } else {
                 url = 'http://127.0.0.1:8000/add_gift/';
+                //url = 'https://giftmeserver.herokuapp.com/add_gift/';
             }
             $.ajax({
                 url: url,
