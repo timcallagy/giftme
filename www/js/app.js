@@ -53,6 +53,8 @@ var runningInCordova;
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
 
+        runningInCordova = true;
+
         // These lines fix the iOS7 status bar problem
         StatusBar.overlaysWebView( false );
         StatusBar.backgroundColorByHexString('#ffffff');
