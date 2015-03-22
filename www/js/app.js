@@ -45,9 +45,9 @@
     document.addEventListener('deviceready', function() {
 
         // These lines fix the iOS7 status bar problem
-        //StatusBar.overlaysWebView( false );
-        //StatusBar.backgroundColorByHexString('#ffffff');
-        //StatusBar.styleDefault();       
+        StatusBar.overlaysWebView( false );
+        StatusBar.backgroundColorByHexString('#ffffff');
+        StatusBar.styleDefault();       
 
         // This makes the app react faster to clicks
         FastClick.attach(document.body);
