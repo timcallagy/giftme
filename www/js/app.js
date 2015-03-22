@@ -69,8 +69,8 @@
         return $("body").on("click", "#add-gift-btn", function() {
             form = $('#add-gift-form').serialize();
             $.ajax({
-                //url: 'http://127.0.0.1:8000/add_gift/',
-                url: 'https://giftmeserver.herokuapp.com/add_gift/',
+                url: 'http://127.0.0.1:8000/add_gift/',
+                //url: 'https://giftmeserver.herokuapp.com/add_gift/',
                 type: 'post',
                 dataType: 'json',
                 data: form,

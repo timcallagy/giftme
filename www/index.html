@@ -22,7 +22,7 @@
 <div id="logo" style="height:100%;top:35%;left:25%;right:25%;text-align: center; position: fixed;" >
 <a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
 <!--<img src="img/logo.png" />-->
-<p>v0.0.16</p>
+<p>v0.0.17</p>
 </div>
 </div>
 
@@ -93,7 +93,7 @@ Add item
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
             <a href="{{this.fields.url}}"> 
-                <img class="media-object pull-left" src="img/{{pic}}">
+                <img class="media-object pull-left" src="{{this.fields.pic}}">
                 <div class="media-body">
                     {{this.fields.name}}
                     <p>Price: ${{ this.fields.price }}</p>
