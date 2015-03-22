@@ -1,7 +1,6 @@
 var WishlistView = function (service) {
 
     self = this;
-    var runningInCordova;
 
     this.initialize = function() {
         this.$el = $('<div/>');
@@ -10,12 +9,8 @@ var WishlistView = function (service) {
 
     this.render = function() {
         id = window.localStorage.getItem("id");
-        if (runningInCordova) {
-            url = "https://giftmeserver.herokuapp.com/get_gifts/";
-        } else {
-            url = "http://127.0.0.1:8000/get_gifts/";
-            //url = "https://giftmeserver.herokuapp.com/get_gifts/";
-        }
+        url = "https://giftmeserver.herokuapp.com/get_gifts/";
+        //url = "http://127.0.0.1:8000/get_gifts/";
         $.get(url + id + "/", function( data ) {
             data = JSON.parse(data);
             self.$el.html(self.template(data));
@@ -23,9 +18,4 @@ var WishlistView = function (service) {
         });
     }
     this.initialize();
-
-    document.addEventListener("deviceready", function () {
-        runningInCordova = true;
-    }, false);
-
 }

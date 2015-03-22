@@ -1,5 +1,4 @@
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
-var runningInCordova;
 (function () {
 
     /* ---------------------------------- Local Variables ---------------------------------- */
@@ -48,8 +47,6 @@ var runningInCordova;
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
 
-        runningInCordova = true;
-
         // These lines fix the iOS7 status bar problem
         StatusBar.overlaysWebView( false );
         StatusBar.backgroundColorByHexString('#ffffff');
@@ -69,23 +66,12 @@ var runningInCordova;
             };
         }
     }, false);
-
-    if (runningInCordova) {
-        url = "https://giftmeserver.herokuapp.com/get_gifts/";
-    } else {
-        url = "http://127.0.0.1:8000/get_gifts/";
-    }
-
     // This function must be structured this way to allow the button to fire multiple click events.
     $(function() {
         return $("body").on("click", "#add-gift-btn", function() {
             form = $('#add-gift-form').serialize();
-            if (runningInCordova) {
-                url = 'https://giftmeserver.herokuapp.com/add_gift/';
-            } else {
-                url = 'http://127.0.0.1:8000/add_gift/';
-                //url = 'https://giftmeserver.herokuapp.com/add_gift/';
-            }
+            url = 'https://giftmeserver.herokuapp.com/add_gift/';
+            //url = 'http://127.0.0.1:8000/add_gift/';
             $.ajax({
                 url: url,
                 type: 'post',
@@ -118,13 +104,9 @@ var runningInCordova;
 function delete_gift(pk) {
     gift = $("#gift-" + pk);
     form = $("#delete-gift" + pk + "-form");
-    if (runningInCordova) {
-        url = "https://giftmeserver.herokuapp.com/delete_gift/";
-    } else {
-        url = "http://127.0.0.1:8000/delete_gift/";
-    }
+    url = "https://giftmeserver.herokuapp.com/delete_gift/";
+    //url = "http://127.0.0.1:8000/delete_gift/";
     $.ajax({
-        //url: 'https://giftmeserver.herokuapp.com/delete_gift/' + pk + "/",
         url: url + pk + "/",
         type: 'post',
         data: form,
