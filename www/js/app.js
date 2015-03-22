@@ -66,6 +66,7 @@
             };
         }
     }, false);
+
     // This function must be structured this way to allow the button to fire multiple click events.
     $(function() {
         return $("body").on("click", "#add-gift-btn", function() {
