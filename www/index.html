@@ -22,7 +22,7 @@
 <div id="logo" style="height:100%;top:35%;left:25%;right:25%;text-align: center; position: fixed;" >
 <a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
 <!--<img src="img/logo.png" />-->
-<p>v0.0.17</p>
+<p>v0.0.18</p>
 </div>
 </div>
 
@@ -93,11 +93,11 @@ Add item
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
             <a href="{{this.fields.url}}"> 
-                <img class="media-object pull-left" src="{{this.fields.pic}}">
+                <img class="media-object pull-left crop" src="{{this.fields.pic}}">
                 <div class="media-body">
                     {{this.fields.name}}
                     <p>Price: ${{ this.fields.price }}</p>
-                    <p>Crowfunded: {{ crowdfunded }}</p>
+                    <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
                 </div>
             </a>
             <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">

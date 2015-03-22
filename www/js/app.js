@@ -1,4 +1,5 @@
 // We use an "Immediate Function" to initialize the application to avoid leaving anything behind in the global scope
+var runningInCordova;
 (function () {
 
     /* ---------------------------------- Local Variables ---------------------------------- */
@@ -8,8 +9,10 @@
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
+
     var slider = new PageSlider($('body'));
     var service = new GiftService();
+
     service.initialize().done(function () {
         console.log("Service initialized");
         router.addRoute('', function() {
@@ -39,6 +42,12 @@
         });
 
         router.start();
+        if (runningInCordova) {
+            url = "https://giftmeserver.herokuapp.com/get_gifts/";
+        } else {
+            url = "http://127.0.0.1:8000/get_gifts/";
+        }
+
     });
 
     /* --------------------------------- Event Registration -------------------------------- */
@@ -68,9 +77,13 @@
     $(function() {
         return $("body").on("click", "#add-gift-btn", function() {
             form = $('#add-gift-form').serialize();
+            if (runningInCordova) {
+                url = 'https://giftmeserver.herokuapp.com/add_gift/';
+            } else {
+                url = 'http://127.0.0.1:8000/add_gift/';
+            }
             $.ajax({
-                //url: 'http://127.0.0.1:8000/add_gift/',
-                url: 'https://giftmeserver.herokuapp.com/add_gift/',
+                url: url,
                 type: 'post',
                 dataType: 'json',
                 data: form,
@@ -84,7 +97,6 @@
                         addGiftView = new AddGiftView();
                         addGiftView.render();
                         slider.slidePage(addGiftView.$el);
-                        //slider.slidePage(new WishlistView(service).render().$el);
                         window.location.redirect = "#wishlist/";
                         href = window.location.href;
                         window.location.href = href.slice(0, href.indexOf("#")) + "#wishlist/";
@@ -102,8 +114,14 @@
 function delete_gift(pk) {
     gift = $("#gift-" + pk);
     form = $("#delete-gift" + pk + "-form");
+    if (runningInCordova) {
+        url = "https://giftmeserver.herokuapp.com/delete_gift/";
+    } else {
+        url = "http://127.0.0.1:8000/delete_gift/";
+    }
     $.ajax({
-        url: 'https://giftmeserver.herokuapp.com/delete_gift/' + pk + "/",
+        //url: 'https://giftmeserver.herokuapp.com/delete_gift/' + pk + "/",
+        url: url + pk + "/",
         type: 'post',
         data: form,
         success: function() {
