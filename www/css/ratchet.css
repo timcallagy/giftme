@@ -1475,11 +1475,11 @@ select {
     background-size: cover;
 }
 .crop {
-    height: 100px;
-    width: 100px;
+    height: 150px;
+    width: 150px;
     overflow: hidden;
 }
 .crop img {
     height: auto;
-    width: 100px;
+    width: 150px;
 }

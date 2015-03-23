@@ -1,4 +1,4 @@
-var FriendWishlistView = function (service, id, first_name) {
+var FriendWishlistView = function (service, id) {
 
     self = this;
 
@@ -7,24 +7,22 @@ var FriendWishlistView = function (service, id, first_name) {
     };
 
     this.render = function() {
-        var friends;
-        openFB.api({
-            path: '/me/friends', 
-            success: function(data) {
-                friends = data.data;
-                for (var f in friends) {
-                    console.log(friends[f]);
-                    if (friends[f].id == id){
-                        friend = friends[f];
-                        service.allGifts().done(function(gifts) {
-                            console.log(friend);
-                            self.$el.html(self.template({gifts: gifts, id: id, friend: friend}));
-                        });
-                    }
-                }    
-            }, 
-            error: errorHandler});
-        return this;
+        var friend;
+        friends = window.localStorage.getItem("friends");
+        friends = JSON.parse(friends);
+        for (var f in friends) {
+            if (friends[f].id == id){
+                friend = friends[f];
+            }
+        }
+
+        url = "https://giftmeserver.herokuapp.com/get_friends_gifts/";
+        //url = "http://127.0.0.1:8000/get_friends_gifts/";
+        $.get(url + id + "/", function( data ) {
+            data = JSON.parse(data);
+            self.$el.html(self.template({gifts: data, id: id, friend: friend}));
+            return this;
+        });
     };
 
     this.initialize();

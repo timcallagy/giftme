@@ -32,7 +32,10 @@
             slider.slidePage(new FriendsView(service).render().$el);
         });
         router.addRoute('friend-wishlist/:id/', function(id) {
-            slider.slidePage(new FriendWishlistView(service, id).render().$el);
+            friendWishlistView = new FriendWishlistView(service, id);
+            friendWishlistView.render();
+            slider.slidePage(friendWishlistView.$el);
+            //slider.slidePage(new FriendWishlistView(service, id).render().$el);
         });
         router.addRoute('addGift/', function() {
             addGiftView = new AddGiftView();

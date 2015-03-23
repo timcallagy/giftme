@@ -8,22 +8,12 @@ var FriendsView = function (service) {
 
 
     this.render = function() {
-        /*friends = openFB.api({
-                        path: '/me/friends', 
-                        success: function(data) {
-                            console.log(data)
-                            friends = data.data;
-                            self.$el.html(self.template(friends));
-                            return self;
-                        }, 
-                        error: errorHandler});
-        */
         openFB.api({
                 path: '/me/friends', 
                 success: function(data) {
-                    console.log(data)
                     friends = data.data;
                     self.$el.html(self.template(friends));
+                    window.localStorage.setItem("friends", JSON.stringify(data.data));
                     return self;
                 }, 
                 error: errorHandler});

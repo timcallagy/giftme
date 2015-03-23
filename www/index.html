@@ -22,7 +22,7 @@
 <div id="logo" style="height:100%;top:35%;left:25%;right:25%;text-align: center; position: fixed;" >
 <a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
 <!--<img src="img/logo.png" />-->
-<p>v0.0.20</p>
+<p>v0.0.21</p>
 </div>
 </div>
 
@@ -190,12 +190,12 @@ Add item
         </li>
         {{#each gifts}}
         <li class="table-view-cell media">
-            <a href="{{url}}"> 
-                <img class="media-object pull-left" src="img/{{pic}}">
+            <a href="{{fields.url}}"> 
+                <img class="media-object pull-left crop" src="{{fields.pic}}">
                 <div class="media-body">
-                    {{Name}}
-                    <p>Price: {{ price }}</p>
-                    <p>Crowfunded: {{ crowdfunded }}</p>
+                    {{fields.name}}
+                    <p>Price: ${{ fields.price }}</p>
+                    <p>Crowfunded: ${{ fields.crowdfunded }}</p>
                     <button class="btn btn-primary">Chip In</button>
                     <br>
                     <br>
