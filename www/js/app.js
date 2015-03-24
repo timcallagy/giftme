@@ -137,22 +137,27 @@ function delete_gift(pk) {
     });
 }
 
-function pay() {
-   stripe.charges.create({
-    amount : 400,
-    currency : 'usd',
-    card : {
-      number : "4242424242424242",
-      exp_month : '08',
-      exp_year : '17',
-      cvc : '111',
-      name : 'Jon Doe'
-    },
-    description : "Stripe Test Trasnfer"
-  },
-  function(result){
-     window.alert('Success');
-    window.alert(result);
-  }); 
+var handler = StripeCheckout.configure({
+    key: 'pk_test_iQi63h5Zd5LyKJGOMGUYxRvp',
+    image: 'img/logo.png',
+    token: function(token) {
+      // Use the token to create the charge with a server-side script.
+      // You can access the token ID with `token.id`
+        console.log(token);
+    }
+});
 
-}
+$('#pay-btn').on('click', function(e) {
+    // Open Checkout with further options
+    handler.open({
+      name: 'GiftMe',
+      description: 'Some gift',
+      currency: "eur",
+      amount: 20
+    });
+    e.preventDefault();
+});
+
+$(window).on('popstate', function() {
+    handler.close();
+});
