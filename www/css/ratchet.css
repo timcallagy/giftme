@@ -402,13 +402,13 @@ p {
 
 .btn-positive {
     color: #fff;
-    background-color: #995c99;
-    border: 1px solid #995c99;
+    background-color: #5cb85c;
+    border: 1px solid #5cb85c;
 }
 .btn-positive:active, .btn-positive.active {
     color: #fff;
-    background-color: #5c375c;
-    border: 1px solid #5c375c;
+    background-color: #449d44;
+    border: 1px solid #449d44;
 }
 
 .btn-purple {
@@ -1475,11 +1475,11 @@ select {
     background-size: cover;
 }
 .crop {
-    height: 150px;
-    width: 150px;
+    height: 100px;
+    width: 100px;
     overflow: hidden;
 }
 .crop img {
     height: auto;
-    width: 150px;
+    width: 100px;
 }

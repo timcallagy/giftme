@@ -4,6 +4,14 @@ var FriendWishlistView = function (service, id) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        Handlebars.registerHelper("check_if_zero", function(crowdfunded, options){
+            console.log(crowdfunded);
+            if (crowdfunded === 0) {
+                return options.fn(this);
+            } else {
+                return options.inverse(this);
+            }
+        });
     };
 
     this.render = function() {

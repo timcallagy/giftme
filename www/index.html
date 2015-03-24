@@ -196,10 +196,12 @@ Add item
                     {{fields.name}}
                     <p>Price: ${{ fields.price }}</p>
                     <p>Crowfunded: ${{ fields.crowdfunded }}</p>
-                    <button class="btn btn-primary">Chip In</button>
-                    <br>
-                    <br>
+                    {{#check_if_zero fields.crowdfunded}}
                     <button class="btn btn-primary">Start Crowdfunding</button>
+                    {{else}}
+                    <button class="btn btn-positive">Chip In</button>
+                    {{/check_if_zero}}
+
                 </div>
             </a>
         </li>
