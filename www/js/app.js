@@ -8,6 +8,7 @@
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
+    PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
 
     var slider = new PageSlider($('body'));
     var service = new GiftService();
@@ -42,6 +43,12 @@
             addGiftView.render();
             slider.slidePage(addGiftView.$el);
         });
+        // pk is the gift's id in the database.
+        router.addRoute('pay-page/:id/:pk/', function(id, pk) {
+            payPageView = new PayPageView(service, id, pk);
+            payPageView.render();
+            slider.slidePage(payPageView.$el);
+        });
 
         router.start();
 
@@ -68,6 +75,9 @@
                     );
             };
         }
+        
+        window.alert(window.stripe);
+
     }, false);
 
     // This function must be structured this way to allow the button to fire multiple click events.
@@ -125,4 +135,24 @@ function delete_gift(pk) {
             console.log(gift);
         }
     });
+}
+
+function pay() {
+   stripe.charges.create({
+    amount : 400,
+    currency : 'usd',
+    card : {
+      number : "4242424242424242",
+      exp_month : '08',
+      exp_year : '17',
+      cvc : '111',
+      name : 'Jon Doe'
+    },
+    description : "Stripe Test Trasnfer"
+  },
+  function(result){
+     window.alert('Success');
+    window.alert(result);
+  }); 
+
 }
