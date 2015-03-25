@@ -197,7 +197,7 @@ Add item
                     <p>Price: ${{ fields.price }}</p>
                     <p>Crowfunded: ${{ fields.crowdfunded }}</p>
                     {{#check_if_zero fields.crowdfunded}}
-                    <button class="btn btn-primary">Start Crowdfunding</button>
+                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Start Crowdfunding</button></a>
                     {{else}}
                     <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-positive">Chip In</button></a>
                     {{/check_if_zero}}
@@ -221,15 +221,57 @@ Add item
 </header>
 
 <div class="content content-padded">
-    <br>
+<ul class="table-view">
+        <li class="table-view-cell media">
+                <img class="media-object pull-left crop" src="{{gift.pic}}">
+                <br>
+                <div class="media-body">{{gift.name}}</div>
+                <div class="media-body">US$ {{gift.price}}</div>
+                <div class="media-body">Crowdfund it for {{friend.name}}!</div>
+        </li>
+</ul>
     <br>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<p>Amount (US$):</p> <input id="amount" name="amount" type="text" placeholder="e.g. 20">
+<p>Amount (US$)</p> <select id="amount" class="input-row" name="amount">
+<option value="5">US$ 5.00</option>
+<option value="10">US$ 10.00</option>
+<option value="15">US$ 15.00</option>
+<option value="20">US$ 20.00</option>
+<option value="25">US$ 25.00</option>
+<option value="30">US$ 30.00</option>
+<option value="35">US$ 35.00</option>
+<option value="40">US$ 40.00</option>
+<option value="45">US$ 45.00</option>
+<option value="50">US$ 50.00</option>
+<option value="60">US$ 60.00</option>
+<option value="70">US$ 70.00</option>
+<option value="80">US$ 80.00</option>
+<option value="90">US$ 90.00</option>
+<option value="100">US$ 100.00</option>
+<option value="120">US$ 120.00</option>
+<option value="130">US$ 130.00</option>
+<option value="140">US$ 140.00</option>
+<option value="150">US$ 150.00</option>
+<option value="160">US$ 160.00</option>
+<option value="170">US$ 170.00</option>
+<option value="180">US$ 180.00</option>
+<option value="190">US$ 190.00</option>
+<option value="200">US$ 200.00</option>
+<option value="250">US$ 250.00</option>
+<option value="300">US$ 300.00</option>
+<option value="350">US$ 350.00</option>
+<option value="400">US$ 400.00</option>
+<option value="450">US$ 450.00</option>
+<option value="500">US$ 500.00</option>
+</select>
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
     <br>
 <p>Card Number:</p> <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
 <p>CVC:</p> <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+<table>
+<tr>
+<td>
 <p>Expiry (month)</p> <select id="expiry-month" class="input-row" name="expiry-month">
 <option value="01">January</option>
 <option value="02">February</option>
@@ -244,6 +286,8 @@ Add item
 <option value="11">November</option>
 <option value="12">December</option>
 </select>
+</td>
+<td>
 <p>Expiry (year)</p> <select id="expiry-year" class="input-row" name="expiry-year">
 <option value="2015">2015</option>
 <option value="2016">2016</option>
@@ -256,6 +300,9 @@ Add item
 <option value="2023">2023</option>
 <option value="2024">2024</option>
 </select>
+</td>
+</tr>
+</table>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
 </form>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
