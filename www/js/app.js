@@ -165,7 +165,7 @@ $(function() {
                 $('#payment-error').show();
             } else {
                 var token = response.id;
-                url = 'https://giftmeserver.herokuapp.com/pay/10/';
+                url = 'https://giftmeserver.herokuapp.com/pay/' + gift_pk + '/';
                 //url = 'http://127.0.0.1:8000/pay/' + gift_pk + '/';
                 $.ajax({
                     url: url,
