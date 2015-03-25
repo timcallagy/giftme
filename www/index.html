@@ -123,8 +123,7 @@ Add item
 <div class="content content-padded">
 <br>
 <h4 class="text-center">Add an Item</h4>
-<!-- <form id="add-gift-form" action="http://127.0.0.1:8000/add_gift/" method="post" accept-charset="utf-8"> -->
-<form id="add-gift-form" action="https://giftmeserver.herokuapp.com/add_gift/" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <p>Name:</>
   <input id="name" name="name" type="text" placeholder="e.g. Sportmax Pro Inline Roller Skates">
 <p>Link:</>
@@ -217,15 +216,55 @@ Add item
 <script id="pay-page-tpl" type="text/template">
 <header class="bar bar-nav">
 <h1 class="title">GiftMe</h1>
-<a href="#friend-wishlist/{{ id }}" class="icon icon-left-nav pull-left"></a>
+<a href="#friend-wishlist/{{ id }}/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
 
 <div class="content content-padded">
     <br>
     <br>
+<form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<p>Amount (US$):</p> <input id="amount" name="amount" type="text" placeholder="e.g. 20">
+    <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
     <br>
-   <button id="pay-btn" class="btn btn-primary">Pay</button>
+<p>Card Number:</p> <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
+<p>CVC:</p> <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+<p>Expiry (month)</p> <input id="expiry-month" name="expiry-month" type="text" placeholder="e.g. 03">
+<p>Expiry (year)</p> <input id="expiry-year" name="expiry-year" type="text" placeholder="e.g. 19">
+<input id="gift-pk" name="gift-pk" type="hidden">
+</form>
+<button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
+<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
+
+</div>
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%   MODALS   %%%%%%%%%%%%%%%%% -->
+<div id="mypopover" class="popover">
+    <ul class="table-view">
+        <li class="table-view-cell"><strong>Options</strong></li>
+        <li class="table-view-cell">Settings</li>
+        <li class="table-view-cell"><a href="#">Logout</a></li>
+    </ul>
+</div>
+
+<div id="friendsPopover" class="popover">
+    <ul class="table-view">
+        <li class="table-view-cell"><strong>Invite using</strong></li>
+    <li class="table-view-cell"><a href="sms:00353851524345?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme">SMS</a></li>
+    <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">WhatsApp</a></li>
+    <li class="table-view-cell"><a href="mailto:timcallagy@gmail.com?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">Email</a></li>
+    </ul>
+</div>
+
+
+<div id="mymodal" class="modal">
+    <header class="bar bar-nav">
+        <a class="icon icon-close pull-right" href="#mymodal"></a>
+</form>
 
 </div>
 
@@ -293,7 +332,7 @@ Add item
 <script src="js/AddGiftView.js"></script>
 <script src="js/PayPageView.js"></script>
 <script src="js/fastclick.js"></script>
-<script src="js/checkout.js"></script>
+<script src="https://js.stripe.com/v2/"></script>
 <script src="js/app.js"></script>
 <script src="js/ratchet.min.js"></script>
 

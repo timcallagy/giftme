@@ -75,7 +75,7 @@
                     );
             };
         }
-        
+
         window.alert(window.stripe);
 
     }, false);
@@ -85,7 +85,7 @@
         return $("body").on("click", "#add-gift-btn", function() {
             form = $('#add-gift-form').serialize();
             url = 'https://giftmeserver.herokuapp.com/add_gift/';
-            //url = 'http://127.0.0.1:8000/add_gift/';
+            // url = 'http://127.0.0.1:8000/add_gift/';
             $.ajax({
                 url: url,
                 type: 'post',
@@ -137,27 +137,62 @@ function delete_gift(pk) {
     });
 }
 
-var handler = StripeCheckout.configure({
-    key: 'pk_test_iQi63h5Zd5LyKJGOMGUYxRvp',
-    image: 'img/logo.png',
-    token: function(token) {
-      // Use the token to create the charge with a server-side script.
-      // You can access the token ID with `token.id`
-        console.log(token);
-    }
-});
 
-$('#pay-btn').on('click', function(e) {
-    // Open Checkout with further options
-    handler.open({
-      name: 'GiftMe',
-      description: 'Some gift',
-      currency: "eur",
-      amount: 20
+Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
+// This function must be structured this way to allow the button to fire multiple click events.
+$(function() {
+    return $("body").on("click", "#pay-btn", function() {
+        $('#payment-error').show();
+        $('#pay-btn').attr('disabled', true);
+        amount = $('#amount').val();
+        card_number = $('#card-number').val();
+        card_cvc = $('#card-cvc').val();
+        expiry_month = $('#expiry-month').val();
+        expiry_year = $('#expiry-year').val();
+        gift_pk = $('#gift-pk').val();
+
+        Stripe.card.createToken({
+            number: card_number,
+            cvc: card_cvc,
+            exp_month: expiry_month,
+            exp_year: expiry_year
+        }, stripeResponseHandler);
+
+        function stripeResponseHandler(status, response) {
+            if (response.error) {
+                $('#pay-btn').attr('disabled', false);
+                $('#payment-error').html(response.error.message);
+                $('#payment-error').show();
+            } else {
+                var token = response.id;
+                url = 'https://giftmeserver.herokuapp.com/pay/10/';
+                //url = 'http://127.0.0.1:8000/pay/' + gift_pk + '/';
+                $.ajax({
+                    url: url,
+                    type: 'post',
+                    dataType: 'json',
+                    data: {token: token, amount: amount, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year},
+                    success: function(data) {
+                        // data == false if the payment was not successfully made.
+                        if (data == true ) {
+                            $('#payment-error').hide();
+                            $('#pay-btn').hide();
+                            $('#success-btn').show();
+                        } else {
+                            $('#payment-error').html("Error! Something went wrong at GiftMe and we couldn't make your payment. Please try again later.");
+                            $('#payment-error').show();
+                            $('#pay-btn').attr('disabled', false);
+                            console.log('Error');
+                        }
+                    },
+                    error: function() {
+                        $('#payment-error').html("Error! Something went wrong at GiftMe and we couldn't make your payment. Please try again later.");
+                        $('#payment-error').show();
+                        $('#pay-btn').attr('disabled', false);
+                        console.log('Error');
+                    }
+                });
+            }
+        }
     });
-    e.preventDefault();
-});
-
-$(window).on('popstate', function() {
-    handler.close();
 });

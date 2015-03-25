@@ -7,7 +7,7 @@ var PayPageView = function (service, id, pk) {
     };
 
     this.render = function() {
-        this.$el.html(this.template());
+        this.$el.html(this.template({id: id, pk: pk}));
         return this;
     };
     this.initialize();
