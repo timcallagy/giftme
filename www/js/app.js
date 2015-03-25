@@ -142,7 +142,8 @@ Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
 // This function must be structured this way to allow the button to fire multiple click events.
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
-        $('#payment-error').show();
+        $('#payment-error').hide();
+        $('#payment-failed-msg').hide();
         $('#pay-btn').attr('disabled', true);
         amount = $('#amount').val();
         card_number = $('#card-number').val();
@@ -161,6 +162,7 @@ $(function() {
         function stripeResponseHandler(status, response) {
             if (response.error) {
                 $('#pay-btn').attr('disabled', false);
+                $('#payment-failed-msg').show();
                 $('#payment-error').html(response.error.message);
                 $('#payment-error').show();
             } else {
@@ -176,17 +178,20 @@ $(function() {
                         // data == false if the payment was not successfully made.
                         if (data == true ) {
                             $('#payment-error').hide();
+                            $('#payment-failed-msg').hide();
                             $('#pay-btn').hide();
                             $('#success-btn').show();
                         } else {
-                            $('#payment-error').html("Error! Something went wrong at GiftMe and we couldn't make your payment. Please try again later.");
+                            $('#payment-failed-msg').show();
+                            $('#payment-error').html("Something went wrong at GiftMe");
                             $('#payment-error').show();
                             $('#pay-btn').attr('disabled', false);
                             console.log('Error');
                         }
                     },
                     error: function() {
-                        $('#payment-error').html("Error! Something went wrong at GiftMe and we couldn't make your payment. Please try again later.");
+                        $('#payment-failed-msg').show();
+                        $('#payment-error').html("Something went wrong at GiftMe");
                         $('#payment-error').show();
                         $('#pay-btn').attr('disabled', false);
                         console.log('Error');

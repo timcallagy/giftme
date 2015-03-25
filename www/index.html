@@ -225,16 +225,41 @@ Add item
     <br>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 <p>Amount (US$):</p> <input id="amount" name="amount" type="text" placeholder="e.g. 20">
+    <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
     <br>
 <p>Card Number:</p> <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
 <p>CVC:</p> <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
-<p>Expiry (month)</p> <input id="expiry-month" name="expiry-month" type="text" placeholder="e.g. 03">
-<p>Expiry (year)</p> <input id="expiry-year" name="expiry-year" type="text" placeholder="e.g. 19">
-<input id="gift-pk" name="gift-pk" type="hidden">
+<p>Expiry (month)</p> <select id="expiry-month" class="input-row" name="expiry-month">
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+<p>Expiry (year)</p> <select id="expiry-year" class="input-row" name="expiry-year">
+<option value="2015">2015</option>
+<option value="2016">2016</option>
+<option value="2017">2017</option>
+<option value="2018">2018</option>
+<option value="2019">2019</option>
+<option value="2020">2020</option>
+<option value="2021">2021</option>
+<option value="2022">2022</option>
+<option value="2023">2023</option>
+<option value="2024">2024</option>
+</select>
+<input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
 </form>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
-<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
+<a href="#friend-wishlist/{{ id }}/"><button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button></a>
 
 </div>
 

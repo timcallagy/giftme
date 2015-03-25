@@ -1483,3 +1483,18 @@ select {
     height: auto;
     width: 100px;
 }
+.input-row label + select {
+  float: right;
+  width: 65%;
+  padding-left: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+
+  font:inherit; /*keep font style*/
+  height:35px; /*force same height as inputs*/
+
+  /* remove border, background and inset shadow */
+  border:none;
+  background-color:transparent;
+  box-shadow:none;
+}
