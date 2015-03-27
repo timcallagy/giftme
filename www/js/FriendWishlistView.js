@@ -1,4 +1,4 @@
-var FriendWishlistView = function (service, id) {
+var FriendWishlistView = function (id) {
 
     self = this;
 

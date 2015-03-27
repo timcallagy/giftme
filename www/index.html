@@ -196,7 +196,7 @@ Add item
                     <p>Price: ${{ fields.price }}</p>
                     <p>Crowfunded: ${{ fields.crowdfunded }}</p>
                     {{#check_if_zero fields.crowdfunded}}
-                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Start Crowdfunding</button></a>
+                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                     {{else}}
                     <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-positive">Chip In</button></a>
                     {{/check_if_zero}}
@@ -215,7 +215,7 @@ Add item
 <script id="pay-page-tpl" type="text/template">
 <header class="bar bar-nav">
 <h1 class="title">GiftMe</h1>
-<a href="#friend-wishlist/{{ id }}/" class="icon icon-left-nav pull-left"></a>
+<a id="back-btn" href="#friend-wishlist/{{ id }}/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
 
@@ -303,8 +303,10 @@ Add item
 </tr>
 </table>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
+<input id="friend-id" type="hidden" value="{{ id }}">
 </form>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
+<button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
 <a href="#friend-wishlist/{{ id }}/"><button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button></a>
 
 </div>
