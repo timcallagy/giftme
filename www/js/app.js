@@ -190,13 +190,12 @@ $(function() {
                             // Prevent the user from going back. Force them to reload the page using the "Success" button.
                             $('#back-btn').hide();
                             $('#success-btn').show();
-                //            friendWishlistView = new FriendWishlistView(friend_id);
-                  //          friendWishlistView.render();
-                    //        slider.slidePage(friendWishlistView.$el);
-                            window.location.redirect = "#friend-wishlist/" + friend_id + "/";
-                            href = window.location.href;
-                            window.location.href = href.slice(0, href.indexOf("#")) + "#friend-wishlist/" + friend_id + "/";
-                            window.location.reload();
+                            setTimeout(function(){
+                                window.location.redirect = "#friend-wishlist/" + friend_id + "/";
+                                href = window.location.href;
+                                window.location.href = href.slice(0, href.indexOf("#")) + "#friend-wishlist/" + friend_id + "/";
+                                window.location.reload();
+                            }, 3000);
                         } else {
                             $('#payment-failed-msg').show();
                             $('#payment-error').html("Something went wrong at GiftMe");
