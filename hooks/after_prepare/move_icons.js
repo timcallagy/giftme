@@ -17,19 +17,19 @@
  
 var filestocopy = [{
     "res/android/mipmap-hdpi/ic_launcher.png":
-    "platforms/android/res/drawable-hdpi/icon.png"
+    "platforms/android/res/mipmap-hdpi/ic_launcher.png"
 }, {
     "res/android/mipmap-mdpi/ic_launcher.png":
-    "platforms/android/res/drawable-mdpi/icon.png"
+    "platforms/android/res/mipmap-mdpi/ic_launcher.png"
 }, {
     "res/android/mipmap-xhdpi/ic_launcher.png":
-    "platforms/android/res/drawable-xdpi/icon.png"
+    "platforms/android/res/mipmap-xdpi/ic_launcher.png"
 }, {
     "res/android/mipmap-xxhdpi/ic_launcher.png":
-    "platforms/android/res/drawable-xxdpi/icon.png"
+    "platforms/android/res/mipmap-xxdpi/ic_launcher.png"
 }, {
     "res/android/mipmap-xxxhdpi/ic_launcher.png":
-    "platforms/android/res/drawable-xxxhdpi/icon.png"
+    "platforms/android/res/mipmap-xxxhdpi/ic_launcher.png"
 }, ];
  
 var fs = require('fs');
