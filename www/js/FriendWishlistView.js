@@ -22,7 +22,6 @@ var FriendWishlistView = function (id) {
                 friend = friends[f];
             }
         }
-
         url = "https://giftmeserver.herokuapp.com/get_friends_gifts/";
         //url = "http://127.0.0.1:8000/get_friends_gifts/";
         $.get(url + id + "/", function( data ) {

@@ -5,6 +5,7 @@
     LoginView.prototype.template = Handlebars.compile($("#login-tpl").html());
     HomeView.prototype.template = Handlebars.compile($("#home-tpl").html());
     WishlistView.prototype.template = Handlebars.compile($("#wishlist-tpl").html());
+    ContributionsView.prototype.template = Handlebars.compile($("#contributions-tpl").html());
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
@@ -141,13 +142,17 @@ Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
 // This function must be structured this way to allow the button to fire multiple click events.
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
-        console.log("Clicked");
+        $('#gift-message-error').hide();
         $('#payment-error').hide();
         $('#payment-failed-msg').hide();
-        //$('#pay-btn').attr('disabled', true);
         $('#pay-btn').hide();
         $('#processing-btn').show();
+
         amount = $('#amount').val();
+        message = $('#gift-message').val();
+        if (message.length > 5000){
+            $('#gift-message-error').show();
+        }
         card_number = $('#card-number').val();
         card_cvc = $('#card-cvc').val();
         expiry_month = $('#expiry-month').val();
@@ -164,7 +169,6 @@ $(function() {
 
         function stripeResponseHandler(status, response) {
             if (response.error) {
-                //$('#pay-btn').attr('disabled', false);
                 $('#pay-btn').show();
                 $('#processing-btn').hide();
                 $('#payment-failed-msg').show();
@@ -172,13 +176,15 @@ $(function() {
                 $('#payment-error').show();
             } else {
                 var token = response.id;
+                var contributor_id = localStorage.getItem("id");
+                var contributor_name = localStorage.getItem("my_name");
                 url = 'https://giftmeserver.herokuapp.com/pay/' + gift_pk + '/';
                 //url = 'http://127.0.0.1:8000/pay/' + gift_pk + '/';
                 $.ajax({
                     url: url,
                     type: 'post',
                     dataType: 'json',
-                    data: {token: token, amount: amount, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year},
+                    data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), timestamp: Date.now()},
                     success: function(data) {
                         // data == false if the payment was not successfully made.
                         if (data == true ) {
@@ -188,7 +194,7 @@ $(function() {
                             $('#processing-btn').hide();
                             // Prevent the user from going back. Force them to reload the page using the "Success" button.
                             $('#back-btn').hide();
-                            $('#success-btn').show();
+                            $('[id^=success-btn]').show();
                             setTimeout(function(){
                                 window.location.redirect = "#friend-wishlist/" + friend_id + "/";
                                 href = window.location.href;
@@ -199,7 +205,6 @@ $(function() {
                             $('#payment-failed-msg').show();
                             $('#payment-error').html("Something went wrong at GiftMe");
                             $('#payment-error').show();
-                           // $('#pay-btn').attr('disabled', false);
                             $('#pay-btn').show();
                             $('#processing-btn').hide();
                             console.log('Error');
@@ -209,7 +214,6 @@ $(function() {
                         $('#payment-failed-msg').show();
                         $('#payment-error').html("Something went wrong at GiftMe");
                         $('#payment-error').show();
-                       // $('#pay-btn').attr('disabled', false);
                         $('#pay-btn').show();
                         $('#processing-btn').hide();
                         console.log('Error');

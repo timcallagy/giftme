@@ -96,7 +96,9 @@ Add item
                         {{this.fields.name}}
                     </a>
                     <p>Price: ${{ this.fields.price }}</p>
-                    <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
+                    <a href="#contributions/{{this.pk}}/"> 
+                        <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
+                    </a>
                 </div>
             <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
             </form>
@@ -137,6 +139,38 @@ Add item
 
 </script>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%%%%   CONTRIBUTIONS   %%%%%%%%%%%%%% -->
+<script id="contributions-tpl" type="text/template">
+<header class="bar bar-nav">
+<h2 class="title">GiftMe</h2>
+<a href="#wishlist/" class="icon icon-left-nav pull-left"></a>
+<a href="#mypopover" class="icon icon-bars pull-right"></a>
+</header>
+
+<div class="content content-padded">
+   <ul class="table-view">
+        {{#each this}}
+        <li id="{{this.pk}}" class="table-view-cell media">
+                <img class="media-object pull-left crop" src="http://graph.facebook.com/{{ this.contributed_by }}/picture?type=small">
+                <div class="media-body">
+<!--
+Gift Name
+Giver name donated Amount!
+-->
+                </div>
+            <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+            </form>
+               <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
+        </li>
+        {{/each}}
+    </ul>
+</div>
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 
 <!-- %%%%%%%%%%%%%%%   FRIENDS   %%%%%%%%%%%%%% -->
 <script id="friends-tpl" type="text/template">
@@ -197,7 +231,7 @@ Add item
                     {{#check_if_zero fields.crowdfunded}}
                     <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                     {{else}}
-                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-positive">Chip In</button></a>
+                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                     {{/check_if_zero}}
 
                 </div>
@@ -224,13 +258,15 @@ Add item
                 <img class="media-object pull-left crop" src="{{gift.pic}}">
                 <br>
                 <div class="media-body">{{gift.name}}</div>
-                <div class="media-body">US$ {{gift.price}}</div>
+                <div class="media-body">Price: US$ {{gift.price}}</div>
+                <div class="media-body">Crowdfunded so far: US$ {{gift.crowdfunded}}</div>
                 <div class="media-body">Crowdfund it for {{friend.name}}!</div>
         </li>
 </ul>
     <br>
+<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<p>Amount (US$)</p> <select id="amount" class="input-row" name="amount">
+<p>Amount:</p> <select id="amount" class="input-row" name="amount">
 <option value="5">US$ 5.00</option>
 <option value="10">US$ 10.00</option>
 <option value="15">US$ 15.00</option>
@@ -262,9 +298,13 @@ Add item
 <option value="450">US$ 450.00</option>
 <option value="500">US$ 500.00</option>
 </select>
+    <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
+<p>Personal Message:</p>
+<textarea id="gift-message" name="gift-message" rows="4" cols="50"></textarea>
+    <br>
+    <br>
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
-    <br>
 <p>Card Number:</p> <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
 <p>CVC:</p> <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
 <table>
@@ -306,7 +346,7 @@ Add item
 </form>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
-<a href="#friend-wishlist/{{ id }}/"><button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button></a>
+<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 
 </div>
 
@@ -360,6 +400,7 @@ Add item
 <script src="js/FriendWishlistView.js"></script>
 <script src="js/AddGiftView.js"></script>
 <script src="js/PayPageView.js"></script>
+<script src="js/ContributionsView.js"></script>
 <script src="js/fastclick.js"></script>
 <script src="https://js.stripe.com/v2/"></script>
 <script src="js/app.js"></script>
