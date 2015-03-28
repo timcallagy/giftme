@@ -147,6 +147,7 @@ function close_popover(){
         $("#friendsPopover").hide();
     } else {
         $("#friendsPopover").show();
+    }
 }
 
 Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
