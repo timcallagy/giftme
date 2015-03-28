@@ -138,8 +138,15 @@ function delete_gift(pk) {
 }
 
 function close_popover(){
-    $("#mypopover").hide();
-    $("#friendsPopover").hide();
+    if ($("#mypopover").is(":visible")) {
+        $("#mypopover").hide();
+    } else {
+        $("#mypopover").show();
+    }
+    if ($("#friendsPopover").is(":visible")) {
+        $("#friendsPopover").hide();
+    } else {
+        $("#friendsPopover").show();
 }
 
 Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
