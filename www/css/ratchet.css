@@ -76,7 +76,7 @@ dfn {
 
 h1 {
     margin: .67em 0;
-    font-size: 2em;
+    font-size: 6em;
 }
 
 mark {
@@ -332,7 +332,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1, .h1 {
-    font-size: 36px;
+    font-size: 52px;
+    color: #fff;
+    font-family: "Courier";
+    text-shadow: 4px 3px 0 #000, 9px 8px 0 rgba(0, 0, 0, 0.15);
 }
 
 h2, .h2 {
@@ -456,6 +459,10 @@ p {
 .btn-outlined.btn-negative {
     color: #d9534f;
 }
+.btn-outlined.btn-white {
+    background-color: #fff;
+    color: #d9534f;
+}
 .btn-outlined.btn-primary:active, .btn-outlined.btn-positive:active, .btn-outlined.btn-negative:active {
     color: #fff;
 }
@@ -567,6 +574,7 @@ input[type="button"] {
     color: #000;
     text-align: center;
     white-space: nowrap;
+    font-family: "Courier";
 }
 
 .title a {

@@ -14,13 +14,10 @@
 
 <!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
 <script id="login-tpl" type="text/template">
-<header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
-</header>
-
 <div class="content back-img">
-<div id="logo" style="height:100%;top:55%;left:25%;right:25%;text-align: center; position: fixed;" >
-<button class="btn btn-primary btn-block" disabled><h1 style="color:#000408">Crowdfund gifts<br> that your friends will love</h1></button>
+<div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
+<!--<button class="btn btn-outlined btn-white"><h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1></button> -->
+<h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
 </div>
 <div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
 <a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
@@ -35,7 +32,7 @@
 <!-- %%%%%%%%%%%%   HOME   %%%%%%%%%%%%%%%%% -->
 <script id="home-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a href="#" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -44,7 +41,7 @@
 <div class="text-center">
 <ul class="table-view">
   <li class="table-view-cell media">
-      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ id }}/picture?type=large"><br>
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ id }}/picture?width=150&height=150"><br>
       <div class="media-body">
           Hey {{ first_name }}!
           <p>Welcome to GiftMe</p>
@@ -54,7 +51,7 @@
 </div>
 <a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Your Wishlist
+My Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 
 <a href="#friends/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
@@ -77,7 +74,7 @@ Your Friends
 <!-- %%%%%%%%%%%%%%%   WISHLIST   %%%%%%%%%%%%%% -->
 <script id="wishlist-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a href="#home/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -93,14 +90,14 @@ Add item
    <ul class="table-view">
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
-            <a href="{{this.fields.url}}"> 
                 <img class="media-object pull-left crop" src="{{this.fields.pic}}">
                 <div class="media-body">
-                    {{this.fields.name}}
+                    <a href="{{this.fields.url}}"> 
+                        {{this.fields.name}}
+                    </a>
                     <p>Price: ${{ this.fields.price }}</p>
                     <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
                 </div>
-            </a>
             <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
             </form>
                <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
@@ -116,7 +113,7 @@ Add item
 <!-- %%%%%%%%%%%%%%%   ADD ITEM   %%%%%%%%%%%%%% -->
 <script id="add-item-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a href="#wishlist/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -144,7 +141,7 @@ Add item
 <!-- %%%%%%%%%%%%%%%   FRIENDS   %%%%%%%%%%%%%% -->
 <script id="friends-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a href="#home/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -175,7 +172,7 @@ Add item
 <!-- %%%%%%%%%%%%%%%   FRIEND WISHLIST  %%%%%%%%%%%%%% -->
 <script id="friend-wishlist-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a href="#friends/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -216,7 +213,7 @@ Add item
 <!-- %%%%%%%%%%%%%%%   PAY PAGE  %%%%%%%%%%%%%% -->
 <script id="pay-page-tpl" type="text/template">
 <header class="bar bar-nav">
-<h1 class="title">GiftMe</h1>
+<h2 class="title">GiftMe</h2>
 <a id="back-btn" href="#friend-wishlist/{{ id }}/" class="icon icon-left-nav pull-left"></a>
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
@@ -321,18 +318,18 @@ Add item
 <!-- %%%%%%%%%%%%   MODALS   %%%%%%%%%%%%%%%%% -->
 <div id="mypopover" class="popover">
     <ul class="table-view">
-        <li class="table-view-cell"><strong>Options</strong></li>
-        <li class="table-view-cell">Settings</li>
-        <li class="table-view-cell"><a href="#">Logout</a></li>
+        <li class="table-view-cell" onclick="close_popover()"><strong>Options</strong></li>
+        <li class="table-view-cell" onclick="close_popover()">Settings</li>
+        <li class="table-view-cell" onclick="close_popover()"><a href="#">Logout</a></li>
     </ul>
 </div>
 
 <div id="friendsPopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
-    <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme">SMS</a></li>
-    <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">WhatsApp</a></li>
-    <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">Email</a></li>
+        <li class="table-view-cell" onclick="close_popover()"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme">SMS</a></li>
+        <li class="table-view-cell" onclick="close_popover()"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">WhatsApp</a></li>
+        <li class="table-view-cell" onclick="close_popover()"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.giftme!">Email</a></li>
     </ul>
 </div>
 
@@ -340,7 +337,7 @@ Add item
 <div id="mymodal" class="modal">
     <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#mymodal"></a>
-</form>
+    </form>
 
 </div>
 

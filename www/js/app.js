@@ -137,6 +137,10 @@ function delete_gift(pk) {
     });
 }
 
+function close_popover(){
+    $("#mypopover").hide();
+    $("#friendsPopover").hide();
+}
 
 Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
 // This function must be structured this way to allow the button to fire multiple click events.
