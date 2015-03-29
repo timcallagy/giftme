@@ -100,9 +100,13 @@ Add item
                         <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
                     </a>
                 </div>
-            <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-            </form>
-               <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
+            {{#check_if_zero this.fields.crowdfunded}}
+                <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                </form>
+                <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
+            {{else}}
+                <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">See contributions</button></a>
+            {{/check_if_zero}}
         </li>
         {{/each}}
     </ul>
@@ -150,19 +154,22 @@ Add item
 </header>
 
 <div class="content content-padded">
-   <ul class="table-view">
-        {{#each this}}
-        <li id="{{this.pk}}" class="table-view-cell media">
-                <img class="media-object pull-left crop" src="http://graph.facebook.com/{{ this.contributed_by }}/picture?type=small">
+<ul class="table-view">
+        <li class="table-view-cell media">
+                <img class="media-object pull-left crop" src="{{gift.fields.pic}}">
+                <br>
+                <div class="media-body">{{gift.fields.name}}</div>
+                <div class="media-body">Price: US$ {{gift.fields.price}}</div>
+                <div class="media-body">Crowdfunded so far: US$ {{gift.fields.crowdfunded}}</div>
+        </li>
+        {{#each contributions}}
+        <li id="{{pk}}" class="table-view-cell media">
+                <img class="media-object pull-left crop" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
                 <div class="media-body">
-<!--
-Gift Name
-Giver name donated Amount!
--->
+                    <p><strong>{{ fields.contributor_name }} contributed ${{ fields.amount }}!</strong></p>
+                    <p>{{ fields.message }}</p>
+                    <p>{{ fields.gift.name }}</p>
                 </div>
-            <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-            </form>
-               <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
         </li>
         {{/each}}
     </ul>
@@ -228,12 +235,7 @@ Giver name donated Amount!
                     </a>
                     <p>Price: ${{ fields.price }}</p>
                     <p>Crowfunded: ${{ fields.crowdfunded }}</p>
-                    {{#check_if_zero fields.crowdfunded}}
                     <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
-                    {{else}}
-                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
-                    {{/check_if_zero}}
-
                 </div>
         </li>
         {{/each}}

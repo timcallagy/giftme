@@ -1,4 +1,4 @@
-var ContributionsView = function (service) {
+var ContributionsView = function (pk) {
 
     self = this;
 
@@ -6,14 +6,20 @@ var ContributionsView = function (service) {
         this.$el = $('<div/>');
     };
 
-
     this.render = function() {
-        id = window.localStorage.getItem("id");
         url = "https://giftmeserver.herokuapp.com/get_contributions/";
         //url = "http://127.0.0.1:8000/get_contributions/";
-        $.get(url + id + "/", function( data ) {
+        $.get(url + pk + "/", function( data ) {
             data = JSON.parse(data);
-            self.$el.html(self.template(data));
+            var gift;
+            gifts = window.localStorage.getItem("gifts");
+            gifts = JSON.parse(gifts);
+            for (var g in gifts) {
+                if (gifts[g].pk == pk){
+                    gift = gifts[g];
+                }
+            }
+            self.$el.html(self.template({contributions: data, gift:gift}));
             return this;
         });
     }

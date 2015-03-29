@@ -28,7 +28,11 @@
             wishlistView = new WishlistView();
             wishlistView.render();
             slider.slidePage(wishlistView.$el);
-            // slider.slidePage(new WishlistView(service).render().$el);
+        });
+        router.addRoute('contributions/:pk/', function(pk) {
+            contributionsView = new ContributionsView(pk);
+            contributionsView.render();
+            slider.slidePage(contributionsView.$el);
         });
         router.addRoute('friends/', function() {
             slider.slidePage(new FriendsView(service).render().$el);
@@ -37,7 +41,6 @@
             friendWishlistView = new FriendWishlistView(id);
             friendWishlistView.render();
             slider.slidePage(friendWishlistView.$el);
-            //slider.slidePage(new FriendWishlistView(service, id).render().$el);
         });
         router.addRoute('addGift/', function() {
             addGiftView = new AddGiftView();
