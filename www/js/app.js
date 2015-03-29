@@ -178,8 +178,8 @@ $(function() {
                 var token = response.id;
                 var contributor_id = localStorage.getItem("id");
                 var contributor_name = localStorage.getItem("my_name");
-                //url = 'https://giftmeserver.herokuapp.com/pay/' + gift_pk + '/';
-                url = 'http://127.0.0.1:8000/pay/' + gift_pk + '/';
+                url = 'https://giftmeserver.herokuapp.com/pay/' + gift_pk + '/';
+                //url = 'http://127.0.0.1:8000/pay/' + gift_pk + '/';
                 $.ajax({
                     url: url,
                     type: 'post',
