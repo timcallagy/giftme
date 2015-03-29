@@ -10,6 +10,7 @@
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
     PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
+    PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
 
     var slider = new PageSlider($('body'));
     var service = new GiftService();
@@ -52,6 +53,12 @@
             payPageView = new PayPageView(service, id, pk);
             payPageView.render();
             slider.slidePage(payPageView.$el);
+        });
+        // pk is the gift's id in the database.
+        router.addRoute('payment-confirmation/', function() {
+            paymentConfirmationView = new PaymentConfirmationView();
+            paymentConfirmationView.render();
+            slider.slidePage(paymentConfirmationView.$el);
         });
 
         router.start();
@@ -191,7 +198,14 @@ $(function() {
                     data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), timestamp: Date.now()},
                     success: function(data) {
                         // data == false if the payment was not successfully made.
-                        if (data == true ) {
+                        if (data.indexOf('Error') > -1) {
+                            $('#payment-failed-msg').show();
+                            $('#payment-error').html("Something went wrong at GiftMe");
+                            $('#payment-error').show();
+                            $('#pay-btn').show();
+                            $('#processing-btn').hide();
+                            console.log('Error');
+                        } else {
                             $('#payment-error').hide();
                             $('#payment-failed-msg').hide();
                             $('#pay-btn').hide();
@@ -199,19 +213,12 @@ $(function() {
                             // Prevent the user from going back. Force them to reload the page using the "Success" button.
                             $('#back-btn').hide();
                             $('[id^=success-btn]').show();
-                            setTimeout(function(){
-                                window.location.redirect = "#friend-wishlist/" + friend_id + "/";
-                                href = window.location.href;
-                                window.location.href = href.slice(0, href.indexOf("#")) + "#friend-wishlist/" + friend_id + "/";
-                                window.location.reload();
-                            }, 3000);
-                        } else {
-                            $('#payment-failed-msg').show();
-                            $('#payment-error').html("Something went wrong at GiftMe");
-                            $('#payment-error').show();
-                            $('#pay-btn').show();
-                            $('#processing-btn').hide();
-                            console.log('Error');
+                            console.log(data);
+                            window.localStorage.setItem("contribution", JSON.stringify(data));
+                            window.location.redirect = "#payment-confirmation/";
+                            href = window.location.href;
+                            window.location.href = href.slice(0, href.indexOf("#")) + "#payment-confirmation/";
+                            window.location.reload();
                         }
                     },
                     error: function() {
