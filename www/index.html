@@ -56,7 +56,7 @@ My Wishlist
 
 <a href="#friends/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Your Friends 
+My Friends 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
 <div class="text-center">
@@ -96,17 +96,15 @@ Add item
                         {{this.fields.name}}
                     </a>
                     <p>Price: ${{ this.fields.price }}</p>
-                    <a href="#contributions/{{this.pk}}/"> 
                         <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
-                    </a>
+                    {{#check_if_zero this.fields.crowdfunded}}
+                        <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                        </form>
+                        <button id="delete-gift{{this.pk}}-btn" class="btn btn-negative" onclick="delete_gift({{this.pk}})"=>Delete</button>
+                    {{else}}
+                        <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">See Contributions</button></a>
+                    {{/check_if_zero}}
                 </div>
-            {{#check_if_zero this.fields.crowdfunded}}
-                <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                </form>
-                <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
-            {{else}}
-                <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">Contributions</button></a>
-            {{/check_if_zero}}
         </li>
         {{/each}}
     </ul>
