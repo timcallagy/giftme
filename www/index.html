@@ -267,6 +267,12 @@ Add item
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
 
+    <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
+<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
+    <br>
+    <br>
+
+
 <table>
 <tr>
 <td>
@@ -307,14 +313,6 @@ Add item
 </select>
 </td>
 </tr>
-</table>
-
-    <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
-<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
-    <br>
-    <br>
-
-<table>
 <tr>
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
@@ -338,7 +336,7 @@ Add item
 <tr>
 <td><p>Expiry: </p>
 </td>
-<td>
+<td width="50%">
 <select id="expiry-month" class="input-row" name="expiry-month">
 <option value="01">January</option>
 <option value="02">February</option>
@@ -354,7 +352,7 @@ Add item
 <option value="12">December</option>
 </select>
 </td>
-<td>
+<td width="50%">
 <select id="expiry-year" class="input-row" name="expiry-year">
 <option value="2015">2015</option>
 <option value="2016">2016</option>
@@ -396,11 +394,11 @@ Add item
 <button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
 <div class="text-center">
 <br>
-<h4>Your payment of US${{ fields.amount}} has been completed successfully.</h4>
+<h4>Your contribution of US${{ contribution.fields.amount}} has been completed successfully.</h4>
 
 <br>
 <a href="#chipInInvitePopover"><img src="img/add_friend2.jpeg"/></a>
-    <h4>Invite more friends to chip in!</h4>
+    <h4>Now help {{ friend.name }} crowdfund {{ contribution.fields.gift_name }} by inviting more friends to chip in!</h4>
 </div>
 <br>
 <a href="#home/"><button class="btn btn-cyan btn-block "><span class="icon icon-home"></span>
@@ -409,6 +407,16 @@ Home
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-left-nav"></span></button></a>
 
 </div>
+
+<div id="chipInInvitePopover" class="popover">
+    <ul class="table-view">
+        <li class="table-view-cell"><strong>Invite using</strong></li>
+        <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.giftme">SMS</a></li>
+        <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.giftme">WhatsApp</a></li>
+        <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.giftme">Email</a></li>
+    </ul>
+</div>
+
 
 </script>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
