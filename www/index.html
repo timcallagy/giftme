@@ -105,7 +105,7 @@ Add item
                 </form>
                 <button id="delete-gift{{this.pk}}-btn" class="btn btn-primary" onclick="delete_gift({{this.pk}})"=>Delete</button>
             {{else}}
-                <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">See contributions</button></a>
+                <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">Contributions</button></a>
             {{/check_if_zero}}
         </li>
         {{/each}}
@@ -164,7 +164,7 @@ Add item
         </li>
         {{#each contributions}}
         <li id="{{pk}}" class="table-view-cell media">
-                <img class="media-object pull-left crop" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
+                <img class="media-object pull-left" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
                 <div class="media-body">
                     <p><strong>{{ fields.contributor_name }} contributed ${{ fields.amount }}!</strong></p>
                     <p>{{ fields.message }}</p>
