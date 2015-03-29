@@ -263,10 +263,17 @@ Add item
                 <div class="media-body">Crowdfund it for {{friend.name}}!</div>
         </li>
 </ul>
-    <br>
 <button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-<p>Amount:</p> <select id="amount" class="input-row" name="amount">
+
+
+<table>
+<tr>
+<td>
+<p>Amount: &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;</p>
+</td>
+<td>
+<select id="amount" class="input-row" name="amount">
 <option value="5">US$ 5.00</option>
 <option value="10">US$ 10.00</option>
 <option value="15">US$ 15.00</option>
@@ -298,19 +305,41 @@ Add item
 <option value="450">US$ 450.00</option>
 <option value="500">US$ 500.00</option>
 </select>
+</td>
+</tr>
+</table>
+
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
-<p>Personal Message (optional):</p>
-<textarea id="gift-message" name="gift-message" rows="4" cols="50"></textarea>
+<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
     <br>
     <br>
-    <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
-    <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
-<p>Card Number:</p> <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
-<p>CVC:</p> <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+
 <table>
 <tr>
+    <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
+    <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
+</tr>
+<tr>
 <td>
-<p>Expiry (month)</p> <select id="expiry-month" class="input-row" name="expiry-month">
+<p>Card Number: &nbsp;&nbsp;</p>
+</td>
+<td>
+ <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
+</td>
+</tr>
+
+<tr>
+<td>
+<p>CVC:</p>
+</td>
+<td>
+ <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+</td>
+<tr>
+<td><p>Expiry: &nbsp;&nbsp;</p>
+</td>
+<td>
+<select id="expiry-month" class="input-row" name="expiry-month">
 <option value="01">January</option>
 <option value="02">February</option>
 <option value="03">March</option>
@@ -326,7 +355,7 @@ Add item
 </select>
 </td>
 <td>
-<p>Expiry (year)</p> <select id="expiry-year" class="input-row" name="expiry-year">
+<select id="expiry-year" class="input-row" name="expiry-year">
 <option value="2015">2015</option>
 <option value="2016">2016</option>
 <option value="2017">2017</option>
