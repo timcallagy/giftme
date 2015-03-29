@@ -276,7 +276,7 @@ Add item
 <table>
 <tr>
 <td>
-<p>Amount: &nbsp;&nbsp;</p>
+<p>Amount: &nbsp;&nbsp;&nbsp;&nbsp;</p>
 </td>
 <td>
 <select id="amount" class="input-row" name="amount">
@@ -319,7 +319,7 @@ Add item
 </tr>
 <tr>
 <td>
-<p>Card Number: </p>
+<p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
 </td>
 <td>
  <input id="card-number" name="card-number" type="text" placeholder="e.g. 4242424242424242">
@@ -336,7 +336,7 @@ Add item
 <tr>
 <td><p>Expiry: </p>
 </td>
-<td width="50%">
+<td width="75%">
 <select id="expiry-month" class="input-row" name="expiry-month">
 <option value="01">January</option>
 <option value="02">February</option>
@@ -352,7 +352,7 @@ Add item
 <option value="12">December</option>
 </select>
 </td>
-<td width="50%">
+<td width="25%">
 <select id="expiry-year" class="input-row" name="expiry-year">
 <option value="2015">2015</option>
 <option value="2016">2016</option>
@@ -394,18 +394,18 @@ Add item
 <button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
 <div class="text-center">
 <br>
-<h4>Your contribution of US${{ contribution.fields.amount}} has been completed successfully.</h4>
+<p>You chipped in US${{ contribution.fields.amount}}</p>
 
 <br>
 <a href="#chipInInvitePopover"><img src="img/add_friend2.jpeg"/></a>
-    <h4>Now help {{ friend.name }} crowdfund {{ contribution.fields.gift_name }} by inviting more friends to chip in!</h4>
+<br>
+<br>
+<p>Do you know someone else who would like to chip in?</p>
+<a href="#chipInInvitePopover/"><button class="btn btn-cyan btn-block ">Invite</button></a>
+
 </div>
 <br>
-<a href="#home/"><button class="btn btn-cyan btn-block "><span class="icon icon-home"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Home 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-left-nav"></span></button></a>
-
+<a href="#home/"><button class="btn btn-purple btn-block ">Home</button></a>
 </div>
 
 <div id="chipInInvitePopover" class="popover">

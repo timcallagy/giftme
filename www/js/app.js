@@ -206,14 +206,13 @@ $(function() {
                             $('#processing-btn').hide();
                             console.log('Error');
                         } else {
-                            $('#payment-error').hide();
-                            $('#payment-failed-msg').hide();
-                            $('#pay-btn').hide();
-                            $('#processing-btn').hide();
+                          //  $('#payment-error').hide();
+                          //  $('#payment-failed-msg').hide();
+                          //  $('#pay-btn').hide();
+                          //  $('#processing-btn').hide();
                             // Prevent the user from going back. Force them to reload the page using the "Success" button.
-                            $('#back-btn').hide();
-                            $('[id^=success-btn]').show();
-                            console.log(data);
+                           // $('#back-btn').hide();
+                           // $('[id^=success-btn]').show();
                             window.localStorage.setItem("contribution", JSON.stringify(data));
                             window.location.redirect = "#payment-confirmation/";
                             href = window.location.href;
