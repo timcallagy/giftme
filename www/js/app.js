@@ -148,8 +148,8 @@ function delete_gift(pk) {
     });
 }
 
-Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
-//Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
+//Stripe.setPublishableKey('pk_test_iQi63h5Zd5LyKJGOMGUYxRvp');
+Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
 // This function must be structured this way to allow the button to fire multiple click events.
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
