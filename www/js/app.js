@@ -233,3 +233,9 @@ $(function() {
         }
     });
 });
+
+function send_whatsapp() {
+    console.log("tirggered");
+    cordova.plugins.Whatsapp.send("1112223333");
+}
+
