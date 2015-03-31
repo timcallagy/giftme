@@ -19,8 +19,13 @@
         <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
     </feature>
 
+    <!-- for Android -->
+    <feature name="Whatsapp">
+        <param name="android-package" value="mobi.moica.whatsapp.Whatsapp" />
+    </feature>    
+
     <access origin="sms:*" launch-external="yes"/>
-    <access origin="whatsapp:*" launch-external="yes" />
+    <!--<access origin="whatsapp:*" launch-external="yes" />-->
     <access origin="mailto:*" launch-external="yes" />
 
    <platform name="android">
@@ -32,5 +37,6 @@
     </platform>
 
     <gap:plugin name="org.apache.cordova.inappbrowser" />
+    <gap:plugin name="mobi.moica.whatsapp" version="0.0.1" />
 
 </widget>
