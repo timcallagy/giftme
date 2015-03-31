@@ -234,8 +234,8 @@ $(function() {
     });
 });
 
-function send_whatsapp() {
-    window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {
+function send_whatsapp(message) {
+    window.plugins.socialsharing.shareViaWhatsApp(message, null /* img */, 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me' /* url */, function() {
         console.log('share ok')
     }, 
     function(errormsg){
