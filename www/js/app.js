@@ -236,6 +236,6 @@ $(function() {
 
 function send_whatsapp() {
     console.log("tirggered");
-    cordova.plugins.Whatsapp.send();
+    cordova.plugins.Whatsapp.send("");
 }
 
