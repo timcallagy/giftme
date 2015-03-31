@@ -14,16 +14,9 @@
         <param name="domain" value="http://debug.build.phonegap.com"/>
     </feature>
 
-
     <feature name="Contacts">
         <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
     </feature>
-
-    <!-- for Android -->
-    <feature name="Whatsapp">
-        <param name="android-package" value="mobi.moica.whatsapp.Whatsapp" />
-    </feature>    
-
     <access origin="sms:*" launch-external="yes"/>
     <!--<access origin="whatsapp:*" launch-external="yes" />-->
     <access origin="mailto:*" launch-external="yes" />
@@ -37,6 +30,6 @@
     </platform>
 
     <gap:plugin name="org.apache.cordova.inappbrowser" />
-    <gap:plugin name="mobi.moica.whatsapp" version="0.0.1" />
+    <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io" />
 
 </widget>

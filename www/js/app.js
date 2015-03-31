@@ -235,7 +235,11 @@ $(function() {
 });
 
 function send_whatsapp() {
-    console.log("tirggered");
-    cordova.plugins.Whatsapp.send("");
+    window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {
+        console.log('share ok')
+    }, 
+    function(errormsg){
+        alert(errormsg)
+    });
 }
 
