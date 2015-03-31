@@ -412,8 +412,7 @@ Add item
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
         <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
-<!--        <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">WhatsApp</a></li> -->
-        <li class="table-view-cell" onclick="send_whatsapp('Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
+        <li class="table-view-cell" onclick='send_whatsapp("Hi! We are crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:");>WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
     </ul>
 </div>
