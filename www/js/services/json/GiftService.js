@@ -1,9 +1,9 @@
-var EmployeeService = function() {
+var GiftService = function() {
 
     var url;
 
     this.initialize = function(serviceURL) {
-        url = serviceURL ? serviceURL : "http://localhost:5000/employees";
+        url = serviceURL ? serviceURL : "https://giftmeserver.herokuapp.com/";
         var deferred = $.Deferred();
         deferred.resolve();
         return deferred.promise();
