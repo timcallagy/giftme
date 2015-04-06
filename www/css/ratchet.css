@@ -574,7 +574,6 @@ input[type="button"] {
     color: #000;
     text-align: center;
     white-space: nowrap;
-    font-family: "Courier";
 }
 
 .title a {
@@ -1506,3 +1505,9 @@ select {
   background-color:transparent;
   box-shadow:none;
 }
+.img-btn {
+   box-shadow: 10px 10px 5px #888888;
+    border: 2px solid #336680;
+    border-radius: 5px;
+}
+

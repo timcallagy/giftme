@@ -9,24 +9,9 @@
 <link rel="stylesheet" href="css/ratchet.css" type="text/css" >
 <link rel="stylesheet" href="css/styles.css" type="text/css">
 <link href="css/pageslider.css" rel="stylesheet">
+
 </head>
 <body>
-
-<!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
-<script id="login-tpl" type="text/template">
-<div class="content back-img">
-<div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
-<!--<button class="btn btn-outlined btn-white"><h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1></button> -->
-<h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
-</div>
-<div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
-<a href="#home/"><button class="btn btn-primary btn-block">Login with Facebook</button></a>
-</div>
-</div>
-
-</script>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
 
 
 <!-- %%%%%%%%%%%%   HOME   %%%%%%%%%%%%%%%%% -->
@@ -40,7 +25,7 @@
 <div class="text-center">
 <ul class="table-view">
   <li class="table-view-cell media">
-      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ id }}/picture?width=150&height=150"><br>
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ id }}/picture?width=120&height=120"><br>
       <div class="media-body">
           Hey {{ first_name }}!
           <p>Welcome to GiftMe</p>
@@ -60,9 +45,25 @@ My Friends
 <br>
 <div class="text-center">
     <h4>Invite your friends to create a wishlist!</h4>
-<a href="#friendsPopover"><img src="img/add_friend2.jpeg"/></a>
+<a href="#friendsPopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
 </div>
 
+</div>
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
+<script id="login-tpl" type="text/template">
+<div class="content back-img">
+<div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
+<!--<button class="btn btn-outlined btn-white"><h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1></button> -->
+<h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
+</div>
+<div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
+<button id="login-btn" class="btn btn-primary btn-block" onclick="facebook_login()">Login with Facebook</button>
+</div>
 </div>
 
 </script>
@@ -79,9 +80,11 @@ My Friends
 </header>
 <div class="bar bar-standard bar-header-secondary">
 <a href="#addGift/"><button class="btn btn-positive btn-block "><span class="icon icon-plus"></span>
+<span style="line-height: 1;">
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Add item 
+Add item
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+</span>
 <span class="icon icon-right-nav"></span></button></a>
 </div>
 
@@ -95,7 +98,7 @@ Add item
                         {{this.fields.name}}
                     </a>
                     <p>Price: ${{ this.fields.price }}</p>
-                        <p>Crowfunded: ${{ this.fields.crowdfunded }}</p>
+                        <p>Crowdfunded: ${{ this.fields.crowdfunded }}</p>
                     {{#check_if_zero this.fields.crowdfunded}}
                         <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
                         </form>
@@ -124,17 +127,21 @@ Add item
 <div class="content content-padded">
 <br>
 <h4 class="text-center">Add an Item</h4>
+<div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+    <button id="add-error" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
 <p>Name:</>
-  <input id="name" name="name" type="text" placeholder="e.g. Sportmax Pro Inline Roller Skates">
+  <input id="gift-name" name="name" type="text" placeholder="e.g. Sportmax Pro Inline Roller Skates">
+    <button id="url-error" class="btn btn-outlined btn-negative" style="display:none;">Error! This is not a valid link.</button>
 <p>Link:</>
-  <input id="url" name="url" type="text" placeholder="e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
+  <input id="gift-url" name="url" type="text" placeholder="e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
 
     <button id="price-error" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
 <p>Approximate Price (US$):</p>
-  <input id="price" name="price" type="text" placeholder="e.g. 50">
-  <input id="owner_id" name="owner_id" type="hidden" value={{ id }}>
+  <input id="gift-price" name="price" type="text" placeholder="e.g. 50">
+  <input id="gift-owner-id" name="owner_id" type="hidden" value={{ id }}>
 </form>
+</div>
 <button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
 </div>
 
@@ -187,7 +194,9 @@ Add item
 <div class="content content-padded">
 <div class="text-center">
 <br>
-<a href="#friendsPopover"><img src="img/add_friend2.jpeg"/></a>
+<a href="#friendsPopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
+    <br>
+    <br>
     <h4>Invite MORE friends to create wishlists!</h4>
 </div>
    <ul class="table-view">
@@ -231,7 +240,7 @@ Add item
                         {{fields.name}}
                     </a>
                     <p>Price: ${{ fields.price }}</p>
-                    <p>Crowfunded: ${{ fields.crowdfunded }}</p>
+                    <p>Crowdfunded: ${{ fields.crowdfunded }}</p>
                     <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                 </div>
         </li>
@@ -396,7 +405,7 @@ Add item
 <p>You chipped in US${{ contribution.fields.amount}}</p>
 
 <br>
-<a href="#chipInInvitePopover"><img src="img/add_friend2.jpeg"/></a>
+<a href="#chipInInvitePopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
 <br>
 <br>
 <p>Do you know someone else who would like to chip in?</p>
@@ -463,13 +472,14 @@ Add item
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
+<div id="fb-root"></div>
 <!--cordova.js is automatically injected by the Cordova build process-->
 <script src="cordova.js"></script>
 <script src="js/jquery.js"></script>
-<script src="js/openfb.js"></script>
+<script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
 <script src="js/pageslider.js"></script>
 <script src="js/router.js"></script>
-<script src="js/services/memory/GiftService.js"></script>
+<script src="js/services/json/GiftService.js"></script>
 <script src="js/handlebars.js"></script>
 <script src="js/LoginView.js"></script>
 <script src="js/HomeView.js"></script>
@@ -482,6 +492,7 @@ Add item
 <script src="js/PaymentConfirmationView.js"></script>
 <script src="js/fastclick.js"></script>
 <script src="https://js.stripe.com/v2/"></script>
+<script src="js/giftme.js"></script>
 <script src="js/app.js"></script>
 <script src="js/ratchet.min.js"></script>
 

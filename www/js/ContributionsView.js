@@ -7,9 +7,7 @@ var ContributionsView = function (pk) {
     };
 
     this.render = function() {
-        url = "https://giftmeserver.herokuapp.com/get_contributions/";
-        //url = "http://127.0.0.1:8000/get_contributions/";
-        $.get(url + pk + "/", function( data ) {
+        $.get(backend_url + "get_contributions/" + pk + "/", function( data ) {
             data = JSON.parse(data);
             var gift;
             gifts = window.localStorage.getItem("gifts");

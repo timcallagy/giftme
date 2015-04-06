@@ -6,18 +6,22 @@ var FriendsView = function (service) {
         this.$el = $('<div/>');
     };
 
-
     this.render = function() {
-        openFB.api({
-                path: '/me/friends', 
-                success: function(data) {
-                    friends = data.data;
-                    self.$el.html(self.template(friends));
-                    window.localStorage.setItem("friends", JSON.stringify(data.data));
-                    return self;
-                }, 
-                error: errorHandler});
-        return this;
+        if (typeof facebookConnectPlugin != 'undefined'){
+            facebookConnectPlugin.api('/me/friends', [],
+                    function(response) {
+                        self.$el.html(self.template(response.data));
+                        window.localStorage.setItem("friends", JSON.stringify(response.data));
+                        return self;
+                    },
+                    function(response) {
+                        console.log(response);
+                    }
+                    );
+        } else {
+            console.log('facebookConnectPlugin not ready');
+            setTimeout(getStatus, 500);
+        }
     };
     this.initialize();
 

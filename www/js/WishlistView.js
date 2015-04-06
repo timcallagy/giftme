@@ -14,10 +14,8 @@ var WishlistView = function (service) {
     };
 
     this.render = function() {
-        id = window.localStorage.getItem("id");
-        url = "https://giftmeserver.herokuapp.com/get_gifts/";
-        //url = "http://127.0.0.1:8000/get_gifts/";
-        $.get(url + id + "/", function( data ) {
+        userID = window.localStorage.getItem("id");
+        $.get(backend_url + "get_gifts/" + userID + "/", function( data ) {
             window.localStorage.setItem("gifts", data);
             data = JSON.parse(data);
             self.$el.html(self.template(data));

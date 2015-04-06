@@ -7,9 +7,7 @@ var PayPageView = function (service, id, pk) {
     };
 
     this.render = function() {
-        url = "https://giftmeserver.herokuapp.com/get_gift/";
-        //url = "http://127.0.0.1:8000/get_gift/";
-        $.get(url + pk + "/", function( data ) {
+        $.get(backend_url + "get_gift/" + pk + "/", function( data ) {
             data = JSON.parse(data);
             friends = window.localStorage.getItem("friends");
             friends = JSON.parse(friends);
@@ -23,5 +21,4 @@ var PayPageView = function (service, id, pk) {
         });
     };
     this.initialize();
-
 }
