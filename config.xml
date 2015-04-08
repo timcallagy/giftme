@@ -20,5 +20,6 @@
         <param name="APP_ID" value="1533444716908405" />
         <param name="APP_NAME" value="GiftMe" />
     </gap:plugin> 
+    <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
 
 </widget>
