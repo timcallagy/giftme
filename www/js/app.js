@@ -120,7 +120,10 @@
                                             errorView = new ErrorView();
                                             errorView.render(data);
                                             slider.slidePage(errorView.$el);
-                                            $('#custom-error').html('&nbsp;' + data);
+                                            console.log(data);
+                                            data = JSON.parse(data);
+                                            $('#custom-error').html('&nbsp;' + data['message']);
+                                            $('#error-url').html('&nbsp;<a href=\'' + data['url'] + '\'>' + data['url'] + '</a>');
                                         }
                                     },
                                     error: function(data) {
@@ -149,7 +152,10 @@
                                             errorView = new ErrorView();
                                             errorView.render(data);
                                             slider.slidePage(errorView.$el);
-                                            $('#custom-error').html('&nbsp;' + data);
+                                            console.log(data);
+                                            data = JSON.parse(data);
+                                            $('#custom-error').html('&nbsp;' + data['message']);
+                                            $('#error-url').html('&nbsp;<a href=\'' + data['url'] + '\'>' + data['url'] + '</a>');
                                         }
                                     },
                                     error: function(data) {
