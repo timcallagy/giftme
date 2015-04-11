@@ -83,63 +83,91 @@
                 if (typeof facebookConnectPlugin != 'undefined'){
                     facebookConnectPlugin.getLoginStatus(
                             function (response) {
-                                if (response.status == "unknown") {
-                                    loginView = new LoginView();
-                                    loginView.render();
-                                    slider.slidePage(loginView.$el);
-                                } else {
-                                    homeView = new HomeView();
-                                    homeView.render();
-                                    slider.slidePage(homeView.$el);
-                                    authResponse = response.authResponse;
-                                    window.localStorage.setItem("accessToken", authResponse.accessToken);
-                                    window.localStorage.setItem("userID", authResponse.userID);
-                                    $.ajax({
-                                        url: backend_url + 'login/',
-                                        type: 'post',
-                                        dataType: 'json',
-                                        data: {'accessToken': authResponse.accessToken, 'expiresIn': authResponse.expiresIn, 'userID': authResponse.userID}, 
-                                        success: function() {
-                                            console.log('success...');
-                                        },
-                                        error: function() {
-                                            console.log('Error...');
+                                $.ajax({
+                                    url: backend_url + 'wakeup/',
+                                    type: 'post',
+                                    data: {'clientVersion': '0.0.22'}, 
+                                    success: function(data) {
+                                        console.log('Received response from version check.');
+                                        if ( data == 'Success' ) {
+                                            console.log('Version is supported.') 
+                                            if (response.status == "unknown") {
+                                                loginView = new LoginView();
+                                                loginView.render();
+                                                slider.slidePage(loginView.$el);
+                                            } else {
+                                                homeView = new HomeView();
+                                                homeView.render();
+                                                slider.slidePage(homeView.$el);
+                                                authResponse = response.authResponse;
+                                                window.localStorage.setItem("accessToken", authResponse.accessToken);
+                                                window.localStorage.setItem("userID", authResponse.userID);
+                                                $.ajax({
+                                                    url: backend_url + 'login/',
+                                                    type: 'post',
+                                                    dataType: 'json',
+                                                    data: {'accessToken': authResponse.accessToken, 'expiresIn': authResponse.expiresIn, 'userID': authResponse.userID}, 
+                                                    success: function() {
+                                                        console.log('success...');
+                                                    },
+                                                    error: function() {
+                                                        console.log('Error...');
+                                                    }
+                                                });
+                                            }       
                                         }
-                                    });
-                                }       
+                                        else {
+                                            errorView = new ErrorView();
+                                            errorView.render(data);
+                                            slider.slidePage(errorView.$el);
+                                            $('#custom-error').html('&nbsp;' + data);
+                                        }
+                                    },
+                                    error: function(data) {
+                                        console.log('Error');
+                                        errorView = new ErrorView();
+                                        errorView.render(data);
+                                        slider.slidePage(errorView.$el);
+                                        $('#custom-error').html('&nbsp;Server not responding.' + data);
+                                    }
+                                });
                             },
                             function (response) { 
-                                loginView = new LoginView();
-                                loginView.render();
-                                slider.slidePage(loginView.$el);
-                           }
+                                $.ajax({
+                                    url: backend_url + 'wakeup/',
+                                    type: 'post',
+                                    data: {'clientVersion': '0.0.22'}, 
+                                    success: function(data) {
+                                        console.log('Received response from version check.');
+                                        if ( data == 'Success' ) {
+                                            console.log('Version is supported.') 
+                                            loginView = new LoginView();
+                                            loginView.render();
+                                            slider.slidePage(loginView.$el);
+                                        }
+                                        else {
+                                            errorView = new ErrorView();
+                                            errorView.render(data);
+                                            slider.slidePage(errorView.$el);
+                                            $('#custom-error').html('&nbsp;' + data);
+                                        }
+                                    },
+                                    error: function(data) {
+                                        console.log('Error');
+                                        errorView = new ErrorView();
+                                        errorView.render(data);
+                                        slider.slidePage(errorView.$el);
+                                        $('#custom-error').html('&nbsp;Server not responding.' + data);
+                                    }
+                                });
+
+                            }
                     );
                 } else {
                     console.log('facebookConnectPlugin not ready');
                     setTimeout(getStatus, 500);
                 }
         }
-        $.ajax({
-            url: backend_url + 'wakeup/',
-            type: 'post',
-            data: {'clientVersion': '0.0.22'}, 
-            success: function(data) {
-                console.log('Received response from version check.');
-                if ( data == 'Success' ) {
-                    console.log('Version is supported.') 
-                }
-                else {
-                    errorView = new ErrorView();
-                    errorView.render(data);
-                    slider.slidePage(errorView.$el);
-                    $('#custom-error').html('&nbsp;' + data);
-                    return false;
-                }
-            },
-            error: function(data) {
-                console.log('Error');
-            }
-        });
         getStatus();
     });
 
