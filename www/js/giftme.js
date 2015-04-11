@@ -192,5 +192,13 @@ function send_whatsapp(message) {
 $(function() {
     return $("body").on("click", "#settings-btn", function() {
         $("#settings-btn").attr("disabled", true);
+        if ($("#email-notifications").hasClass("active")) {
+            email_notifications = 'true';
+        } else {
+            email_notifications = 'false';
+        }
+        birthday_day = $("#birthday-day").val(); 
+        birthday_month = $("#birthday-month").val(); 
+        alert(email_notifications + birthday_day + birthday_month);
     });
 });
