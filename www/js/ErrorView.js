@@ -1,4 +1,4 @@
-var LoginView = function (service) {
+var ErrorView = function (service) {
 
     self = this;
 
