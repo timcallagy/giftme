@@ -14,7 +14,7 @@ var SettingsView = function () {
         //    self.$el.html(self.template({data: data.fields}));
           //  return this;
       //  });
-            self.$el.html(self.template();
+            self.$el.html(self.template());
     };
     this.initialize();
 }
