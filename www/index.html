@@ -129,14 +129,15 @@ Add item
 <h4 class="text-center">Add an Item</h4>
 <div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-    <button id="add-error" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
+    <button id="error-add" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
+    <button id="error-name" class="btn btn-outlined btn-negative" style="display:none;">Error! You must write a name</button>
 <p>Name:</>
   <input id="gift-name" name="name" type="text" placeholder="e.g. Sportmax Pro Inline Roller Skates">
-    <button id="url-error" class="btn btn-outlined btn-negative" style="display:none;">Error! This is not a valid link.</button>
+    <button id="error-url" class="btn btn-outlined btn-negative" style="display:none;">Error! This is not a valid link.</button>
 <p>Link:</>
   <input id="gift-url" name="url" type="text" placeholder="e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
 
-    <button id="price-error" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
+    <button id="error-price" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
 <p>Approximate Price (US$):</p>
   <input id="gift-price" name="price" type="text" placeholder="e.g. 50">
   <input id="gift-owner-id" name="owner_id" type="hidden" value={{ id }}>
@@ -273,7 +274,6 @@ Add item
 </ul>
 <button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
 <textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>

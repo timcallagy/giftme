@@ -43,13 +43,16 @@ function facebook_login(){
 // This function must be structured this way to allow the button to fire multiple click events.
 $(function() {
     return $("body").on("click", "#add-gift-btn", function() {
-        //name = $('[id^=gift-name]').val();
+        $('[id^=error]').hide();
         name = $('#gift-name').val();
         price = $('#gift-price').val();
         url = $('#gift-url').val();
         owner_id = $('#gift-owner-id').val();
         accessToken = window.localStorage.getItem("accessToken");
         userID = window.localStorage.getItem("userID");
+        if (!name) {$('#error-name').show();return;}
+        if (!price) {$('#error-price').show();return;}
+        if (!url) {$('#error-url').show();return;}
         $.ajax({
             url: backend_url + 'add_gift/',
             type: 'post',
@@ -58,27 +61,27 @@ $(function() {
             success: function(data) {
                 // data == false if the gift was not successfully added.
                 if (data == false ) {
-                    $('#add-error').show();
+                    $('#error-add').show();
                 } else {
-                    $('#add-error').hide();
-                    $('#url-error').hide();
-                    $('#price-error').hide();
+                    $('#error-add').hide();
+                    $('#error-url').hide();
+                    $('#error-price').hide();
                     window.location = "#wishlist/";
                 }
             },
             error: function(response) {
                 if (response.responseText == "Invalid URL") {
-                    $('#add-error').hide();
-                    $('#url-error').show();
-                    $('#price-error').hide();
+                    $('#error-add').hide();
+                    $('#error-url').show();
+                    $('#error-price').hide();
                 } else if (response.responseText == "Invalid amount") {
-                    $('#add-error').hide();
-                    $('#url-error').hide();
-                    $('#price-error').show();
+                    $('#error-add').hide();
+                    $('#error-url').hide();
+                    $('#error-price').show();
                 } else {
-                    $('#add-error').show();
-                    $('#url-error').hide();
-                    $('#price-error').hide();
+                    $('#error-add').show();
+                    $('#error-url').hide();
+                    $('#error-price').hide();
                 }
             }
         });
