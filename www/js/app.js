@@ -11,6 +11,7 @@
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
     PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
     PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
+    ErrorView.prototype.template = Handlebars.compile($("#error-tpl").html());
 
     var slider = new PageSlider($('body'));
     var service = new GiftService();
@@ -62,6 +63,9 @@
             paymentConfirmationView.render();
             slider.slidePage(paymentConfirmationView.$el);
         });
+        router.addRoute('error/', function() {
+            slider.slidePage(new ErrorView().render().$el);
+        });
 
         router.start();
 
@@ -76,44 +80,66 @@
             setTimeout(init, 3000);
         }
         var getStatus = function () {
-            if (typeof facebookConnectPlugin != 'undefined'){
-                facebookConnectPlugin.getLoginStatus(
-                        function (response) {
-                            if (response.status == "unknown") {
+                if (typeof facebookConnectPlugin != 'undefined'){
+                    facebookConnectPlugin.getLoginStatus(
+                            function (response) {
+                                if (response.status == "unknown") {
+                                    loginView = new LoginView();
+                                    loginView.render();
+                                    slider.slidePage(loginView.$el);
+                                } else {
+                                    homeView = new HomeView();
+                                    homeView.render();
+                                    slider.slidePage(homeView.$el);
+                                    authResponse = response.authResponse;
+                                    window.localStorage.setItem("accessToken", authResponse.accessToken);
+                                    window.localStorage.setItem("userID", authResponse.userID);
+                                    $.ajax({
+                                        url: backend_url + 'login/',
+                                        type: 'post',
+                                        dataType: 'json',
+                                        data: {'accessToken': authResponse.accessToken, 'expiresIn': authResponse.expiresIn, 'userID': authResponse.userID}, 
+                                        success: function() {
+                                            console.log('success...');
+                                        },
+                                        error: function() {
+                                            console.log('Error...');
+                                        }
+                                    });
+                                }       
+                            },
+                            function (response) { 
                                 loginView = new LoginView();
                                 loginView.render();
                                 slider.slidePage(loginView.$el);
-                            } else {
-                                homeView = new HomeView();
-                                homeView.render();
-                                slider.slidePage(homeView.$el);
-                                authResponse = response.authResponse;
-                                window.localStorage.setItem("accessToken", authResponse.accessToken);
-                                window.localStorage.setItem("userID", authResponse.userID);
-                                $.ajax({
-                                    url: backend_url + 'login/',
-                                    type: 'post',
-                                    dataType: 'json',
-                                    data: {'accessToken': authResponse.accessToken, 'expiresIn': authResponse.expiresIn, 'userID': authResponse.userID}, 
-                                    success: function() {
-                                        console.log('success...');
-                                    },
-                                    error: function() {
-                                        console.log('Error...');
-                                    }
-                                });
-                            }       
-                        },
-                                 function (response) { 
-                                     loginView = new LoginView();
-                                     loginView.render();
-                                     slider.slidePage(loginView.$el);
-                                 });
-            } else {
-                console.log('facebookConnectPlugin not ready');
-                setTimeout(getStatus, 500);
-            }
+                           }
+                    );
+                } else {
+                    console.log('facebookConnectPlugin not ready');
+                    setTimeout(getStatus, 500);
+                }
         }
+        $.ajax({
+            url: backend_url + 'wakeup/',
+            type: 'post',
+            data: {'clientVersion': '0.0.22'}, 
+            success: function(data) {
+                console.log('Received response from version check.');
+                if ( data == 'Success' ) {
+                    console.log('Version is supported.') 
+                }
+                else {
+                    errorView = new ErrorView();
+                    errorView.render(data);
+                    slider.slidePage(errorView.$el);
+                    $('#custom-error').html('&nbsp;' + data);
+                    return false;
+                }
+            },
+            error: function(data) {
+                console.log('Error');
+            }
+        });
         getStatus();
     });
 
