@@ -192,13 +192,29 @@ function send_whatsapp(message) {
 $(function() {
     return $("body").on("click", "#settings-btn", function() {
         $("#settings-btn").attr("disabled", true);
+        $("#settings-error-msg").hide();
+        var birthday_day = $("#birthday-day").val(); 
+        var birthday_month = $("#birthday-month").val(); 
+        var id = window.localStorage.getItem("id");
+        var accessToken = localStorage.getItem("accessToken");
         if ($("#email-notifications").hasClass("active")) {
-            email_notifications = 'true';
+            var receiveEmails = 'true';
         } else {
-            email_notifications = 'false';
+            var receiveEmails = 'false';
         }
-        birthday_day = $("#birthday-day").val(); 
-        birthday_month = $("#birthday-month").val(); 
-        alert(email_notifications + birthday_day + birthday_month);
+        $.ajax({
+            url: backend_url + 'settings/' + id + '/',
+            type: 'post',
+            dataType: 'json',
+            data: {userID: id, accessToken: accessToken, receiveEmails: receiveEmails, birthday_day: birthday_day, birthday_month: birthday_month},
+            success: function(data) {
+                $("#settings-btn").attr("disabled", false);
+                window.location = "#home/";
+            },
+            error: function(data) {
+                $("#settings-btn").attr("disabled", false);
+                $("#settings-error-msg").show();
+            }
+        });
     });
 });
