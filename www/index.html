@@ -125,6 +125,9 @@ Add item
         </li>
         {{/each}}
     </ul>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -159,6 +162,9 @@ Add item
 </form>
 </div>
 <button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -193,6 +199,9 @@ Add item
         </li>
         {{/each}}
     </ul>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -265,6 +274,9 @@ Add item
         </li>
         {{/each}}
     </ul>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -401,6 +413,9 @@ Add item
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
 <button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 
+{{> bottom-menu }}
+
+
 </div>
 
 </script>
@@ -441,6 +456,9 @@ Add item
         <li class="table-view-cell" onclick="send_whatsapp('Hi! We are crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
     </ul>
+
+{{> bottom-menu }}
+
 </div>
 
 
@@ -456,11 +474,79 @@ Add item
 <a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
 <div class="content content-padded">
+<br>
+    <button class="btn btn-block btn-outlined" disabled>Settings</button>
+<br>
 <form id="settings-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-
-    <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
-<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
+<div id="settings-email-notifications">
+Email Notifications: 
+<div class="toggle active pull-right">
+<div class="toggle-handle"></div>
+</div>
+</div>
+<br>
+<table>
+<tr>
+<td>Birthday:</td>
+<td width="25%">
+<select id="birthday-day" class="input-row" name="birthday-day">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+<option value="8">8</option>
+<option value="9">9</option>
+<option value="10">10</option>
+<option value="11">11</option>
+<option value="12">12</option>
+<option value="13">13</option>
+<option value="14">14</option>
+<option value="15">15</option>
+<option value="16">16</option>
+<option value="17">17</option>
+<option value="18">18</option>
+<option value="19">19</option>
+<option value="20">20</option>
+<option value="21">21</option>
+<option value="22">22</option>
+<option value="23">23</option>
+<option value="24">24</option>
+<option value="25">25</option>
+<option value="26">26</option>
+<option value="27">27</option>
+<option value="28">28</option>
+<option value="29">29</option>
+<option value="30">30</option>
+<option value="31">31</option>
+</select>
+</td>
+<td width="25%">
+<select id="birthday-month" class="input-row" name="birthday-month">
+<option value="01">January</option>
+<option value="02">February</option>
+<option value="03">March</option>
+<option value="04">April</option>
+<option value="05">May</option>
+<option value="06">June</option>
+<option value="07">July</option>
+<option value="08">August</option>
+<option value="09">September</option>
+<option value="10">October</option>
+<option value="11">November</option>
+<option value="12">December</option>
+</select>
+</td>
+</tr>
+</table>
 </form>
+<br>
+<button id="settings-btn" class="btn btn-primary btn-block">update</button>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -555,6 +641,7 @@ Add item
     <script src="js/ContributionsView.js"></script>
     <script src="js/PayPageView.js"></script>
     <script src="js/PaymentConfirmationView.js"></script>
+    <script src="js/SettingsView.js"></script>
     <script src="js/fastclick.js"></script>
     <script src="https://js.stripe.com/v2/"></script>
     <script src="js/giftme.js"></script>

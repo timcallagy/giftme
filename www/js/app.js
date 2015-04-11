@@ -12,6 +12,7 @@
     PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
     PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
     ErrorView.prototype.template = Handlebars.compile($("#error-tpl").html());
+    SettingsView.prototype.template = Handlebars.compile($("#settings-tpl").html());
     Handlebars.registerPartial("bottom-menu", $("#bottom-menu").html());
 
     var slider = new PageSlider($('body'));
@@ -70,6 +71,11 @@
         });
         router.addRoute('error/', function() {
             slider.slidePage(new ErrorView().render().$el);
+        });
+        router.addRoute('settings/', function() {
+            settingsView = new SettingsView();
+            settingsView.render();
+            slider.slidePage(settingsView.$el);
         });
 
         router.start();

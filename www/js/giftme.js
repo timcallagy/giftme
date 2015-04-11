@@ -107,6 +107,7 @@ function delete_gift(pk) {
         }
     });
 }
+
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
         $("#pay-btn").attr("disabled", true);
@@ -187,3 +188,9 @@ function send_whatsapp(message) {
                 alert(errormsg)
             });
 }
+
+$(function() {
+    return $("body").on("click", "#settings-btn", function() {
+        $("#settings-btn").attr("disabled", true);
+    });
+});
