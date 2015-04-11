@@ -7,13 +7,14 @@ var SettingsView = function () {
     };
 
     this.render = function() {
-        id = window.localStorage.getItem("id");
-        $.get(backend_url + "settings/" + id + "/", function( data ) {
-            data = JSON.parse(data);
-            console.log(data);
-            self.$el.html(self.template({data: data.fields}));
-            return this;
-        });
+//        id = window.localStorage.getItem("id");
+  //      $.get(backend_url + "settings/" + id + "/", function( data ) {
+    //        data = JSON.parse(data);
+      //      console.log(data);
+        //    self.$el.html(self.template({data: data.fields}));
+          //  return this;
+      //  });
+            self.$el.html(self.template();
     };
     this.initialize();
 }
