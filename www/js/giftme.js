@@ -202,6 +202,7 @@ $(function() {
         } else {
             var receiveEmails = 'false';
         }
+        alert(receiveEmails);
         $.ajax({
             url: backend_url + 'settings/' + id + '/',
             type: 'post',
