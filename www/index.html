@@ -18,7 +18,6 @@
 <script id="home-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
-<a href="#mypopover" class="icon icon-bars pull-right"></a>
 </header>
 <div class="content content-padded">
 
@@ -47,6 +46,8 @@ My Friends
     <h4>Invite your friends to create a wishlist!</h4>
 <a href="#friendsPopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
 </div>
+
+{{> bottom-menu }}
 
 </div>
 
@@ -226,6 +227,9 @@ Add item
         </li>
         {{/each}}
     </ul>
+
+{{> bottom-menu }}
+
 </div>
 
 </script>
@@ -444,13 +448,62 @@ Add item
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
+<!-- %%%%%%%%%%%%   SETTINGS   %%%%%%%%%%%%%%%%% -->
+<script id="settings-tpl" type="text/template">
+<header class="bar bar-nav">
+<h2 class="title">GiftMe</h2>
+<a href="#home/" class="icon icon-left-nav pull-left"></a>
+<a href="#mypopover" class="icon icon-bars pull-right"></a>
+</header>
+<div class="content content-padded">
+<form id="settings-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+
+    <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
+<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
+</form>
+</div>
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%   PARTIALS   %%%%%%%%%%%%%%%%% -->
+
+<script id="bottom-menu" type="text/x-handlebars-template">
+<nav class="bar bar-tab">
+  <a id="menu-home" class="tab-item" href="#home/">
+    <span class="icon icon-home"></span>
+    <span class="tab-label">Home</span>
+  </a>
+ <a id="menu-friends" class="tab-item" href="#friends/">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Friends</span>
+  </a>
+
+  <a class="tab-item" href="#friendsPopover">
+    <span class="icon icon-share"></span>
+    <span class="tab-label">Invite</span>
+  </a>
+
+  <a class="tab-item" href="#settings/">
+    <span class="icon icon-gear"></span>
+    <span class="tab-label">Settings</span>
+  </a>
+</nav>
+</script>
+
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 <!-- %%%%%%%%%%%%   MODALS   %%%%%%%%%%%%%%%%% -->
 <!--
 <div id="mypopover" class="popover">
     <ul class="table-view">
+        <li class="table-view-cell"><strong>Add Gift</strong></li>
+        <li class="table-view-cell"><strong>Invite Friends</strong></li>
         <li class="table-view-cell"><strong>Options</strong></li>
-        <li class="table-view-cell">Settings</li>
+        <li class="table-view-cell"><strong>Options</strong></li>
+        <li class="table-view-cell"><a href="#settings/">Settings</a></li>
         <li class="table-view-cell"><a href="#">Logout</a></li>
     </ul>
 </div>
@@ -462,12 +515,11 @@ Add item
     </ul>
 </div>
 
-
 <div id="friendsPopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
         <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
-       <!-- <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">WhatsApp</a></li> 
+        <!-- <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">WhatsApp</a></li> 
         <li class="table-view-cell"><a href="whatsapp://send?text=Hi">WhatsApp</a></li>-->
         <li class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
@@ -478,37 +530,37 @@ Add item
 <div id="mymodal" class="modal">
     <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#mymodal"></a>
-</div>
+    </div>
 
-</script>
-<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
-
-
-<div id="fb-root"></div>
-<!--cordova.js is automatically injected by the Cordova build process-->
-<script src="cordova.js"></script>
-<script src="js/jquery.js"></script>
-<script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
-<script src="js/pageslider.js"></script>
-<script src="js/router.js"></script>
-<script src="js/services/json/GiftService.js"></script>
-<script src="js/handlebars.js"></script>
-<script src="js/LoginView.js"></script>
-<script src="js/ErrorView.js"></script>
-<script src="js/HomeView.js"></script>
-<script src="js/WishlistView.js"></script>
-<script src="js/FriendsView.js"></script>
-<script src="js/FriendWishlistView.js"></script>
-<script src="js/AddGiftView.js"></script>
-<script src="js/ContributionsView.js"></script>
-<script src="js/PayPageView.js"></script>
-<script src="js/PaymentConfirmationView.js"></script>
-<script src="js/fastclick.js"></script>
-<script src="https://js.stripe.com/v2/"></script>
-<script src="js/giftme.js"></script>
-<script src="js/app.js"></script>
-<script src="js/ratchet.min.js"></script>
+    </script>
+    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
-</body>
-</html>
+    <div id="fb-root"></div>
+    <!--cordova.js is automatically injected by the Cordova build process-->
+    <script src="cordova.js"></script>
+    <script src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+    <script src="js/pageslider.js"></script>
+    <script src="js/router.js"></script>
+    <script src="js/services/json/GiftService.js"></script>
+    <script src="js/handlebars.js"></script>
+    <script src="js/LoginView.js"></script>
+    <script src="js/ErrorView.js"></script>
+    <script src="js/HomeView.js"></script>
+    <script src="js/WishlistView.js"></script>
+    <script src="js/FriendsView.js"></script>
+    <script src="js/FriendWishlistView.js"></script>
+    <script src="js/AddGiftView.js"></script>
+    <script src="js/ContributionsView.js"></script>
+    <script src="js/PayPageView.js"></script>
+    <script src="js/PaymentConfirmationView.js"></script>
+    <script src="js/fastclick.js"></script>
+    <script src="https://js.stripe.com/v2/"></script>
+    <script src="js/giftme.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/ratchet.min.js"></script>
+
+
+    </body>
+    </html>

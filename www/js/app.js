@@ -12,6 +12,7 @@
     PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
     PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
     ErrorView.prototype.template = Handlebars.compile($("#error-tpl").html());
+    Handlebars.registerPartial("bottom-menu", $("#bottom-menu").html());
 
     var slider = new PageSlider($('body'));
     var service = new GiftService();
@@ -25,6 +26,8 @@
             homeView = new HomeView();
             homeView.render();
             slider.slidePage(homeView.$el);
+            $("[id^=menu]").removeClass("active");
+            $("#menu-home").addClass("active");
         });
         router.addRoute('wishlist/', function() {
             wishlistView = new WishlistView();
@@ -40,6 +43,8 @@
             friendsView = new FriendsView();
             friendsView.render();
             slider.slidePage(friendsView.$el);
+            $("[id^=menu]").removeClass("active");
+            $("#menu-friends").addClass("active");
         });
         router.addRoute('friend-wishlist/:id/', function(id) {
             friendWishlistView = new FriendWishlistView(id);
