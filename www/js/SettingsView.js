@@ -8,6 +8,7 @@ var SettingsView = function () {
             if (num1 === num2) {
                 return new Handlebars.SafeString('selected');
             }
+
         });
     };
 
