@@ -16,7 +16,7 @@ var PayPageView = function (service, id, pk) {
                     friend = friends[f];
                 }
             }
-            self.$el.html(self.template({id: id, pk: pk, gift: data[0].fields, friend: friend}));
+            self.$el.html(self.template({friend_id: id, pk: pk, gift: data[0].fields, friend: friend}));
             return this;
         });
     };

@@ -50,6 +50,7 @@ $(function() {
         owner_id = $('#gift-owner-id').val();
         accessToken = window.localStorage.getItem("accessToken");
         userID = window.localStorage.getItem("userID");
+        userName = window.localStorage.getItem("my_name");
         if (!name) {$('#error-name').show();return;}
         if (!price) {$('#error-price').show();return;}
         if (!url) {$('#error-url').show();return;}
@@ -57,7 +58,7 @@ $(function() {
             url: backend_url + 'add_gift/',
             type: 'post',
             dataType: 'json',
-            data: {name: name, url: url, price: price, owner_id: owner_id, accessToken: accessToken, userID: userID},
+            data: {name: name, url: url, price: price, owner_id: owner_id, accessToken: accessToken, userID: userID, userName: userName},
             success: function(data) {
                 // data == false if the gift was not successfully added.
                 if (data == false ) {
@@ -147,13 +148,14 @@ $(function() {
                 var contributor_id = localStorage.getItem("id");
                 var accessToken = localStorage.getItem("accessToken");
                 var contributor_name = localStorage.getItem("my_name");
+                var contributed_to_name = $('#friend-name').val();
                 gift_pk = $('#gift-pk').val();
                 friend_id = $('#friend-id').val();
                 $.ajax({
                     url: backend_url + 'pay/' + gift_pk + '/',
                     type: 'post',
                     dataType: 'json',
-                    data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), accessToken: accessToken, timestamp: Date.now()},
+                    data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), contributed_to_name: encodeURI(contributed_to_name), accessToken: accessToken, timestamp: Date.now()},
                     success: function(data) {
                         if (data.indexOf('Error') > -1) {
                             $('#payment-failed-msg').show();
@@ -203,7 +205,7 @@ $(function() {
             var receiveEmails = 'false';
         }
         $.ajax({
-            url: backend_url + 'settings/' + id + '/',
+            url: backend_url + 'user_settings/' + id + '/',
             type: 'post',
             dataType: 'json',
             data: {userID: id, accessToken: accessToken, receiveEmails: receiveEmails, birthday_day: birthday_day, birthday_month: birthday_month},

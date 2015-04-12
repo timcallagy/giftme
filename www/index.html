@@ -121,6 +121,9 @@ Add item
         </li>
         {{/each}}
     </ul>
+<br>
+<br>
+<br>
 </div>
 {{> bottom-menu }}
 
@@ -137,7 +140,7 @@ Add item
 
 <div class="content content-padded">
 <br>
-<h4 class="text-center">Add an Item</h4>
+<h2 class="text-center">Add an Item</h2>
 <div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <button id="error-add" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
@@ -155,6 +158,9 @@ Add item
 </form>
 </div>
 <button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
+<br>
+<br>
+<br>
 </div>
 {{> bottom-menu }}
 
@@ -223,6 +229,9 @@ Add item
         {{/each}}
     </ul>
 </div>
+<br>
+<br>
+<br>
 {{> bottom-menu }}
 
 </script>
@@ -258,6 +267,9 @@ Add item
         {{/each}}
     </ul>
 </div>
+<br>
+<br>
+<br>
 {{> bottom-menu }}
 
 </script>
@@ -387,12 +399,16 @@ Add item
 </tr>
 </table>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
-<input id="friend-id" type="hidden" value="{{ id }}">
+<input id="friend-id" type="hidden" value="{{ friend_id }}">
+<input id="friend-name" type="hidden" value="{{ friend.name }}">
 </form>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
 <button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 
+<br>
+<br>
+<br>
 </div>
 {{> bottom-menu }}
 
