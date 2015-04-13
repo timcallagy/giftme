@@ -1545,7 +1545,7 @@ select {
 }
 
 .icon-gift:before {
-    color: white;
+    color: #929292;
     content: "\e99f";
 }
 
