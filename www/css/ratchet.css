@@ -1530,7 +1530,7 @@ select {
 }
 
 .icon-user:before {
-    color: white;
+    color: #929292;
     content: "\e971";
 }
 

@@ -21,6 +21,11 @@
 </header>
 <div class="content content-padded">
 
+<a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+My Wishlist
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+
 <div class="text-center">
 <ul class="table-view">
   <li class="table-view-cell media">
@@ -32,29 +37,41 @@
   </li>
 </ul>
 </div>
-        {{#each notifications}}
+        {{#each recent_friends}}
                 <table>
                     <tr>
-                        <td width="8%"><span class="icon icon-gift"></span>
+                        <td width="10%"><span class="icon icon-person"></span>
+                            <!--<img class="crop-small" src="img/generic_gift.png"> -->
+                        </td>
+                        <td width="15%">
+                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?type=small">
+                        </td>
+                        <td width="75%">
+                    <p class="padding">{{ fields.name }} just joined GiftMe!</p>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+        {{/each}}
+        {{#each contributions}}
+                <table>
+                    <tr>
+                        <td width="10%"><span class="icon icon-gift"></span>
                             <!--<img class="crop-small" src="img/generic_gift.png"> -->
                         </td>
                         <td width="15%">
                            <img src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
                         </td>
-                        <td width="62%">
-                    <p class="padding">US${{ this.fields.amount }} for '{{ this.fields.gift_name }}'</p>
+                        <td width="60%">
+                    <p class="padding">US${{ amount }} for '{{ fields.gift_name }}'</p>
                         </td>
                         <td width="15%">
                             <img src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
                         </td>
                     </tr>
                 </table>
+                <br>
         {{/each}}
-<a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-My Wishlist
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
-
 <a href="#friends/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 My Friends 
