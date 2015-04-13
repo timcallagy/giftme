@@ -1540,7 +1540,7 @@ select {
 }
 
 .icon-user-plus:before {
-    color: white;
+    color: #929292;
     content: "\e973";
 }
 
