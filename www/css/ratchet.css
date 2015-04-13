@@ -1635,6 +1635,15 @@ select {
     height: auto;
     width: 100px;
 }
+.crop-small {
+    height: 50px;
+    width: 50px;
+    overflow: hidden;
+}
+.crop-small img {
+    height: auto;
+    width: 50px;
+}
 .input-row label + select {
   float: right;
   width: 65%;
@@ -1655,4 +1664,6 @@ select {
     border: 2px solid #336680;
     border-radius: 5px;
 }
-
+.padding {
+    padding: 5px;
+}

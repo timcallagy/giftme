@@ -24,14 +24,34 @@
 <div class="text-center">
 <ul class="table-view">
   <li class="table-view-cell media">
-      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ id }}/picture?width=120&height=120"><br>
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
       <div class="media-body">
-          Hey {{ first_name }}!
+          Hey {{ profile.first_name }}!
           <p>Welcome to GiftMe</p>
       </div>
   </li>
 </ul>
 </div>
+        {{#each notifications}}
+        <li class="table-view-cell media">
+                <table>
+                    <tr>
+                        <td width="15%">
+                <img class="media-object pull-left crop-small" src="img/generic_gift.png">
+                        </td>
+                        <td width="15%">
+               <img class="pull-left" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
+                        </td>
+                        <td width="55%">
+                    <p>{{ this.fields.contributor_name }} gave US$ {{ this.fields.amount }} to {{ this.fields.contributed_to_name }} for '{{ this.fields.gift_name }}'&nbsp;
+                        </td>
+                        <td width="15%">
+                <img class="pull-right" src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
+                        </td>
+                    </tr>
+                </table>
+        </li>
+        {{/each}}
 <a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 My Wishlist
