@@ -33,24 +33,22 @@
 </ul>
 </div>
         {{#each notifications}}
-        <li class="table-view-cell media">
                 <table>
                     <tr>
                         <td width="15%">
-                <img class="media-object pull-left crop-small" src="img/generic_gift.png">
+                            <img class="crop-small" src="img/generic_gift.png">
                         </td>
                         <td width="15%">
-               <img class="pull-left" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
+                           <img src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
                         </td>
                         <td width="55%">
-                    <p>{{ this.fields.contributor_name }} gave US$ {{ this.fields.amount }} to {{ this.fields.contributed_to_name }} for '{{ this.fields.gift_name }}'&nbsp;
+                    <p class="padding">{{ this.fields.contributor_name }} gave US$ {{ this.fields.amount }} to {{ this.fields.contributed_to_name }} for '{{ this.fields.gift_name }}'</p>
                         </td>
                         <td width="15%">
-                <img class="pull-right" src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
+                            <img src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
                         </td>
                     </tr>
                 </table>
-        </li>
         {{/each}}
 <a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
