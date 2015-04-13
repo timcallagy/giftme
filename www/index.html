@@ -35,14 +35,14 @@
         {{#each notifications}}
                 <table>
                     <tr>
-                        <td width="15%"><span class="icon icon-gift"></span>
+                        <td width="8%"><span class="icon icon-gift"></span>
                             <!--<img class="crop-small" src="img/generic_gift.png"> -->
                         </td>
                         <td width="15%">
                            <img src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
                         </td>
-                        <td width="55%">
-                    <p class="padding">{{ this.fields.contributor_name }} gave US$ {{ this.fields.amount }} to {{ this.fields.contributed_to_name }} for '{{ this.fields.gift_name }}'</p>
+                        <td width="62%">
+                    <p class="padding">US${{ this.fields.amount }} for '{{ this.fields.gift_name }}'</p>
                         </td>
                         <td width="15%">
                             <img src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
