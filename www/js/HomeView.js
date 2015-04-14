@@ -4,6 +4,16 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        Handlebars.registerHelper("him_her", function(val, options){
+            if (val === 'male') {
+                return new Handlebars.SafeString('him');
+            } else if (val === 'female') {
+                return new Handlebars.SafeString('her');
+            } else {
+                return new Handlebars.SafeString('them');
+            }
+
+        });
     };
 
     this.render = function() {
