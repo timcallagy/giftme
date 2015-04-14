@@ -1544,6 +1544,11 @@ select {
     content: "\e973";
 }
 
+.icon-user-plus-white:before {
+    color: white;
+    content: "\e973";
+}
+
 .icon-gift:before {
     color: #929292;
     content: "\e99f";
@@ -1562,6 +1567,11 @@ select {
 .icon-earth:before {
     color: white;
     content: "\e9ca";
+}
+
+.icon-heart:before {
+    color: #929292;
+    content: "\e9da";
 }
 
 .icon-heart:before {

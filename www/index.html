@@ -22,11 +22,6 @@
 <div class="content content-padded">
 
 <div class="text-center">
-<br>
-<a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-My Wishlist
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 
 <ul class="table-view">
   <li class="table-view-cell media">
@@ -37,6 +32,12 @@ My Wishlist
       </div>
   </li>
 </ul>
+<br>
+<a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+My Wishlist
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<br>
 </div>
         {{#each recent_friends}}
                 <a href="#friend-wishlist/{{ fields.userID }}/">
@@ -63,27 +64,46 @@ My Wishlist
                     </tr>
                </table>
                 </a>
-<!--               <table>
-                    <tr>
-                        <td width="10%">
-                            <span class="icon icon-user-plus"></span>
-                        </td>
-                        <td width="15%">
-                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?type=small">
-                        </td>
-                        <td width="75%">
-                    <p class="padding">{{ fields.name }} just joined GiftMe!</p>
-                        </td>
-                    </tr>
-                </table>
--->
                 <br>
         {{/each}}
-<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-user-plus-white"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Invite more Friends! 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
-        {{#each contributions}}
+                <br>
+        {{#each gifts}}
+                <a href="#friend-wishlist/{{ fields.owner_id }}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ fields.owner_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-heart"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Added '{{ fields.name }}' to their wishlist!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ fields.owner_id }}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-heart-white"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Add an item to your Wishlist
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+                <br>
+        {{#each contributions_to}}
                 <a href="#pay-page/{{ fields.contributed_to }}/{{fields.gift}}/">
                <table width="100%">
                     <tr>
@@ -108,30 +128,37 @@ Invite more Friends!
                     </tr>
                </table>
                 </a>
-<!--
-                <table>
-                    <tr>
-                        <td width="10%"><span class="icon icon-gift"></span>
-                        </td>
-                        <td width="15%">
-                           <img src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
-                        </td>
-                        <td width="60%">
-                    <p class="padding">US${{ fields.amount }} for '{{ fields.gift_name }}'</p>
-                        </td>
-                        <td width="15%">
-                            <img src="http://graph.facebook.com/{{ fields.contributed_to }}/picture?type=small">
-                        </td>
-                    </tr>
-                </table>
--->
                 <br>
         {{/each}}
 <br>
-<div class="text-center">
-    <h4>Invite your friends to create a wishlist!</h4>
-<a href="#friendsPopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
-</div>
+        {{#each contributions_from}}
+                <a href="#contributions/{{fields.gift}}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ fields.contributor_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-gift"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Gave US${{fields.amount}} for '{{fields.gift_name}}'</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ fields.contributor_id}}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
+<br>
 </div>
 {{> bottom-menu }}
 
@@ -614,7 +641,7 @@ Birthday:
   </a>
 
   <a class="tab-item" href="#friendsPopover">
-    <span class="icon icon-share"></span>
+    <span class="icon icon-plus"></span>
     <span class="tab-label">Invite</span>
   </a>
 
