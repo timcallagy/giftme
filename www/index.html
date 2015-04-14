@@ -21,12 +21,13 @@
 </header>
 <div class="content content-padded">
 
+<div class="text-center">
+<br>
 <a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 My Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 
-<div class="text-center">
 <ul class="table-view">
   <li class="table-view-cell media">
       <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
@@ -38,10 +39,32 @@ My Wishlist
 </ul>
 </div>
         {{#each recent_friends}}
-                <table>
+               <table width="100%">
                     <tr>
-                        <td width="10%"><span class="icon icon-user-plus"></span>
-                            <!--<img class="crop-small" src="img/generic_gift.png"> -->
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ fields.name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-user-plus"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Just joined GiftMe!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+<!--               <table>
+                    <tr>
+                        <td width="10%">
+                            <span class="icon icon-user-plus"></span>
                         </td>
                         <td width="15%">
                            <img src="http://graph.facebook.com/{{ fields.userID }}/picture?type=small">
@@ -51,13 +74,36 @@ My Wishlist
                         </td>
                     </tr>
                 </table>
+-->
                 <br>
         {{/each}}
         {{#each contributions}}
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ fields.contributed_to_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-gift"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Got US${{fields.amount}} for '{{fields.gift_name}}'</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ fields.contributed_to}}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+<!--
                 <table>
                     <tr>
                         <td width="10%"><span class="icon icon-gift"></span>
-                            <!--<img class="crop-small" src="img/generic_gift.png"> -->
                         </td>
                         <td width="15%">
                            <img src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
@@ -70,6 +116,7 @@ My Wishlist
                         </td>
                     </tr>
                 </table>
+-->
                 <br>
         {{/each}}
 <a href="#friends/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>

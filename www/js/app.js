@@ -210,11 +210,14 @@
             };
         }
         document.addEventListener("backbutton", function(e){
+            alert("Back button");
             if(document.getElementById('#home')){
+                alert("Home");
                 e.preventDefault();
                 navigator.app.exitApp();
             }
             else {
+                alert("Not home");
                 navigator.app.backHistory()
             }
         }, false);
