@@ -39,6 +39,7 @@ My Wishlist
 </ul>
 </div>
         {{#each recent_friends}}
+                <a href="#friend-wishlist/{{ fields.userID }}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
@@ -61,6 +62,11 @@ My Wishlist
                         </td>
                     </tr>
                </table>
+                </a>
+<a href="#friendsPopover/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Invite Friends! 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <!--               <table>
                     <tr>
                         <td width="10%">
@@ -78,6 +84,7 @@ My Wishlist
                 <br>
         {{/each}}
         {{#each contributions}}
+                <a href="#pay-page/{{ fields.contributed_to }}/{{fields.gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
@@ -100,6 +107,7 @@ My Wishlist
                         </td>
                     </tr>
                </table>
+                </a>
 <!--
                 <table>
                     <tr>
@@ -119,10 +127,6 @@ My Wishlist
 -->
                 <br>
         {{/each}}
-<a href="#friends/"><button class="btn btn-cyan btn-block "><span class="icon icon-person"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-My Friends 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
 <div class="text-center">
     <h4>Invite your friends to create a wishlist!</h4>
