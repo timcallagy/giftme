@@ -1460,6 +1460,12 @@ select {
 }
 
 .icon-more:before {
+    color: #929292;
+    content: "\e82f";
+}
+
+.icon-more-white:before {
+    color: white;
     content: "\e82f";
 }
 
@@ -1512,7 +1518,7 @@ select {
 }
 
 .icon-coin-dollar:before {
-    color: white;
+    color: #929292;
     content: "\e93b";
 }
 
@@ -1525,7 +1531,7 @@ select {
 }
 
 .icon-calendar:before {
-    color: white;
+    color: #929292;
     content: "\e953";
 }
 

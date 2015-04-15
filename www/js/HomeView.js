@@ -33,12 +33,13 @@ var HomeView = function (service) {
                             contributions_to = JSON.parse(data.contributions_to);
                             contributions_from = JSON.parse(data.contributions_from);
                             gifts = JSON.parse(data.gifts);
+                            birthdays = JSON.parse(data.birthdays);
                             recent_friends = JSON.parse(data.recent_friends);
 
                             userPic = 'http://graph.facebook.com/' + response.id + '/picture?type=small';
                             window.localStorage.setItem("id", response.id);
                             window.localStorage.setItem("my_name", response.first_name + " " + response.last_name);
-                            self.$el.html(self.template({'profile': response, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts}));
+                            self.$el.html(self.template({'profile': response, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts, 'birthdays': birthdays}));
                             return self;
                         },
                         error: function() {

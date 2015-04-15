@@ -22,7 +22,7 @@
 <div class="content content-padded">
 
 <div class="text-center">
-
+<br>
 <ul class="table-view">
   <li class="table-view-cell media">
       <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
@@ -39,6 +39,33 @@ My Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
 </div>
+        {{#each birthdays}}
+                <a href="#friend-wishlist/{{ fields.userID }}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ fields.name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-calendar"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Has a birthday soon!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
         {{#each recent_friends}}
                 <a href="#friend-wishlist/{{ fields.userID }}/">
                <table width="100%">
@@ -114,7 +141,7 @@ Add an item to your Wishlist
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
-                                <span class="icon icon-gift"></span>
+                                <span class="icon icon-coin-dollar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
                                 <p> Got US${{fields.amount}} for '{{fields.gift_name}}'</p>
@@ -130,6 +157,10 @@ Add an item to your Wishlist
                 </a>
                 <br>
         {{/each}}
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-more-white"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+See more
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
         {{#each contributions_from}}
                 <a href="#contributions/{{fields.gift}}/">
@@ -158,6 +189,10 @@ Add an item to your Wishlist
                 </a>
                 <br>
         {{/each}}
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-more-white"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+See more
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
 </div>
 {{> bottom-menu }}
