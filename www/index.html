@@ -22,8 +22,8 @@
 <div class="content content-padded">
 
 <div class="text-center">
-<br>
 <ul class="table-view">
+<br>
   <li class="table-view-cell media">
       <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
       <div class="media-body">
@@ -40,13 +40,13 @@ My Wishlist
 <br>
 </div>
         {{#each birthdays}}
-                <a href="#friend-wishlist/{{ fields.userID }}/">
+                <a href="#friend-wishlist/{{ userID }}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ fields.name }}</p>
+                                <p  class="table-heading">{{ name }}</p>
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
@@ -59,7 +59,7 @@ My Wishlist
                             </table>
                         </td>
                         <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?width=70&height=70">
+                           <img src="http://graph.facebook.com/{{ userID }}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
@@ -67,13 +67,13 @@ My Wishlist
                 <br>
         {{/each}}
         {{#each recent_friends}}
-                <a href="#friend-wishlist/{{ fields.userID }}/">
+                <a href="#friend-wishlist/{{ userID }}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ fields.name }}</p>
+                                <p  class="table-heading">{{ name }}</p>
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
@@ -86,7 +86,7 @@ My Wishlist
                             </table>
                         </td>
                         <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ fields.userID }}/picture?width=70&height=70">
+                           <img src="http://graph.facebook.com/{{ userID }}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
@@ -99,26 +99,26 @@ Invite more Friends!
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
                 <br>
         {{#each gifts}}
-                <a href="#friend-wishlist/{{ fields.owner_id }}/">
+                <a href="#friend-wishlist/{{ owner_id }}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ fields.owner_name }}</p>
+                                <p  class="table-heading">{{ owner_name }}</p>
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
                                 <span class="icon icon-heart"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Added '{{ fields.name }}' to their wishlist!</p>
+                                <p> Added '{{ name }}' to their wishlist!</p>
                                 </td>   
                             </tr>
                             </table>
                         </td>
                         <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ fields.owner_id }}/picture?width=70&height=70">
+                           <img src="http://graph.facebook.com/{{ owner_id }}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
@@ -131,68 +131,70 @@ Add an item to your Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
                 <br>
         {{#each contributions_to}}
-                <a href="#pay-page/{{ fields.contributed_to }}/{{fields.gift}}/">
+                <a href="#pay-page/{{ contributed_to }}/{{gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ fields.contributed_to_name }}</p>
+                                <p  class="table-heading">{{ contributed_to_name }}</p>
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
                                 <span class="icon icon-coin-dollar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Got US${{fields.amount}} for '{{fields.gift_name}}'</p>
+                                <p> Got US${{amount}} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
                         </td>
                         <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ fields.contributed_to}}/picture?width=70&height=70">
+                           <img src="http://graph.facebook.com/{{ contributed_to}}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-more-white"></span>
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-earth-white"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 See more
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
 <br>
         {{#each contributions_from}}
-                <a href="#contributions/{{fields.gift}}/">
+                <a href="#contributions/{{gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ fields.contributor_name }}</p>
+                                <p  class="table-heading">{{ contributor_name }}</p>
                             </tr>
                             <tr> 
                                 <td class="padding" width="10%">   
                                 <span class="icon icon-gift"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Gave US${{fields.amount}} for '{{fields.gift_name}}'</p>
+                                <p> Gave US${{amount}} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
                         </td>
                         <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ fields.contributor_id}}/picture?width=70&height=70">
+                           <img src="http://graph.facebook.com/{{ contributor_id}}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-more-white"></span>
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-earth-white"></span>
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 See more
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<br>
+<br>
 <br>
 </div>
 {{> bottom-menu }}

@@ -1571,6 +1571,11 @@ select {
 }
 
 .icon-earth:before {
+    color: #929292;
+    content: "\e9ca";
+}
+
+.icon-earth-white:before {
     color: white;
     content: "\e9ca";
 }
