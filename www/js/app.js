@@ -190,6 +190,7 @@
 
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
+        alert("DeviceReady fired");
 
         // These lines fix the iOS7 status bar problem
         StatusBar.overlaysWebView( false );
@@ -224,20 +225,5 @@
 
 
     }, false);
-
-
-    function onDeviceReady(){
-        document.addEventListener("backbutton", function(e){
-            alert("Back button");
-            if(window.location.hash=='#home'){
-                e.preventDefault();
-                navigator.app.exitApp();
-            } else {
-                navigator.app.backHistory()
-            }
-        }, false);
-    }
-    document.addEventListener("deviceready", onDeviceReady, false);
-
 
 }());
