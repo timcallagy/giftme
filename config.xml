@@ -9,9 +9,9 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <feature name="App">
+    <!--<feature name="App">
         <param name="android-package" value="org.apache.cordova.App" />
-    </feature>
+    </feature>-->
 
     <feature name="Contacts">
         <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />

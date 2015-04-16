@@ -224,13 +224,12 @@ $(function() {
 $(document).on('backbutton', function(e){
     e.preventDefault();
     alert("Back Button fired");
-           if(document.getElementById('#home')){
-           alert("Home");
-           navigator.app.exitApp();
-           }
-           else {
-           alert("Not home");
-           navigator.app.backHistory()
-           }
-    // do whatever you like here.
+    if(document.getElementById('home-tpl')){
+        alert("Home");
+        navigator.app.exitApp();
+    }
+    else {
+        alert("Not home");
+        navigator.app.backHistory();
+    }
 });
