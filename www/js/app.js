@@ -190,8 +190,6 @@
 
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
-        alert("DeviceReady fired");
-
         // These lines fix the iOS7 status bar problem
         StatusBar.overlaysWebView( false );
         StatusBar.backgroundColorByHexString('#ffffff');
@@ -223,12 +221,6 @@
            }
            }, false);
            */
-        $(document).on('backbutton', function(e){
-            e.preventDefault();
-            alert("Back Button fired");
-            // do whatever you like here.
-        });
-
     }, false);
 
 }());

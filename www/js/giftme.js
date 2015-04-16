@@ -220,3 +220,15 @@ $(function() {
         });
     });
 });
+
+$(document).on('backbutton', function(e){
+    e.preventDefault();
+    alert("Back Button fired");
+    // do whatever you like here.
+});
+
+$(document).on('deviceready', function(e){
+    e.preventDefault();
+    alert("Device Ready fired");
+    // do whatever you like here.
+});
