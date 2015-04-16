@@ -228,7 +228,7 @@ $(document).on('backbutton', function(e){
     e.preventDefault();
     current_loc = navigation_stack.pop();
     alert("Current_loc: " + current_loc);
-    dest = current_loc().pop();
+    dest = navigation_stack.pop();
     alert("Dest: " + dest);
     //if(document.getElementById('home-tpl')){
     if (dest === "start") {
