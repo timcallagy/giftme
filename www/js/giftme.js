@@ -9,6 +9,7 @@ if (!window.cordova) {
 }
 
 var navigation_stack=new Array();
+navigation_stack.push("start");
 
 var counter = 0;
 
@@ -228,7 +229,7 @@ $(document).on('backbutton', function(e){
     dest = navigation_stack.pop();
     alert("Dest: " + dest);
     //if(document.getElementById('home-tpl')){
-    if (dest = "#home/") {
+    if (dest = "start") {
         alert("Home");
         navigator.app.exitApp();
     }
