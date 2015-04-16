@@ -405,7 +405,6 @@ Add item
 <br>
 <h2 class="text-center">Wishlist</h2>
 <br>
-<br>
  <table width="100%">
       <tr>
           <td class="padding">
@@ -418,7 +417,7 @@ Add item
                   <span class="icon icon-heart"></span>
                   </td>   
                   <td class="padding pull-left" width="90%">   
-                  <p> Has a birthday soon!</p>
+                  <p> Added these items to their wishlist</p>
                   </td>   
               </tr>
               </table>
@@ -428,6 +427,7 @@ Add item
           </td>
       </tr>
  </table>
+<br>
 
    <ul class="table-view">
         {{#if gifts}}
@@ -444,10 +444,11 @@ Add item
                 </div>
         </li>
         {{/each}}
-        {{else}}
-            <p>{{friend.name}} hasn't added any gifts yet!
-        {{/if}}
     </ul>
+        {{else}}
+            <p>{{friend.name}} hasn't added any gifts yet</p>
+            <p>Ask them to add some gifts!</p>
+        {{/if}}
 </div>
 <br>
 <br>
