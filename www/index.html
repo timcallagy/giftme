@@ -242,7 +242,7 @@ See more
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">Your Wishlist</h2>
+<h2 class="text-center">My Wishlist</h2>
 <br>
 <br>
 <a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-plus"></span>
@@ -296,6 +296,8 @@ Add item
 <div class="content content-padded">
 <br>
 <h2 class="text-center">Add an Item</h2>
+<br>
+<br>
 <div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <button id="error-add" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
@@ -400,13 +402,34 @@ Add item
 </header>
 
 <div class="content content-padded">
+<br>
+<h2 class="text-center">Wishlist</h2>
+<br>
+<br>
+ <table width="100%">
+      <tr>
+          <td class="padding">
+              <table width="100%">
+              <tr>
+                  <p  class="table-heading">{{ friend.name }}</p>
+              </tr>
+              <tr> 
+                  <td class="padding" width="10%">   
+                  <span class="icon icon-heart"></span>
+                  </td>   
+                  <td class="padding pull-left" width="90%">   
+                  <p> Has a birthday soon!</p>
+                  </td>   
+              </tr>
+              </table>
+          </td>
+          <td class="padding pull-right">
+             <img src="http://graph.facebook.com/{{ id }}/picture?width=70&height=70">
+          </td>
+      </tr>
+ </table>
+
    <ul class="table-view">
-        <li class="table-view-cell media">
-                <img class="media-object pull-left" src="http://graph.facebook.com/{{ id }}/picture?type=small"><br>
-                <div class="media-body">
-                    {{friend.name}}'s Wishlist
-                </div>
-        </li>
         {{#if gifts}}
         {{#each gifts}}
         <li class="table-view-cell media">
