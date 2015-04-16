@@ -227,21 +227,15 @@ $(function() {
 $(document).on('backbutton', function(e){
     e.preventDefault();
     current_loc = navigation_stack.pop();
-    alert("Current_loc: " + current_loc);
     dest = navigation_stack.pop();
-    alert("Dest: " + dest);
-    //if(document.getElementById('home-tpl')){
     if (dest === "start") {
-        alert("Home");
         var retVal = confirm("Exit GiftMe?");
-        if (retVal = true){
+        if (retVal === true){
             navigator.app.exitApp();
         } else {
             window.location = "#home/";
         }
     } else {
-        alert("Not home");
-        //navigator.app.backHistory();
         window.location = dest;
     }
 });
