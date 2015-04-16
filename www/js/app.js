@@ -210,11 +210,10 @@
                     );
             };
         }
-        document.addEventListener("backbutton", function(e){
+        document.addEventListener("backbutton", function(){
             alert("Back button");
             if(document.getElementById('#home')){
                 alert("Home");
-                e.preventDefault();
                 navigator.app.exitApp();
             }
             else {
