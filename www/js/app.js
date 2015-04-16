@@ -210,19 +210,26 @@
                     );
             };
         }
-        document.addEventListener("backbutton", function(){
-            alert("Back button");
-            if(document.getElementById('#home')){
-                alert("Home");
-                navigator.app.exitApp();
-            }
-            else {
-                alert("Not home");
-                navigator.app.backHistory()
-            }
-        }, false);
+        /*
+           document.addEventListener("backbutton", function(){
+           alert("Back button");
+           if(document.getElementById('#home')){
+           alert("Home");
+           navigator.app.exitApp();
+           }
+           else {
+           alert("Not home");
+           navigator.app.backHistory()
+           }
+           }, false);
+           */
 
+        document.addEventListener("backbutton", onBackButton, false);
 
     }, false);
+
+    function onBackButton() {
+        alert("Back Button fired");
+    }
 
 }());
