@@ -5,7 +5,7 @@ var WishlistView = function (service) {
     this.initialize = function() {
         this.$el = $('<div/>');
         loc= window.location;
-        navigation_stack.push(loc.substring(loc.lastIndexOf("#")));
+        navigation_stack.push(loc.substring(loc.lastIndexOf["#"]));
         //navigation_stack.push(window.location.substring(window.location.lastIndexOf("#")));
         Handlebars.registerHelper("check_if_zero", function(crowdfunded, options){
             if (crowdfunded === 0) {
