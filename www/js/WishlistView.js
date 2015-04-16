@@ -4,6 +4,7 @@ var WishlistView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        alert(window.location);
         Handlebars.registerHelper("check_if_zero", function(crowdfunded, options){
             if (crowdfunded === 0) {
                 return options.fn(this);
@@ -14,6 +15,7 @@ var WishlistView = function (service) {
     };
 
     this.render = function() {
+        alert(window.location);
         userID = window.localStorage.getItem("id");
         $.get(backend_url + "get_gifts/" + userID + "/", function( data ) {
             window.localStorage.setItem("gifts", data);
