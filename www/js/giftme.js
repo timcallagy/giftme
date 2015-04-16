@@ -8,6 +8,8 @@ if (!window.cordova) {
         Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
 }
 
+var navigation_stack=new Array();
+
 var counter = 0;
 
 function facebook_login(){
