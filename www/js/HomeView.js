@@ -4,8 +4,7 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
-        //navigation_stack.push();
-        alert(window.location);
+        navigation_stack.push('#home/');
         Handlebars.registerHelper("him_her", function(val, options){
             if (val === 'male') {
                 return new Handlebars.SafeString('him');
@@ -19,7 +18,6 @@ var HomeView = function (service) {
     };
 
     this.render = function() {
-        alert(window.location);
         accessToken = window.localStorage.getItem("accessToken");
         userID = window.localStorage.getItem("id");
         if (typeof facebookConnectPlugin != 'undefined'){

@@ -225,13 +225,16 @@ $(function() {
 
 $(document).on('backbutton', function(e){
     e.preventDefault();
-    alert("Back Button fired");
-    if(document.getElementById('home-tpl')){
+    dest = navigation_stack.pop();
+    alert("Dest: " + dest);
+    //if(document.getElementById('home-tpl')){
+    if (dest = "#home/") {
         alert("Home");
         navigator.app.exitApp();
     }
     else {
         alert("Not home");
-        navigator.app.backHistory();
+        //navigator.app.backHistory();
+        window.location = dest;
     }
 });
