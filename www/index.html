@@ -473,26 +473,26 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">{{ gift.owner_name }}</h2>
+<h2 class="text-center">Give a Gift</h2>
 <br>
 <br>
                <table width="100%">
                     <tr>
-                        <td class="padding">
-                            <table width="100%">
-                            <tr>
-                                <p  class="table-heading">{{ gift.name }} - US${{gift.price}}</p>
-                            </tr>
-                            <tr> 
                                 <td class="padding" width="10%">   
                                 <span class="icon icon-gift"></span>
                                 </td>   
-                                <td class="padding pull-left" width="90%">   
-                                    <p>Crowdfunded so far: US$ {{gift.crowdfunded}}</p>
+                                <td class="padding" width="90%">   
+                                <p class="table-heading">{{ gift.name }}</p>
                                 </td>   
-                            </tr>
-                            </table>
-                        </td>
+                    </tr>
+                </table>
+               <table width="100%">
+                    <tr>
+                                <td class="padding pull-left">
+                                    <p>Target: US${{gift.price}}   
+                                    <p>Crowdfunded so far: US$ {{gift.crowdfunded}}</p>
+                                    <p>Crowdfund this gift for {{gift.owner_name}}!
+                                </td>   
                         <td class="padding pull-right">
                            <img class="crop" src="{{gift.pic}}">
                         </td>
