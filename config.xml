@@ -13,6 +13,9 @@
     <feature name="Contacts">
         <param name="android-package" value="org.apache.cordova.contacts.ContactManager" />
     </feature>
+    <feature name="App">
+        <param name="android-package" value="org.apache.cordova.App" />
+    </feature>
     <access origin="sms:*" launch-external="yes"/>
     <!--<access origin="whatsapp:*" launch-external="yes" />-->
     <access origin="mailto:*" launch-external="yes" />
