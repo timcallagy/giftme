@@ -239,19 +239,20 @@ See more
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
 </header>
-<div class="bar bar-standard bar-header-secondary">
-<a href="#addGift/"><button class="btn btn-positive btn-block "><span class="icon icon-plus"></span>
-<span style="line-height: 1;">
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Add item
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-</span>
-<span class="icon icon-right-nav"></span></button></a>
-</div>
 
 <div class="content content-padded">
-   <ul class="table-view">
+<br>
+<h2 class="text-center">Your Wishlist</h2>
+<br>
+<br>
+<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-plus"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Add item
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<br>
+<br>
         {{#if this }}
+   <ul class="table-view">
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
                 <img class="media-object pull-left crop" src="{{this.fields.pic}}">
@@ -271,10 +272,11 @@ Add item
                 </div>
         </li>
         {{/each}}
-        {{else}}
-            <p>You have not added any gifts!</p>
-        {{/if}}
     </ul>
+        {{else}}
+            <p>Your wishlist is empty.</p>
+            <p>Get started by adding an item!</p>
+        {{/if}}
 <br>
 <br>
 <br>
@@ -310,6 +312,8 @@ Add item
   <input id="gift-owner-id" name="owner_id" type="hidden" value={{ id }}>
 </form>
 </div>
+<br>
+<br>
 <button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
 <br>
 <br>
