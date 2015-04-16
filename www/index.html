@@ -251,6 +251,7 @@ Add item
 
 <div class="content content-padded">
    <ul class="table-view">
+        {{#if this }}
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
                 <img class="media-object pull-left crop" src="{{this.fields.pic}}">
@@ -270,6 +271,9 @@ Add item
                 </div>
         </li>
         {{/each}}
+        {{else}}
+            <p>You have not added any gifts!</p>
+        {{/if}}
     </ul>
 <br>
 <br>
@@ -285,7 +289,6 @@ Add item
 <script id="add-item-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
-<a href="#wishlist/" class="icon icon-left-nav pull-left"></a>
 </header>
 
 <div class="content content-padded">
@@ -322,7 +325,6 @@ Add item
 <script id="contributions-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
-<a href="#wishlist/" class="icon icon-left-nav pull-left"></a>
 </header>
 
 <div class="content content-padded">
@@ -391,7 +393,6 @@ Add item
 <script id="friend-wishlist-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
-<a href="#friends/" class="icon icon-left-nav pull-left"></a>
 </header>
 
 <div class="content content-padded">
@@ -402,6 +403,7 @@ Add item
                     {{friend.name}}'s Wishlist
                 </div>
         </li>
+        {{#if gifts}}
         {{#each gifts}}
         <li class="table-view-cell media">
                 <img class="media-object pull-left crop" src="{{fields.pic}}">
@@ -415,6 +417,9 @@ Add item
                 </div>
         </li>
         {{/each}}
+        {{else}}
+            <p>{{friend.name}} hasn't added any gifts yet!
+        {{/if}}
     </ul>
 </div>
 <br>
@@ -430,7 +435,6 @@ Add item
 <script id="pay-page-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
-<a id="back-btn" href="#friend-wishlist/{{ id }}/" class="icon icon-left-nav pull-left"></a>
 </header>
 
 <div class="content content-padded">

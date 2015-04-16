@@ -29,7 +29,6 @@ var HomeView = function (service) {
                         data: {'accessToken': accessToken, 'userID': userID},
                         success: function(data) {
                             data = JSON.parse(data);
-                            console.log(data);
                             contributions_to = JSON.parse(data.contributions_to);
                             contributions_from = JSON.parse(data.contributions_from);
                             gifts = JSON.parse(data.gifts);
