@@ -224,11 +224,13 @@ $(function() {
 $(document).on('backbutton', function(e){
     e.preventDefault();
     alert("Back Button fired");
-    // do whatever you like here.
-});
-
-$(document).on('deviceready', function(e){
-    e.preventDefault();
-    alert("Device Ready fired");
+           if(document.getElementById('#home')){
+           alert("Home");
+           navigator.app.exitApp();
+           }
+           else {
+           alert("Not home");
+           navigator.app.backHistory()
+           }
     // do whatever you like here.
 });
