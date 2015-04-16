@@ -4,6 +4,7 @@ var FriendsView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        navigation_stack.push(window.location.hash);
     };
 
     this.render = function() {

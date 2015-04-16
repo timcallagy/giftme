@@ -4,7 +4,7 @@ var AddGiftView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
-        navigation_stack.push(window.location.substring(window.location.lastIndexOf["#"]));
+        navigation_stack.push(window.location.hash);
     };
 
     this.render = function() {

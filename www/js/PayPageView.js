@@ -4,6 +4,7 @@ var PayPageView = function (service, id, pk) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        navigation_stack.push(window.location.hash);
     };
 
     this.render = function() {

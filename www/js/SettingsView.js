@@ -4,6 +4,7 @@ var SettingsView = function () {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        navigation_stack.push(window.location.hash);
         Handlebars.registerHelper("activate_if_equal", function(num1, num2, options){
             if (num1 === num2) {
                 return new Handlebars.SafeString('selected');
