@@ -226,14 +226,20 @@ $(function() {
 
 $(document).on('backbutton', function(e){
     e.preventDefault();
-    dest = navigation_stack.pop();
+    current_loc = navigation_stack.pop();
+    alert("Current_loc: " + current_loc);
+    dest = current_loc().pop();
     alert("Dest: " + dest);
     //if(document.getElementById('home-tpl')){
-    if (dest = "start") {
+    if (dest === "start") {
         alert("Home");
-        navigator.app.exitApp();
-    }
-    else {
+        var retVal = confirm("Exit GiftMe?");
+        if (retVal = true){
+            navigator.app.exitApp();
+        } else {
+            window.location = "#home/";
+        }
+    } else {
         alert("Not home");
         //navigator.app.backHistory();
         window.location = dest;

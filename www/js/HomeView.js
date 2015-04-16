@@ -4,6 +4,7 @@ var HomeView = function (service) {
 
     this.initialize = function() {
         this.$el = $('<div/>');
+        navigation_stack.push('start');
         navigation_stack.push('#home/');
         Handlebars.registerHelper("him_her", function(val, options){
             if (val === 'male') {
