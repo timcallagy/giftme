@@ -1560,6 +1560,11 @@ select {
     content: "\e99f";
 }
 
+.icon-gift-white:before {
+    color: white;
+    content: "\e99f";
+}
+
 .icon-target:before {
     color: white;
     content: "\e9b3";

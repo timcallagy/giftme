@@ -297,7 +297,6 @@ Add item
 <br>
 <h2 class="text-center">Add an Item</h2>
 <br>
-<br>
 <div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <button id="error-add" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
@@ -414,10 +413,10 @@ Add item
               </tr>
               <tr> 
                   <td class="padding" width="10%">   
-                  <span class="icon icon-heart"></span>
+                  <span class="icon icon-gift"></span>
                   </td>   
                   <td class="padding pull-left" width="90%">   
-                  <p> Added these items to their wishlist</p>
+                  <p> Added these gifts</p>
                   </td>   
               </tr>
               </table>
@@ -446,10 +445,17 @@ Add item
         {{/each}}
     </ul>
         {{else}}
-            <p>{{friend.name}} hasn't added any gifts yet</p>
-            <p>Ask them to add some gifts!</p>
+            <div class="text-center">
+                <p>{{friend.name}} hasn't added any gifts yet.</p>
+                <p>Ask them to add some gifts!</p>
+            </div>
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-gift-white"></span>
+&nbsp;&nbsp;
+Ask to add a gift
+&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
         {{/if}}
 </div>
+<br>
 <br>
 <br>
 <br>
@@ -466,25 +472,39 @@ Add item
 </header>
 
 <div class="content content-padded">
-<ul class="table-view">
-        <li class="table-view-cell media">
-                <img class="media-object pull-left crop" src="{{gift.pic}}">
-                <br>
-                <div class="media-body">{{gift.name}}</div>
-                <div class="media-body">Price: US$ {{gift.price}}</div>
-                <div class="media-body">Crowdfunded so far: US$ {{gift.crowdfunded}}</div>
-                <div class="media-body">Crowdfund it for {{friend.name}}!</div>
-        </li>
-</ul>
-<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
+<br>
+<h2 class="text-center">{{ gift.owner_name }}</h2>
+<br>
+<br>
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ gift.name }} - US${{gift.price}}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-gift"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                    <p>Crowdfunded so far: US$ {{gift.crowdfunded}}</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img class="crop" src="{{gift.pic}}">
+                        </td>
+                    </tr>
+               </table>
+<br>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
 <textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
     <br>
     <br>
-
-
 <table>
 <tr>
 <td>
@@ -584,9 +604,9 @@ Add item
 <input id="friend-id" type="hidden" value="{{ friend_id }}">
 <input id="friend-name" type="hidden" value="{{ friend.name }}">
 </form>
+    <br>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
-<button id="success-btn" class="btn btn-positive btn-block" style="display:none;">SUCCESS!</button>
 
 <br>
 <br>
@@ -686,6 +706,7 @@ Birthday:
 </tr>
 </table>
 </form>
+<br>
 <br>
 <button id="settings-btn" class="btn btn-primary btn-block">Update</button>
 
