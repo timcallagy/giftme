@@ -223,13 +223,12 @@
            }
            }, false);
            */
-
-        document.addEventListener("backbutton", onBackButton, false);
+        $(document).on('backbutton', function(e){
+            e.preventDefault();
+            alert("Back Button fired");
+            // do whatever you like here.
+        });
 
     }, false);
-
-    function onBackButton() {
-        alert("Back Button fired");
-    }
 
 }());
