@@ -270,13 +270,13 @@ $('body').on('click', function (e) {
         */
         if ($('#friendsPopover').is(":visible")){
             alert(e.target.id);
+                $(this).popover('hide');
+                $('#friendsPopover').hide();
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
                 alert('fired true');
-                $(this).popover('hide');
-            } else{
+            } else {
                 alert('fired false');
                 e.preventDefault();
-                $(this).popover('hide');
             }
         }
     });
