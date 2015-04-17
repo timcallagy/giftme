@@ -234,6 +234,7 @@ $(document).on('backbutton', function(e){
         if (retVal === true){
             navigator.app.exitApp();
         } else {
+            navigation_stack.pop();
             window.location = "#home/";
         }
     } else {
@@ -241,8 +242,8 @@ $(document).on('backbutton', function(e){
     }
 });
 $('body').on('click', function (e) {
-    alert('clicked');
-    $('[data-toggle="friendsPopover"]').each(function () {
+    $('#menu-friends').each(function () {
+        alert('called');
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
