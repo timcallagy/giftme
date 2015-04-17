@@ -269,7 +269,7 @@ $('body').on('click', function (e) {
         }
         */
         if ($('#friendsPopover').is(":visible")){
-            alert(e);
+            alert(JSON.stringify(e));
             $(this).popover('hide');
         }
     });
