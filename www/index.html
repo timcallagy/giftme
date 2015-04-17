@@ -144,7 +144,7 @@ Add an item to your Wishlist
                                 <span class="icon icon-coin-dollar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Got US${{amount}} for '{{gift_name}}'</p>
+                                <p> Got US$ {{ amount }} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
@@ -176,7 +176,7 @@ See more
                                 <span class="icon icon-gift"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Gave US${{amount}} for '{{gift_name}}'</p>
+                                <p> Gave US$ {{amount}} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
@@ -478,14 +478,16 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center"><span class="icon icon-gift"></span>gift.owner_name</h2>
+<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
 <br>
 <div class="text-center">
-                           <img class="crop" src="{{gift.pic}}">
-                                <p class="table-heading">{{ gift.name }}</p>
+       <img class="crop" src="{{gift.pic}}">
+<br>
+        <p class="table-heading">{{ gift.name }}</p>
 </div>
-                                    <p>Target: US${{gift.price}}   
-                                    <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
+<br>
+        <p>Target: US${{gift.price}}   
+        <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
 <br>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
@@ -739,14 +741,12 @@ Birthday:
         <a class="icon icon-close pull-right" href="#friendsModal"></a>
         <h3 class="title">Invite using</h3>
     </header>
-    <div class="content">
-        <p class="content-padded">
+    <div class="card">
     <ul class="table-view">
         <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
         <li class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
     </ul>
-    </p>
 </div>
 </div>
 
