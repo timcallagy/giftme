@@ -9,7 +9,7 @@ if (!window.cordova) {
 }
 
 var navigation_stack=new Array();
-navigation_stack.push("start");
+//navigation_stack.push("start");
 
 var counter = 0;
 
@@ -241,10 +241,12 @@ $(document).on('backbutton', function(e){
     }
 });
 $('body').on('click', function (e) {
+    alert('clicked');
     $('[data-toggle="friendsPopover"]').each(function () {
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            alert('hiding');
             $(this).popover('hide');
         }
     });
