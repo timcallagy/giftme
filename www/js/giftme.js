@@ -270,8 +270,11 @@ $('body').on('click', function (e) {
         */
         if ($('#friendsPopover').is(":visible")){
             alert(e.target.id);
-            if ((e.target.id != "send-sms") || (e.target.id != "send-whatsapp") || (e.target.id != "send-email")){
-                alert('fired');
+            if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
+                alert('fired true');
+                $(this).popover('hide');
+            } else{
+                alert('fired false');
                 e.preventDefault();
                 $(this).popover('hide');
             }
