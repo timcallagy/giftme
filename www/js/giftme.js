@@ -257,23 +257,10 @@ $(document).on('backbutton', function(e){
 
 $('body').on('click', function (e) {
     $('#menu-invite').each(function () {
-        //the 'is' for buttons that trigger popups
-        //the 'has' for icons within a button that triggers a popup
-        /*
-        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
-            $(this).popover('hide');
-        } else {
-            e.preventDefault();
-            alert('hiding');
-            $(this).popover('hide');
-        }
-        */
         if ($('#friendsPopover').is(":visible")){
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
             } else {
                 e.preventDefault();
-                //$(this).popover('hide');
-                //$('#friendsPopover').popover('hide');
             }
         }
     });
