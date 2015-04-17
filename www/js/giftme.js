@@ -234,17 +234,20 @@ $(document).on('backbutton', function(e){
         if (retVal === true){
             navigator.app.exitApp();
         } else {
-            window.location = "#home/";
+            navigation_stack.push('start');
+            navigation_stack.push('#home/');
+            //window.location = "#home/";
         }
     } else {
         window.location = dest;
     }
 });
+
+/*
 $('body').on('click', function (e) {
     $('#menu-invite').each(function () {
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
-        /*
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
             $(this).popover('hide');
         } else {
@@ -252,7 +255,6 @@ $('body').on('click', function (e) {
             alert('hiding');
             $(this).popover('hide');
         }
-        */
         if ($('#friendsPopover').is(":visible")){
             e.preventDefault();
             alert('hiding');
@@ -260,3 +262,4 @@ $('body').on('click', function (e) {
         }
     });
 });
+        */

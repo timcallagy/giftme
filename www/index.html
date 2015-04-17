@@ -733,7 +733,7 @@ Birthday:
     <span class="tab-label">Friends</span>
   </a>
 
-  <a id="menu-invite" class="tab-item" href="#friendsPopover">
+  <a id="menu-invite" class="tab-item" href="#friendsModal">
     <span class="icon icon-plus"></span>
     <span class="tab-label">Invite</span>
   </a>
@@ -748,19 +748,21 @@ Birthday:
 
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
-<!-- %%%%%%%%%%%%   MODALS   %%%%%%%%%%%%%%%%% -->
-<!--
-<div id="mypopover" class="popover">
+<!-- %%%%%%%%%%%%   MODALS and Popovers  %%%%%%%%%%%%%%%%% -->
+<div id="friendsModal" class="modal">
+    <header class="bar bar-nav">
+        <a class="icon icon-close pull-right" href="#friendsModal"></a>
+        <h1>Invite using</h1>
+    </header>
+    <div class="content">
     <ul class="table-view">
-        <li class="table-view-cell"><strong>Add Gift</strong></li>
-        <li class="table-view-cell"><strong>Invite Friends</strong></li>
-        <li class="table-view-cell"><strong>Options</strong></li>
-        <li class="table-view-cell"><strong>Options</strong></li>
-        <li class="table-view-cell"><a href="#settings/">Settings</a></li>
-        <li class="table-view-cell"><a href="#">Logout</a></li>
+        <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
+        <li class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
+        <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
     </ul>
 </div>
--->
+</div>
+
 <div id="mypopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>GiftMe v1.0</strong></li>
@@ -768,17 +770,16 @@ Birthday:
     </ul>
 </div>
 
+<!--
 <div id="friendsPopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
         <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
-        <!-- <li class="table-view-cell"><a href="whatsapp://send?text=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">WhatsApp</a></li> 
-        <li class="table-view-cell"><a href="whatsapp://send?text=Hi">WhatsApp</a></li>-->
         <li class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
     </ul>
 </div>
-
+-->
 
 <div id="friendsWishlistPopover" class="popover">
     <ul class="table-view">
