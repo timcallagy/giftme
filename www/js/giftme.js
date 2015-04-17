@@ -269,7 +269,8 @@ $('body').on('click', function (e) {
         }
         */
         if ($('#friendsPopover').is(":visible")){
-            if (!(e.target.id === "send-sms") || !(e.target.id === "send-whatsapp") || !(e.target.id === "send-email")){
+            alert(e.target.id);
+            if ((e.target.id !== "send-sms") || (e.target.id !== "send-whatsapp") || (e.target.id !== "send-email")){
                 alert('fired');
                 e.preventDefault();
                 $(this).popover('hide');
