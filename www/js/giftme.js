@@ -272,7 +272,7 @@ $('body').on('click', function (e) {
             alert(e.target.id);
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
                 alert('fired true');
-                $('#menu-invite').click();
+                $('#invite-popover').click();
             } else {
                 alert('fired false');
                 e.preventDefault();
