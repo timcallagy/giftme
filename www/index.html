@@ -558,36 +558,23 @@ Ask to add a gift
 <br>
 <div class="text-center">
 <br>
-        <p class="table-heading">US${{gift.price}} for {{ gift.name }}</p>
+        <p class="table-heading">US${{amount}} for '{{ gift.name }}'</p>
 </div>
 <br>
+
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
-    <br>
-<table>
-<tr>
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
-</tr>
-<tr>
-<td>
 <p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
-</td>
-<td>
  <input id="card-number" name="card-number" type="text" placeholder="e.g. 1234567812345678">
-</td>
-</tr>
 
-<tr>
-<td>
 <p>CVC:</p>
-</td>
-<td>
  <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
-</td>
+
+<p>Expiry: </p>
+<table>
 <tr>
-<td><p>Expiry: </p>
-</td>
 <td width="75%">
 <select id="expiry-month" class="input-row" name="expiry-month">
 <option value="01">January</option>
@@ -629,7 +616,9 @@ Ask to add a gift
     <br>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
-
+<div class="text-center">
+<img src="img/stripe.png">
+</div>
 <br>
 <br>
 <br>
