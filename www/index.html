@@ -368,10 +368,11 @@ Add item
 <div class="content content-padded">
 <div class="text-center">
 <br>
-<a href="#friendsPopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
-    <br>
-    <br>
-    <h4>Invite MORE friends to create wishlists!</h4>
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-user-plus-white"></span>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Invite more Friends! 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+                <br>
 </div>
    <ul class="table-view">
         {{#each this}}
@@ -477,35 +478,19 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">Give a Gift</h2>
+<h2 class="text-center"><span class="icon icon-gift"></span>gift.owner_name</h2>
 <br>
-               <table width="100%">
-                    <tr>
-                                <td class="padding" width="10%">   
-                                <span class="icon icon-gift"></span>
-                                </td>   
-                                <td class="padding" width="90%">   
+<div class="text-center">
+                           <img class="crop" src="{{gift.pic}}">
                                 <p class="table-heading">{{ gift.name }}</p>
-                                </td>   
-                    </tr>
-                </table>
-               <table width="100%">
-                    <tr>
-                                <td class="padding pull-left" width="65%%">
-                                    <p>Crowdfund this gift for {{gift.owner_name}}!
+</div>
                                     <p>Target: US${{gift.price}}   
                                     <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
-                                </td>   
-                        <td class="padding pull-right">
-                           <img class="crop" src="{{gift.pic}}">
-                        </td>
-                    </tr>
-               </table>
 <br>
 <form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
-<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Personal Message (optional)"></textarea>
+<textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Add a Personal Message for {{gift.owner_name}} (optional)"></textarea>
     <br>
     <br>
 <table>
@@ -752,14 +737,16 @@ Birthday:
 <div id="friendsModal" class="modal">
     <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#friendsModal"></a>
-        <h1>Invite using</h1>
+        <h3 class="title">Invite using</h3>
     </header>
     <div class="content">
+        <p class="content-padded">
     <ul class="table-view">
         <li class="table-view-cell"><a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
         <li class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
         <li class="table-view-cell"><a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
     </ul>
+    </p>
 </div>
 </div>
 

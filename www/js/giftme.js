@@ -226,7 +226,6 @@ $(function() {
 
 $(document).on('backbutton', function(e){
     e.preventDefault();
-    alert(navigation_stack);
     current_loc = navigation_stack.pop();
     dest = navigation_stack.pop();
     if (dest === "start") {
