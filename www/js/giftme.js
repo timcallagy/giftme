@@ -269,15 +269,11 @@ $('body').on('click', function (e) {
         }
         */
         if ($('#friendsPopover').is(":visible")){
-            alert(e.target.id);
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
-                alert('fired true');
-                $('#invite-popover').click();
             } else {
-                alert('fired false');
                 e.preventDefault();
-                $(this).popover('hide');
-                $('#friendsPopover').popover('hide');
+                //$(this).popover('hide');
+                //$('#friendsPopover').popover('hide');
             }
         }
     });
