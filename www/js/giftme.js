@@ -272,8 +272,7 @@ $('body').on('click', function (e) {
             alert(e.target.id);
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
                 alert('fired true');
-                $(this).popover('hide');
-                $('#friendsPopover').popover('hide');
+                $('#menu-invite').click();
             } else {
                 alert('fired false');
                 e.preventDefault();
