@@ -99,7 +99,7 @@ Invite more Friends!
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
                 <br>
         {{#each gifts}}
-                <a href="#friend-wishlist/{{ owner_id }}/">
+                <a href="#give-gift/{{ contributed_to }}/{{gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
@@ -131,7 +131,7 @@ Add an item to your Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
                 <br>
         {{#each contributions_to}}
-                <a href="#pay-page/{{ contributed_to }}/{{gift}}/">
+                <a href="#give-gift/{{ contributed_to }}/{{gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding">
@@ -144,7 +144,7 @@ Add an item to your Wishlist
                                 <span class="icon icon-coin-dollar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Got US$ {{ amount }} for '{{gift_name}}'</p>
+                                <p> Got US${{ amount }} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
@@ -176,7 +176,7 @@ See more
                                 <span class="icon icon-gift"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Gave US$ {{amount}} for '{{gift_name}}'</p>
+                                <p> Gave US${{amount}} for '{{gift_name}}'</p>
                                 </td>   
                             </tr>
                             </table>
@@ -440,7 +440,7 @@ Invite more Friends!
                     </a>
                     <p>Price: ${{ fields.price }}</p>
                     <p>Crowdfunded: ${{ fields.crowdfunded }}</p>
-                    <a href="#pay-page/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
+                    <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                 </div>
         </li>
         {{/each}}
@@ -470,8 +470,8 @@ Ask to add a gift
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
-<!-- %%%%%%%%%%%%%%%   PAY PAGE  %%%%%%%%%%%%%% -->
-<script id="pay-page-tpl" type="text/template">
+<!-- %%%%%%%%%%%%%%%   GIVE GIFT Page  %%%%%%%%%%%%%% -->
+<script id="give-gift-tpl" type="text/template">
 <header class="bar bar-nav">
 <h2 class="title">GiftMe</h2>
 </header>
@@ -483,24 +483,20 @@ Ask to add a gift
 <div class="text-center">
        <img class="crop" src="{{gift.pic}}">
 <br>
+<br>
         <p class="table-heading">{{ gift.name }}</p>
 </div>
 <br>
         <p>Target: US${{gift.price}}   
         <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
 <br>
-<form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+<form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
 <textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Add a Personal Message for {{gift.owner_name}} (optional)"></textarea>
     <br>
     <br>
-<table>
-<tr>
-<td>
-<p>Amount: &nbsp;&nbsp;&nbsp;&nbsp;</p>
-</td>
-<td>
+<p>Your gift: &nbsp;&nbsp;&nbsp;&nbsp;</p>
 <select id="amount" class="input-row" name="amount">
 <option value="5">US$ 5.00</option>
 <option value="10">US$ 10.00</option>
@@ -533,8 +529,42 @@ Ask to add a gift
 <option value="450">US$ 450.00</option>
 <option value="500">US$ 500.00</option>
 </select>
-</td>
-</tr>
+<input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
+<input id="friend-id" type="hidden" value="{{ friend_id }}">
+<input id="friend-name" type="hidden" value="{{ friend.name }}">
+</form>
+    <br>
+<button id="give-gift-btn" class="btn btn-primary btn-block">Give Gift</button>
+<br>
+<br>
+<br>
+</div>
+{{> bottom-menu }}
+
+</script>
+
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
+<!-- %%%%%%%%%%%%%%%   PAY PAGE  %%%%%%%%%%%%%% -->
+<script id="pay-page-tpl" type="text/template">
+<header class="bar bar-nav">
+<h2 class="title">GiftMe</h2>
+</header>
+
+<div class="content content-padded">
+<br>
+<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+<br>
+<div class="text-center">
+<br>
+        <p class="table-heading">US${{gift.price}} for {{ gift.name }}</p>
+</div>
+<br>
+<form id="pay-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+
+    <br>
+<table>
 <tr>
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
@@ -591,6 +621,8 @@ Ask to add a gift
 </tr>
 </table>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
+<input id="amount" name="amount" type="hidden" value="{{ amount }}">
+<input id="gift-message" name="gift-message" type="hidden" value="{{ message }}">
 <input id="friend-id" type="hidden" value="{{ friend_id }}">
 <input id="friend-name" type="hidden" value="{{ friend.name }}">
 </form>
@@ -636,9 +668,9 @@ Ask to add a gift
 <div id="chipInInvitePopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
-        <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
-        <li class="table-view-cell" onclick="send_whatsapp('Hi! We are crowdfunding {{ contribution.fields.gift_name }} for {{ friend.name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
-        <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{friend.name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
+        <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
+        <li class="table-view-cell" onclick="send_whatsapp('Hi! We are crowdfunding {{ contribution.fields.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
+        <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{contribution.contributed_to_name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
     </ul>
 </div>
 {{> bottom-menu }}
@@ -739,7 +771,7 @@ Birthday:
 <div id="friendsModal" class="modal">
     <header class="bar bar-nav">
         <a class="icon icon-close pull-right" href="#friendsModal"></a>
-        <h3 class="title">Invite using</h3>
+        <!--        <h3 class="title">Invite using</h3>-->
     </header>
     <a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me"><button class="btn btn-primary btn-block">SMS</button></a>
         <button class="btn btn-primary btn-block" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</button>
@@ -800,6 +832,7 @@ Birthday:
     <script src="js/FriendWishlistView.js"></script>
     <script src="js/AddGiftView.js"></script>
     <script src="js/ContributionsView.js"></script>
+    <script src="js/GiveGiftView.js"></script>
     <script src="js/PayPageView.js"></script>
     <script src="js/PaymentConfirmationView.js"></script>
     <script src="js/SettingsView.js"></script>

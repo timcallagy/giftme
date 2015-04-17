@@ -115,7 +115,6 @@ function delete_gift(pk) {
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
         $("#pay-btn").attr("disabled", true);
-        $('#gift-message-error').hide();
         $('#payment-error').hide();
         $('#payment-failed-msg').hide();
         $('#pay-btn').hide();
@@ -123,9 +122,6 @@ $(function() {
 
         amount = $('#amount').val();
         message = $('#gift-message').val();
-        if (message.length > 5000){
-            $('#gift-message-error').show();
-        }
         card_number = $('#card-number').val();
         card_cvc = $('#card-cvc').val();
         expiry_month = $('#expiry-month').val();
@@ -224,6 +220,24 @@ $(function() {
     });
 });
 
+$(function() {
+    return $("body").on("click", "#give-gift-btn", function() {
+        $("#give-gift-btn").attr("disabled", true);
+        $('#gift-message-error').hide();
+        friend_id = $('#friend-id').val();
+        gift_pk = $('#gift-pk').val();
+        amount = $('#amount').val();
+        message = $('#gift-message').val();
+        if (message.length > 5000){
+            $('#gift-message-error').show();
+        }
+        window.localStorage.setItem("amount", amount);
+        window.localStorage.setItem("gift-message", message);
+        $("#settings-btn").attr("disabled", false);
+        window.location = "#pay-page/" + friend_id + "/" + gift_pk + "/";
+    });
+});
+
 $(document).on('backbutton', function(e){
     e.preventDefault();
     current_loc = navigation_stack.pop();
@@ -235,7 +249,6 @@ $(document).on('backbutton', function(e){
         } else {
             navigation_stack.push('start');
             navigation_stack.push('#home/');
-            //window.location = "#home/";
         }
     } else {
         window.location = dest;

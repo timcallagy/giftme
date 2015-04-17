@@ -9,6 +9,7 @@
     FriendsView.prototype.template = Handlebars.compile($("#friends-tpl").html());
     FriendWishlistView.prototype.template = Handlebars.compile($("#friend-wishlist-tpl").html());
     AddGiftView.prototype.template = Handlebars.compile($("#add-item-tpl").html());
+    GiveGiftView.prototype.template = Handlebars.compile($("#give-gift-tpl").html());
     PayPageView.prototype.template = Handlebars.compile($("#pay-page-tpl").html());
     PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
     ErrorView.prototype.template = Handlebars.compile($("#error-tpl").html());
@@ -56,6 +57,12 @@
             addGiftView = new AddGiftView();
             addGiftView.render();
             slider.slidePage(addGiftView.$el);
+        });
+        // pk is the gift's id in the database.
+        router.addRoute('give-gift/:id/:pk/', function(id, pk) {
+            giveGiftView = new GiveGiftView(id, pk);
+            giveGiftView.render();
+            slider.slidePage(giveGiftView.$el);
         });
         // pk is the gift's id in the database.
         router.addRoute('pay-page/:id/:pk/', function(id, pk) {
@@ -208,19 +215,6 @@
                     );
             };
         }
-        /*
-           document.addEventListener("backbutton", function(){
-           alert("Back button");
-           if(document.getElementById('#home')){
-           alert("Home");
-           navigator.app.exitApp();
-           }
-           else {
-           alert("Not home");
-           navigator.app.backHistory()
-           }
-           }, false);
-           */
     }, false);
 
 }());
