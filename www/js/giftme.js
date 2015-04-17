@@ -226,6 +226,7 @@ $(function() {
 
 $(document).on('backbutton', function(e){
     e.preventDefault();
+    alert(navigation_stack);
     current_loc = navigation_stack.pop();
     dest = navigation_stack.pop();
     if (dest === "start") {
@@ -238,4 +239,13 @@ $(document).on('backbutton', function(e){
     } else {
         window.location = dest;
     }
+});
+$('body').on('click', function (e) {
+    $('[data-toggle="friendsPopover"]').each(function () {
+        //the 'is' for buttons that trigger popups
+        //the 'has' for icons within a button that triggers a popup
+        if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            $(this).popover('hide');
+        }
+    });
 });
