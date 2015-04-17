@@ -531,7 +531,7 @@ Ask to add a gift
 </select>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
 <input id="friend-id" type="hidden" value="{{ friend_id }}">
-<input id="friend-name" type="hidden" value="{{ friend.name }}">
+<input id="friend-name" type="hidden" value="{{ gift.owner_name }}">
 </form>
     <br>
 <button id="give-gift-btn" class="btn btn-primary btn-block">Give Gift</button>
@@ -555,7 +555,6 @@ Ask to add a gift
 <div class="content content-padded">
 <br>
 <h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
-<br>
 <div class="text-center">
 <br>
         <p class="table-heading">US${{amount}} for '{{ gift.name }}'</p>
@@ -610,8 +609,8 @@ Ask to add a gift
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
 <input id="amount" name="amount" type="hidden" value="{{ amount }}">
 <input id="gift-message" name="gift-message" type="hidden" value="{{ message }}">
-<input id="friend-id" type="hidden" value="{{ friend_id }}">
-<input id="friend-name" type="hidden" value="{{ friend.name }}">
+<input id="friend-id-payPage" type="hidden" value="{{ friend_id }}">
+<input id="friend-name-payPage" type="hidden" value="{{gift.owner_name}}">
 </form>
     <br>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
@@ -637,29 +636,36 @@ Ask to add a gift
 </header>
 
 <div class="content content-padded">
-<button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
+<br>
+<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h2>
+<br>
 <div class="text-center">
-<br>
-<p>You chipped in US${{ contribution.fields.amount}}</p>
-
-<br>
-<a href="#chipInInvitePopover"><img class="img-btn" src="img/add_friend2.jpeg"/></a>
+       <img class="crop" src="{{contribution.gift_pic}}">
 <br>
 <br>
-<p>Do you know someone else who would like to chip in?</p>
-<a href="#chipInInvitePopover"><button class="btn btn-cyan btn-block ">Invite</button></a>
-
+        <p class="table-heading">{{ contribution.gift_name }}</p>
 </div>
 <br>
-<a href="#home/"><button class="btn btn-purple btn-block ">Home</button></a>
+<button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
+
+<div class="text-center">
+<br>
+<p>You gave US${{ contribution.amount}}</p>
+<br>
+<p>Do you know someone else who would like to chip in?</p>
+<br>
+<a href="#chipInInvitePopover"><button class="btn btn-cyan btn-block ">Invite</button></a>
+<br>
+<br>
+<br>
 </div>
 
 <div id="chipInInvitePopover" class="popover">
     <ul class="table-view">
         <li class="table-view-cell"><strong>Invite using</strong></li>
-        <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.fields.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
-        <li class="table-view-cell" onclick="send_whatsapp('Hi! We are crowdfunding {{ contribution.fields.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
-        <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{friend.name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.fields.gift_name}}%20for%20{{contribution.contributed_to_name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
+        <li class="table-view-cell"><a href="sms:?body=Hi! We're crowdfunding {{ contribution.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me">SMS</a></li>
+        <li class="table-view-cell" onclick="send_whatsapp('Hi! We are crowdfunding {{ contribution.gift_name }} for {{ contribution.contributed_to_name }} using a cool app called GiftMe! Want to chip in? Get GiftMe for Android here:');">WhatsApp</li>
+        <li class="table-view-cell"><a href="mailto:?subject=Gift%20for%20{{contribution.contributed_to_name}}&body=Hi!%20We%27re%20crowdfunding%20{{contribution.gift_name}}%20for%20{{contribution.contributed_to_name}}%20using%20a%20cool%20app%20called%20GiftMe!%20Want%20to%20chip%20in%3F%20Get%20GiftMe%20for%20Android%20here%3A%20https%3A%2F%2Fplay.google.com%2Fstore%2Fapps%2Fdetails%3Fid%3Dco.giftmeapp.gift_me">Email</a></li>
     </ul>
 </div>
 {{> bottom-menu }}
@@ -762,16 +768,6 @@ Birthday:
         <a class="icon icon-close pull-right" href="#friendsModal"></a>
         <!--        <h3 class="title">Invite using</h3>-->
     </header>
-    <a href="sms:?body=Hi! Help me buy something for your birthday by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android: https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me"><button class="btn btn-primary btn-block">SMS</button></a>
-        <button class="btn btn-primary btn-block" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</button>
-    <a href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!"><button class="btn btn-primary btn-block">Email</button></a>
-</div>
-
-<div id="mypopover" class="popover">
-    <ul class="table-view">
-        <li class="table-view-cell"><strong>GiftMe v1.0</strong></li>
-        <li class="table-view-cell">Contact: timcallagy@gmail.com</li>
-    </ul>
 </div>
 
 <!--

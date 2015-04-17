@@ -147,9 +147,9 @@ $(function() {
                 var contributor_id = localStorage.getItem("id");
                 var accessToken = localStorage.getItem("accessToken");
                 var contributor_name = localStorage.getItem("my_name");
-                var contributed_to_name = $('#friend-name').val();
-                gift_pk = $('#gift-pk').val();
-                friend_id = $('#friend-id').val();
+                var contributed_to_name = $('#friend-name-payPage').val();
+                var gift_pk = $('#gift-pk').val();
+                var friend_id = $('#friend-id-payPage').val();
                 $.ajax({
                     url: backend_url + 'pay/' + gift_pk + '/',
                     type: 'post',
