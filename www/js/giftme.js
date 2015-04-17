@@ -257,7 +257,7 @@ $(document).on('backbutton', function(e){
 
 $('body').on('click', function (e) {
         alert(e.target);
-        alert(JSON.stringify(e));
+        alert(e.target.id);
     $('#menu-invite').each(function () {
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
