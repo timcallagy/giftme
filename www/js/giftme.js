@@ -256,8 +256,6 @@ $(document).on('backbutton', function(e){
 });
 
 $('body').on('click', function (e) {
-        alert(e.target);
-        alert(e.target.id);
     $('#menu-invite').each(function () {
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
@@ -271,8 +269,11 @@ $('body').on('click', function (e) {
         }
         */
         if ($('#friendsPopover').is(":visible")){
-            alert(JSON.stringify(e));
-            $(this).popover('hide');
+            if (!(e.target.id === "send-sms") || !(e.target.id === "send-whatsapp") || !(e.target.id === "send-email")){
+                alert('fired');
+                e.preventDefault();
+                $(this).popover('hide');
+            }
         }
     });
 });
