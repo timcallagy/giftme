@@ -238,16 +238,19 @@ $(document).on('backbutton', function(e){
             window.location = "#home/";
         }
     } else {
+        navigation_stack.pop();
         window.location = dest;
     }
 });
 $('body').on('click', function (e) {
     $('#menu-invite').each(function () {
-        alert('called');
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
         if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+            e.preventDefault();
             alert('hiding');
+            $(this).popover('hide');
+        } else {
             $(this).popover('hide');
         }
     });
