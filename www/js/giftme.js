@@ -242,7 +242,7 @@ $(document).on('backbutton', function(e){
     }
 });
 $('body').on('click', function (e) {
-    $('#menu-friends').each(function () {
+    $('#menu-invite').each(function () {
         alert('called');
         //the 'is' for buttons that trigger popups
         //the 'has' for icons within a button that triggers a popup
