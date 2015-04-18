@@ -25,6 +25,6 @@
     </gap:plugin> 
     <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
 
-    <icon src="icon.png" />
+    <icon src="ic_launcher.png" />
 
 </widget>
