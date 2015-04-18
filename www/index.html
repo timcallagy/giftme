@@ -33,10 +33,10 @@
   </li>
 </ul>
 <br>
-<a href="#wishlist/"><button class="btn btn-purple btn-block "><span class="icon icon-star-filled"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#wishlist/"><button class="btn btn-purple btn-block ">
 My Wishlist
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
+</button></a>
 <br>
 </div>
         {{#each birthdays}}
@@ -53,7 +53,7 @@ My Wishlist
                                 <span class="icon icon-calendar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Has a birthday soon!</p>
+                                <p> Has a birthday on {{birthday}}!</p>
                                 </td>   
                             </tr>
                             </table>
@@ -93,10 +93,10 @@ My Wishlist
                 </a>
                 <br>
         {{/each}}
-<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-user-plus-white"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-Invite more Friends! 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block ">
+Invite more Friends 
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span>
+</button></a>
                 <br>
         {{#each gifts}}
                 <a href="#give-gift/{{ owner_id }}/{{ id }}/">
@@ -125,10 +125,10 @@ Invite more Friends!
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-heart-white"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#addGift/"><button class="btn btn-cyan btn-block ">
 Add an item to your Wishlist
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-heart-white"></span>
+</button></a>
                 <br>
         {{#each contributions_to}}
                 <a href="#give-gift/{{ contributed_to }}/{{gift}}/">
@@ -157,10 +157,10 @@ Add an item to your Wishlist
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-earth-white"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#addGift/"><button class="btn btn-cyan btn-block ">
 See more
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
+</button></a>
 <br>
         {{#each contributions_from}}
                 <a href="#contributions/{{gift}}/">
@@ -189,10 +189,10 @@ See more
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-earth-white"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#addGift/"><button class="btn btn-cyan btn-block ">
 See more
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
+</button></a>
 <br>
 <br>
 <br>
@@ -207,11 +207,12 @@ See more
 <script id="login-tpl" type="text/template">
 <div class="content back-img">
 <div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
-<!--<button class="btn btn-outlined btn-white"><h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1></button> -->
 <h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
 </div>
 <div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
-<button id="login-btn" class="btn btn-primary btn-block" onclick="facebook_login()">Login with Facebook</button>
+<button id="login-btn" class="btn btn-primary btn-block" onclick="facebook_login()">
+Login with Facebook
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-facebook2"></span></button>
 </div>
 </div>
 
@@ -245,10 +246,9 @@ See more
 <h2 class="text-center">My Wishlist</h2>
 <br>
 <br>
-<a href="#addGift/"><button class="btn btn-cyan btn-block "><span class="icon icon-plus"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#addGift/"><button class="btn btn-cyan btn-block ">
 Add item
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-plus"></span></button></a>
 <br>
 <br>
         {{#if this }}
@@ -369,9 +369,8 @@ Add item
 <div class="text-center">
 <br>
 <a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-user-plus-white"></span>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 Invite more Friends! 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span></button></a>
                 <br>
 </div>
    <ul class="table-view">
@@ -451,10 +450,9 @@ Invite more Friends!
                 <p>{{friend.name}} hasn't added any gifts yet.</p>
                 <p>Ask them to add some gifts!</p>
             </div>
-<a href="#friendsWishlistPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-gift-white"></span>
-&nbsp;&nbsp;
+<a href="#friendsWishlistPopover"><button class="btn btn-cyan btn-block ">
 Ask to add a gift
-&nbsp;&nbsp;<span class="icon icon-right-nav"></span></button></a>
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-gift-white"></span></button></a>
 <br>
         {{/if}}
 <br>
@@ -565,43 +563,48 @@ Ask to add a gift
 
     <button id="payment-failed-msg" class="btn btn-outlined btn-negative" style="display:none;">Payment Failed!</button>
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
+<table>
+<tr>
+<td width="65%">
+<p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
+</td>
+<td width="15%">
+<p>CVC:</p>
+</td>
+</tr>
+<tr>
+<td width="75%">
+ <input id="card-number" name="card-number" type="text" placeholder="e.g. 1234567812345678">
+</td>
+<td width="25%">
+ <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+</td>
+</tr>
+</table>
+
+<!--
 <p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
  <input id="card-number" name="card-number" type="text" placeholder="e.g. 1234567812345678">
 
 <p>CVC:</p>
  <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
+-->
 
 <p>Expiry: </p>
 <table>
 <tr>
 <td width="75%">
 <select id="expiry-month" class="input-row" name="expiry-month">
-<option value="01">January</option>
-<option value="02">February</option>
-<option value="03">March</option>
-<option value="04">April</option>
-<option value="05">May</option>
-<option value="06">June</option>
-<option value="07">July</option>
-<option value="08">August</option>
-<option value="09">September</option>
-<option value="10">October</option>
-<option value="11">November</option>
-<option value="12">December</option>
+{{#each months}}
+    <option value="{{this.num}}">{{this.name}}</option>
+{{/each}}
 </select>
 </td>
 <td width="25%">
 <select id="expiry-year" class="input-row" name="expiry-year">
-<option value="2015">2015</option>
-<option value="2016">2016</option>
-<option value="2017">2017</option>
-<option value="2018">2018</option>
-<option value="2019">2019</option>
-<option value="2020">2020</option>
-<option value="2021">2021</option>
-<option value="2022">2022</option>
-<option value="2023">2023</option>
-<option value="2024">2024</option>
+{{#each years}}
+    <option value="{{this.num}}">{{this.name}}</option>
+{{/each}}
 </select>
 </td>
 </tr>
@@ -612,7 +615,6 @@ Ask to add a gift
 <input id="friend-id-payPage" type="hidden" value="{{ friend_id }}">
 <input id="friend-name-payPage" type="hidden" value="{{gift.owner_name}}">
 </form>
-    <br>
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
 <div class="text-center">
@@ -759,8 +761,8 @@ Birthday:
 </nav>
 </script>
 
-
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
 
 <!-- %%%%%%%%%%%%   MODALS and Popovers  %%%%%%%%%%%%%%%%% -->
 
@@ -783,42 +785,37 @@ Birthday:
 </div>
 
 
-<div id="mymodal" class="modal">
-    <header class="bar bar-nav">
-        <a class="icon icon-close pull-right" href="#mymodal"></a>
-    </div>
-
-    </script>
-    <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
-    <div id="fb-root"></div>
-    <!--cordova.js is automatically injected by the Cordova build process-->
-    <script src="cordova.js"></script>
-    <script src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
-    <script src="js/pageslider.js"></script>
-    <script src="js/router.js"></script>
-    <script src="js/services/json/GiftService.js"></script>
-    <script src="js/handlebars.js"></script>
-    <script src="js/LoginView.js"></script>
-    <script src="js/ErrorView.js"></script>
-    <script src="js/HomeView.js"></script>
-    <script src="js/WishlistView.js"></script>
-    <script src="js/FriendsView.js"></script>
-    <script src="js/FriendWishlistView.js"></script>
-    <script src="js/AddGiftView.js"></script>
-    <script src="js/ContributionsView.js"></script>
-    <script src="js/GiveGiftView.js"></script>
-    <script src="js/PayPageView.js"></script>
-    <script src="js/PaymentConfirmationView.js"></script>
-    <script src="js/SettingsView.js"></script>
-    <script src="js/fastclick.js"></script>
-    <script src="https://js.stripe.com/v2/"></script>
-    <script src="js/giftme.js"></script>
-    <script src="js/app.js"></script>
-    <script src="js/ratchet.min.js"></script>
+<div id="fb-root"></div>
+<!--cordova.js is automatically injected by the Cordova build process-->
+<script src="cordova.js"></script>
+<script src="js/jquery.js"></script>
+<script type="text/javascript" src="js/facebookConnectPlugin.js"></script>
+<script src="js/pageslider.js"></script>
+<script src="js/router.js"></script>
+<script src="js/services/json/GiftService.js"></script>
+<script src="js/handlebars.js"></script>
+<script src="js/LoginView.js"></script>
+<script src="js/ErrorView.js"></script>
+<script src="js/HomeView.js"></script>
+<script src="js/WishlistView.js"></script>
+<script src="js/FriendsView.js"></script>
+<script src="js/FriendWishlistView.js"></script>
+<script src="js/AddGiftView.js"></script>
+<script src="js/ContributionsView.js"></script>
+<script src="js/GiveGiftView.js"></script>
+<script src="js/PayPageView.js"></script>
+<script src="js/PaymentConfirmationView.js"></script>
+<script src="js/SettingsView.js"></script>
+<script src="js/fastclick.js"></script>
+<script src="https://js.stripe.com/v2/"></script>
+<script src="js/giftme.js"></script>
+<script src="js/app.js"></script>
+<script src="js/ratchet.min.js"></script>
 
 
-    </body>
-    </html>
+</body>
+</html>
