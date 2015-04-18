@@ -155,12 +155,7 @@ Add an item to your Wishlist
                     </tr>
                </table>
                 </a>
-                <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block ">
-See more
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
-</button></a>
 <br>
         {{#each contributions_from}}
                 <a href="#contributions/{{gift}}/">
@@ -189,7 +184,7 @@ See more
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block ">
+<a href="#more_notifications/"><button class="btn btn-cyan btn-block ">
 See more
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
 </button></a>
@@ -206,9 +201,11 @@ See more
 <!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
 <script id="login-tpl" type="text/template">
 <div class="content back-img">
+<!--
 <div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
 <h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
 </div>
+-->
 <div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
 <button id="login-btn" class="btn btn-primary btn-block" onclick="facebook_login()">
 Login with Facebook
@@ -333,21 +330,27 @@ Add item
 </header>
 
 <div class="content content-padded">
+<br>
+<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+<br>
+<div class="text-center">
+       <img class="crop" src="{{gift.pic}}">
+<br>
+<br>
+        <p class="table-heading">{{ gift.name }}</p>
+</div>
+<br>
+        <p>Target: US${{gift.price}}   
+        <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
+<br>
 <ul class="table-view">
-        <li class="table-view-cell media">
-                <img class="media-object pull-left crop" src="{{gift.fields.pic}}">
-                <br>
-                <div class="media-body">{{gift.fields.name}}</div>
-                <div class="media-body">Price: US$ {{gift.fields.price}}</div>
-                <div class="media-body">Crowdfunded so far: US$ {{gift.fields.crowdfunded}}</div>
-        </li>
         {{#each contributions}}
-        <li id="{{pk}}" class="table-view-cell media">
-                <img class="media-object pull-left" src="http://graph.facebook.com/{{ fields.contributor_id }}/picture?type=small">
+        <li class="table-view-cell media">
+                <img class="media-object pull-left" src="http://graph.facebook.com/{{ this.contributor_id }}/picture?type=small">
                 <div class="media-body">
-                    <p><strong>{{ fields.contributor_name }} contributed ${{ fields.amount }}!</strong></p>
-                    <p>{{ fields.message }}</p>
-                    <p>{{ fields.gift.name }}</p>
+                    <p><strong>{{ this.contributor_name }} contributed ${{ this.amount }}!</strong></p>
+                    <p>{{ this.message }}</p>
+                    <p>{{ this.gift_name }}</p>
                 </div>
         </li>
         {{/each}}
@@ -368,8 +371,8 @@ Add item
 <div class="content content-padded">
 <div class="text-center">
 <br>
-<a href="#friendsPopover"><button class="btn btn-cyan btn-block "><span class="icon icon-user-plus-white"></span>
-Invite more Friends! 
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block ">
+Invite more Friends
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span></button></a>
                 <br>
 </div>
@@ -379,7 +382,7 @@ Invite more Friends!
             <a href="#friend-wishlist/{{ id }}/" class="navigate-right"> 
                 <img class="media-object pull-left" src="http://graph.facebook.com/{{ id }}/picture?type=small"><br>
                 <div class="media-body">
-                    Name: {{name}}
+                    {{name}}
                 </div>
             </a>
         </li>
@@ -565,10 +568,10 @@ Ask to add a gift
     <button id="payment-error" class="btn btn-outlined btn-negative" style="display:none;"></button>
 <table>
 <tr>
-<td width="65%">
+<td width="70%">
 <p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
 </td>
-<td width="15%">
+<td width="30%">
 <p>CVC:</p>
 </td>
 </tr>

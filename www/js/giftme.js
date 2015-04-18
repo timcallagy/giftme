@@ -240,6 +240,7 @@ $(function() {
 
 $(document).on('backbutton', function(e){
     e.preventDefault();
+    alert(window.location);
     current_loc = navigation_stack.pop();
     dest = navigation_stack.pop();
     if (dest === "start") {
