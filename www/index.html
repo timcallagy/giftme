@@ -98,10 +98,19 @@ Invite more Friends
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span>
 </button></a>
                 <br>
+   <ul class="table-view">
         {{#each gifts}}
+        <li class="table-view-cell media">
                             <div class="img-100px">
                                <div style="background-image:url({{pic}});" class="crop-size"> </div>
                             </div>
+                <div class="media-body">
+                    <p>Price: ${{price }}</p>
+                        <p>Crowdfunded: ${{ thiscrowdfunded }}</p>
+                </div>
+        </li>
+        {{/each}}
+    </ul>
                 <a href="#give-gift/{{ owner_id }}/{{ id }}/">
                <table width="100%">
                     <tr>
