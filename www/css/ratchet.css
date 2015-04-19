@@ -560,6 +560,7 @@ input[type="button"] {
 
 .bar-nav {
     top: 0;
+    background-color: #38242E;
 }
 
 .title {
@@ -1707,6 +1708,9 @@ select {
 .img-200px {
     width: 200px;
     height: 200px;
+}
+.img-long {
+    height: 43px;
 }
 .crop-size {
     /*

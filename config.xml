@@ -26,12 +26,15 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
 
     <!--<icon src="ic_launcher.png" />-->
+    <icon src="ic_launcher_GiftMe_icon.png" />
 
+    <!--
     <platform name="android">
               <icon src="res/android/drawable-ldpi/ic_launcher_GiftMe_icon.png" density="ldpi" />
               <icon src="res/android/drawable-mdpi/ic_launcher_GiftMe_icon.png" density="mdpi" />
               <icon src="res/android/drawable-hdpi/ic_launcher_GiftMe_icon.png" density="hdpi" />
               <icon src="res/android/drawable-xhdpi/ic_launcher_GiftMe_icon.png" density="xhdpi" />
      </platform>
+    -->
 
 </widget>
