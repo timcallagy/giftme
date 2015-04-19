@@ -20,18 +20,14 @@
 <h2 class="title">GiftMe</h2>
 </header>
 <div class="content content-padded">
-   <ul class="table-view">
         {{#each gifts}}
-        <li class="table-view-cell media">
-                            <div class="img-100px">
-                               <div style="background-image:url({{pic}});" class="crop-size"> </div>
-                            </div>
+            <div class="img-100px">
+                <div style="background-image:url({{pic}});" class="crop-size"> </div>
+            </div>
                 <div class="media-body">
                         <p>Crowdfunded: ${{ owner_name }}</p>
                 </div>
-        </li>
         {{/each}}
-    </ul>
 </div>
 {{> bottom-menu }}
 
