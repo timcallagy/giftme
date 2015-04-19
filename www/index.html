@@ -20,14 +20,186 @@
 <h2 class="title">GiftMe</h2>
 </header>
 <div class="content content-padded">
-        {{#each gifts}}
-            <div class="img-100px">
-                <div style="background-image:url(http://ecx.images-amazon.com/images/I/41YD6U8abML._SX395_.jpg);" class="crop-size"> </div>
-            </div>
-                <div class="media-body">
-                        <p>Crowdfunded: ${{ owner_name }}</p>
-                </div>
+
+<div class="text-center">
+<ul class="table-view">
+<br>
+  <li class="table-view-cell media">
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
+      <div class="media-body">
+          Hey {{ profile.first_name }}!
+          <p>Welcome to GiftMe</p>
+      </div>
+  </li>
+</ul>
+<br>
+<a href="#wishlist/"><button class="btn btn-purple btn-block ">
+My Wishlist
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
+</button></a>
+<br>
+</div>
+        {{#each birthdays}}
+                <a href="#friend-wishlist/{{ userID }}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-calendar"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Has a birthday on {{birthday}}!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ userID }}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
         {{/each}}
+        {{#each recent_friends}}
+                <a href="#friend-wishlist/{{ userID }}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-user-plus"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Just joined GiftMe!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ userID }}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
+<a href="#friendsPopover"><button class="btn btn-cyan btn-block ">
+Invite more Friends 
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span>
+</button></a>
+                <br>
+   <ul class="table-view">
+        {{#each gifts}}
+                <a href="#friend-wishlist/{{ userID }}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding pull-left">
+                            <div class="img-100px">
+                               <div style="background-image:url({{pic}});" class="crop-size"> </div>
+                            </div>
+                        </td>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading pull-right">{{ owner_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding pull-right" width="10%">   
+                                <span class="icon icon-heart"></span>
+                                </td>   
+                                <td class="padding pull-right" width="90%">   
+                                <p> Added {{ name }} to their wishlist!</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        <li class="table-view-cell media">
+                <div class="media-body">
+                        <p>Crowdfunded: ${{ crowdfunded }}</p>
+                </div>
+        </li>
+        {{/each}}
+    </ul>
+<a href="#addGift/"><button class="btn btn-cyan btn-block ">
+Add an item to your Wishlist
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-heart-white"></span>
+</button></a>
+                <br>
+        {{#each contributions_to}}
+                <a href="#give-gift/{{ contributed_to }}/{{gift}}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ contributed_to_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-coin-dollar"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Got US${{ amount }} for '{{gift_name}}'</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ contributed_to}}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
+        {{#each contributions_from}}
+                <a href="#contributions/{{gift}}/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p  class="table-heading">{{ contributor_name }}</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-gift"></span>
+                                </td>   
+                                <td class="padding pull-left" width="90%">   
+                                <p> Gave US${{amount}} for '{{gift_name}}'</p>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                        <td class="padding pull-right">
+                           <img src="http://graph.facebook.com/{{ contributor_id}}/picture?width=70&height=70">
+                        </td>
+                    </tr>
+               </table>
+                </a>
+                <br>
+        {{/each}}
+<a href="#more_notifications/"><button class="btn btn-cyan btn-block ">
+See more
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
+</button></a>
+<br>
+<br>
+<br>
 </div>
 {{> bottom-menu }}
 
