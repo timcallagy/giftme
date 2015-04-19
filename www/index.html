@@ -22,6 +22,11 @@
     </div>
 </header>
 <div class="content content-padded">
+<br>
+<a href="#wishlist/"><button class="btn btn-purple btn-block ">
+Make a Wish
+&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
+</button></a>
 
 <br>
                 <a href="#instructions/">
@@ -67,11 +72,6 @@
 <br>
 </div>
 -->
-<br>
-<a href="#wishlist/"><button class="btn btn-purple btn-block ">
-Make a Wish
-&nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
-</button></a>
 <br>
         {{#each birthdays}}
                 <a href="#friend-wishlist/{{ userID }}/">
@@ -220,10 +220,12 @@ Add an item to your Wishlist
                 </a>
                 <br>
         {{/each}}
+<!--
 <a href="#more_notifications/"><button class="btn btn-cyan btn-block ">
 See more
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-earth-white"></span>
 </button></a>
+-->
 <br>
 <br>
 <br>
@@ -590,8 +592,8 @@ Ask to add a gift
        <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
     </div>
 </td>
-<td class="padding">
-<h3 class="pull-left table-heading"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<td>
+<h3 class="pull-left padding"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
