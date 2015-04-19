@@ -99,7 +99,7 @@ Invite more Friends
 </button></a>
                 <br>
         {{#each gifts}}
-                <a href="#give-gift/{{ owner_id }}/{{gift}}/">
+                <a href="#give-gift/{{ owner_id }}/{{id}}/">
                <table width="100%">
                     <tr>
                         <td class="padding pull-left">
@@ -203,11 +203,6 @@ See more
 <!-- %%%%%%%%%%%%%   LOGIN   %%%%%%%%%%%%%%%% -->
 <script id="login-tpl" type="text/template">
 <div class="content back-img">
-<!--
-<div id="logo" style="height:100%;top:5%;left:25%;right:25%;text-align: center; position: fixed;" >
-<h1>&nbsp;&nbsp;GiftMe&nbsp;&nbsp;</h1>
-</div>
--->
 <div id="logo" style="height:100%;top:80%;left:5%;right:5%;text-align: center; position: fixed;" >
 <button id="login-btn" class="btn btn-primary btn-block" onclick="facebook_login()">
 Login with Facebook
@@ -251,35 +246,54 @@ Add item
 <br>
 <br>
         {{#if this }}
-   <ul class="table-view">
         {{#each this}}
-        <li id="gift-{{this.pk}}" class="table-view-cell media">
-<!--                <img class="media-object pull-left crop" src="{{this.fields.pic}}">-->
+               <table id="gift-{{this.pk}}" width="100%">
+                    <tr>
+                        <td class="padding pull-left" width="20%">
                             <div class="img-100px">
                                <div style="background-image:url({{this.fields.pic}});" class="crop-size"> </div>
                             </div>
-                <div class="media-body">
-                    <a href="{{this.fields.url}}"> 
-                        {{this.fields.name}}
-                    </a>
-                    <p>Price: ${{ this.fields.price }}</p>
-                        <p>Crowdfunded: ${{ this.fields.crowdfunded }}</p>
-                    {{#check_if_zero this.fields.crowdfunded}}
-                        <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
-                        </form>
-                        <button id="delete-gift{{this.pk}}-btn" class="btn btn-negative" onclick="delete_gift({{this.pk}})"=>Delete</button>
-                    {{else}}
-                        <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">See Contributions</button></a>
-                    {{/check_if_zero}}
-                </div>
-        </li>
+                        </td>
+                        <td class="padding" width="80%">
+                            <table width="100%">
+                            <tr> 
+                                <td>
+                                <p  class="table-heading pull-left">{{ this.fields.name }}</p>
+                                </td>
+                            </tr> 
+                            <tr> 
+                                <td class="pull-left" width="90%">   
+                                    <p>Price: ${{ this.fields.price }}</p>
+                                    <p>Crowdfunded: ${{ this.fields.crowdfunded }}</p>
+                                </td>
+                                <td>
+                                    {{#check_if_zero this.fields.crowdfunded}}
+                                        <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
+                                        </form>
+                                        <button id="delete-gift{{this.pk}}-btn" class="btn btn-negative" onclick="delete_gift({{this.pk}})"=>Delete</button>
+                                    {{else}}
+                                        <a href="#contributions/{{ this.pk }}/"><button class="btn btn-primary">See Contributions</button></a>
+                                    {{/check_if_zero}}
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                    </tr>
+               </table>
+               <table>
+                    <tr>
+                        <td>
+                             <p>{{this.fields.description}}</p>
+                        </td>
+                    </tr>
+               </table>
+                <br>
+                <br>
         {{/each}}
-    </ul>
         {{else}}
             <p>Your wishlist is empty.</p>
             <p>Get started by adding an item!</p>
         {{/if}}
-<br>
 <br>
 <br>
 </div>
@@ -303,15 +317,20 @@ Add item
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
     <button id="error-add" class="btn btn-outlined btn-negative" style="display:none;">Error! Something went wrong with GiftMe!.</button>
     <button id="error-name" class="btn btn-outlined btn-negative" style="display:none;">Error! You must write a name</button>
-<p>Name:</>
+<p>Name:</p>
   <input id="gift-name" name="name" type="text" placeholder="e.g. Sportmax Pro Inline Roller Skates">
     <button id="error-url" class="btn btn-outlined btn-negative" style="display:none;">Error! This is not a valid link.</button>
-<p>Link:</>
+<p>Link:</p>
   <input id="gift-url" name="url" type="text" placeholder="e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
 
     <button id="error-price" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
 <p>Approximate Price including shipping (US$):</p>
   <input id="gift-price" name="price" type="text" placeholder="e.g. 50">
+
+    <button id="error-description-error" class="btn btn-outlined btn-negative" style="display:none;">Character limit is 5000 characters</button>
+<p>Option description (5000 characters max):</p>
+<textarea id="gift-description" name="description" rows="4" cols="50" placeholder="Add a description to explain why you chose this gift (optional)"></textarea>
+
   <input id="gift-owner-id" name="owner_id" type="hidden" value={{ id }}>
 </form>
 </div>
@@ -444,25 +463,45 @@ Invite more Friends
  </table>
 <br>
 
-   <ul class="table-view">
         {{#if gifts}}
         {{#each gifts}}
-        <li class="table-view-cell media">
-<!--                <img class="media-object pull-left crop" src="{{fields.pic}}"> -->
-                            <div class="img-100px pull-left">
+               <table id="gift-{{this.pk}}" width="100%">
+                    <tr>
+                        <td class="padding pull-left" width="20%">
+                            <div class="img-100px">
                                <div style="background-image:url({{fields.pic}});" class="crop-size"> </div>
                             </div>
-                <div class="media-body">
-                    <a href="{{fields.url}}"> 
-                        {{fields.name}}
-                    </a>
-                    <p>Price: ${{ fields.price }}</p>
-                    <p>Crowdfunded: ${{ fields.crowdfunded }}</p>
+                        </td>
+                        <td class="padding" width="80%">
+                            <table width="100%">
+                            <tr> 
+                                <td>
+                                <p  class="table-heading pull-left">{{ fields.name }}</p>
+                                </td>
+                            </tr> 
+                            <tr> 
+                                <td class="pull-left" width="90%">   
+                                    <p>Price: ${{ fields.price }}</p>
+                                    <p>Crowdfunded: ${{ fields.crowdfunded }}</p>
+                                </td>
+                                <td>
                     <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
-                </div>
-        </li>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                    </tr>
+               </table>
+               <table>
+                    <tr>
+                        <td>
+                             <p>{{this.fields.description}}</p>
+                        </td>
+                    </tr>
+               </table>
+                <br>
+                <br>
         {{/each}}
-    </ul>
         {{else}}
 <br>
             <div class="text-center">
@@ -497,12 +536,12 @@ Ask to add a gift
 <br>
 <table width="100%">
 <tr>
-<td>
+<td class="padding">
     <div class="img-100px">
        <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
     </div>
 </td>
-<td>
+<td class="padding">
 <h2 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
@@ -511,6 +550,7 @@ Ask to add a gift
 <div class="text-center">
         <p>Target: US${{gift.price}}   
         <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
+        <p>{{gift.description}}</p>
 <br>
 </div>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">

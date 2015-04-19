@@ -14,6 +14,7 @@ var navigation_stack=new Array();
 var counter = 0;
 
 function facebook_login(){
+    $("#login-btn").attr("disabled", true);
     var checkFB = function(){
         if (typeof facebookConnectPlugin != 'undefined'){
             facebookConnectPlugin.login( ["email", "user_friends"],
@@ -30,13 +31,16 @@ function facebook_login(){
                             success: function() {
                             },
                             error: function() {
+                                $("#login-btn").attr("disabled", false);
                             }
                         });
                     },
                     function (response) { 
+                        $("#login-btn").attr("disabled", false);
                         window.location="#login/";
                     });
         } else {
+            $("#login-btn").attr("disabled", false);
             console.log('FB NOT READY');
             setTimeout(checkFB, 500);
         }
@@ -50,6 +54,10 @@ $(function() {
         name = $('#gift-name').val();
         price = $('#gift-price').val();
         url = $('#gift-url').val();
+        description = $('#gift-description').val();
+        if (description.length > 5000){
+            $('#error-description-error').show();
+        }
         owner_id = $('#gift-owner-id').val();
         accessToken = window.localStorage.getItem("accessToken");
         userID = window.localStorage.getItem("userID");
@@ -61,7 +69,7 @@ $(function() {
             url: backend_url + 'add_gift/',
             type: 'post',
             dataType: 'json',
-            data: {name: name, url: url, price: price, owner_id: owner_id, accessToken: accessToken, userID: userID, userName: userName},
+            data: {name: name, url: url, price: price, owner_id: owner_id, accessToken: accessToken, userID: userID, userName: userName, description: description},
             success: function(data) {
                 // data == false if the gift was not successfully added.
                 if (data == false ) {
