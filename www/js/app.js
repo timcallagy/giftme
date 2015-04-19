@@ -98,6 +98,8 @@
             setTimeout(init, 3000);
         }
         var getStatus = function () {
+            //next_page = navigation_stack.pop();
+            alert(navigation_stack);
             if (typeof facebookConnectPlugin != 'undefined'){
                 facebookConnectPlugin.getLoginStatus(
                         function (response) {
