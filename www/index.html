@@ -159,7 +159,6 @@ Add an item to your Wishlist
                 </a>
                 <br>
         {{/each}}
-<br>
         {{#each contributions_from}}
                 <a href="#contributions/{{gift}}/">
                <table width="100%">
@@ -311,7 +310,7 @@ Add item
   <input id="gift-url" name="url" type="text" placeholder="e.g. http://www.amazon.co.uk/Kingdom-Sportmax-Inline-Roller-Skates/dp/B00PZ1TWU8/ref=sr_1_4?ie=UTF8&qid=1426610093&sr=8-4&keywords=rollerblades">
 
     <button id="error-price" class="btn btn-outlined btn-negative" style="display:none;">Error! You must enter a number in the field below.</button>
-<p>Approximate Price (US$):</p>
+<p>Approximate Price including shipping (US$):</p>
   <input id="gift-price" name="price" type="text" placeholder="e.g. 50">
   <input id="gift-owner-id" name="owner_id" type="hidden" value={{ id }}>
 </form>
@@ -359,11 +358,11 @@ Add item
                 <div class="media-body">
                     <p><strong>{{ this.contributor_name }} contributed ${{ this.amount }}!</strong></p>
                     <p>{{ this.message }}</p>
-                    <p>{{ this.gift_name }}</p>
                 </div>
         </li>
         {{/each}}
     </ul>
+<br>
 </div>
 {{> bottom-menu }}
 
@@ -397,10 +396,10 @@ Invite more Friends
         </li>
         {{/each}}
     </ul>
+<br>
+<br>
+<br>
 </div>
-<br>
-<br>
-<br>
 {{> bottom-menu }}
 
 </script>
@@ -445,7 +444,7 @@ Invite more Friends
         {{#each gifts}}
         <li class="table-view-cell media">
 <!--                <img class="media-object pull-left crop" src="{{fields.pic}}"> -->
-                            <div class="img-50px pull-left">
+                            <div class="img-100px pull-left">
                                <div style="background-image:url({{fields.pic}});" class="crop-size"> </div>
                             </div>
                 <div class="media-body">
@@ -591,10 +590,10 @@ Ask to add a gift
 </td>
 </tr>
 <tr>
-<td width="75%">
+<td width="65%">
  <input id="card-number" name="card-number" type="text" placeholder="e.g. 1234567812345678">
 </td>
-<td width="25%">
+<td width="35%">
  <input id="card-cvc" name="card-cvc" type="text" placeholder="e.g. 123">
 </td>
 </tr>
