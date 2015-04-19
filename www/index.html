@@ -25,9 +25,9 @@
 <ul class="table-view">
 <br>
   <li class="table-view-cell media">
-      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ profile.id }}/picture?width=120&height=120"><br>
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ my_id }}/picture?width=120&height=120"><br>
       <div class="media-body">
-          Hey {{ profile.first_name }}!
+          Hey {{ my_name }}!
           <p>Welcome to GiftMe</p>
       </div>
   </li>
@@ -98,9 +98,8 @@ Invite more Friends
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span>
 </button></a>
                 <br>
-   <ul class="table-view">
         {{#each gifts}}
-                <a href="#friend-wishlist/{{ userID }}/">
+                <a href="#give-gift/{{ owner_id }}/{{gift}}/">
                <table width="100%">
                     <tr>
                         <td class="padding pull-left">
@@ -127,13 +126,7 @@ Invite more Friends
                </table>
                 </a>
                 <br>
-        <li class="table-view-cell media">
-                <div class="media-body">
-                        <p>Crowdfunded: ${{ crowdfunded }}</p>
-                </div>
-        </li>
         {{/each}}
-    </ul>
 <a href="#addGift/"><button class="btn btn-cyan btn-block ">
 Add an item to your Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-heart-white"></span>
@@ -153,7 +146,7 @@ Add an item to your Wishlist
                                 <span class="icon icon-coin-dollar"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Got US${{ amount }} for '{{gift_name}}'</p>
+                                <p> Got US${{ amount }} for {{gift_name}}</p>
                                 </td>   
                             </tr>
                             </table>
