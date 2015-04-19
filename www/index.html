@@ -24,7 +24,11 @@
 <div class="content content-padded">
 
 <div class="text-center">
-<ul class="table-view">
+<br>
+<p class="table-heading">Welcome to GiftMe!</p>
+<a href=""><p>How it works</p></a>
+
+<!--<ul class="table-view">
 <br>
   <li class="table-view-cell media">
       <img class="media-object emp-pic" src="http://graph.facebook.com/{{ my_id }}/picture?width=120&height=120"><br>
@@ -34,6 +38,7 @@
       </div>
   </li>
 </ul>
+-->
 <br>
 <a href="#wishlist/"><button class="btn btn-purple btn-block ">
 My Wishlist
@@ -115,11 +120,11 @@ Invite more Friends
                                 <p  class="table-heading pull-right">{{ owner_name }}</p>
                             </tr>
                             <tr> 
-                                <td class="padding pull-right" width="10%">   
-                                <span class="icon icon-heart"></span>
-                                </td>   
                                 <td class="padding pull-right" width="90%">   
                                 <p> Added {{ name }} to their wishlist!</p>
+                                </td>   
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-heart"></span>
                                 </td>   
                             </tr>
                             </table>
@@ -248,11 +253,9 @@ Login with Facebook
 <br>
 <h2 class="text-center">My Wishlist</h2>
 <br>
-<br>
 <a href="#addGift/"><button class="btn btn-cyan btn-block ">
 Add item
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-plus"></span></button></a>
-<br>
 <br>
         {{#if this }}
         {{#each this}}
@@ -275,6 +278,8 @@ Add item
                                     <p>Price: ${{ this.fields.price }}</p>
                                     <p>Crowdfunded: ${{ this.fields.crowdfunded }}</p>
                                 </td>
+                            </tr>
+                            <tr>
                                 <td>
                                     {{#check_if_zero this.fields.crowdfunded}}
                                         <form id="delete-gift{{this.pk}}-form" action="#" method="post" accept-charset="utf-8" enctype="multipart/form-data">
@@ -371,17 +376,17 @@ Add item
 <table width="100%">
 <tr>
 <td>
-    <div class="img-100px">
+    <div class="img-100px padding">
        <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
     </div>
 </td>
 <td>
-<h2 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+<h3 class="pull-left padding" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
 </table>
-<div class="text-center">
+<div class="text-center padding">
         <p>Target: US${{gift.price}}   
         <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
 </div>
@@ -561,7 +566,7 @@ Ask to add a gift
     </div>
 </td>
 <td class="padding">
-<h2 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+<h3 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
@@ -638,7 +643,7 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+<h3 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 <div class="text-center">
 <br>
         <p class="table-heading">US${{amount}} for '{{ gift.name }}'</p>
@@ -727,7 +732,7 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h2>
+<h3 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h3>
 <br>
 <div class="text-center">
 <!--       <img class="crop" src="{{contribution.gift_pic}}">-->
