@@ -102,23 +102,25 @@ Invite more Friends
                 <a href="#give-gift/{{ owner_id }}/{{ id }}/">
                <table width="100%">
                     <tr>
+                        <td class="padding pull-left">
+                            <div class="img-100px">
+                               <div style="background-image:url({{pic}});" class="crop-size"> </div>
+                            </div>
+                        </td>
                         <td class="padding">
                             <table width="100%">
                             <tr>
-                                <p  class="table-heading">{{ owner_name }}</p>
+                                <p  class="table-heading pull-right">{{ owner_name }}</p>
                             </tr>
                             <tr> 
+                                <td class="padding pull-right" width="90%">   
+                                <p> Added '{{ name }}' to their wishlist!</p>
+                                </td>   
                                 <td class="padding" width="10%">   
                                 <span class="icon icon-heart"></span>
                                 </td>   
-                                <td class="padding pull-left" width="90%">   
-                                <p> Added '{{ name }}' to their wishlist!</p>
-                                </td>   
                             </tr>
                             </table>
-                        </td>
-                        <td class="padding pull-right">
-                           <img src="http://graph.facebook.com/{{ owner_id }}/picture?width=70&height=70">
                         </td>
                     </tr>
                </table>
@@ -155,6 +157,7 @@ Add an item to your Wishlist
                     </tr>
                </table>
                 </a>
+                <br>
         {{/each}}
 <br>
         {{#each contributions_from}}
@@ -252,7 +255,10 @@ Add item
    <ul class="table-view">
         {{#each this}}
         <li id="gift-{{this.pk}}" class="table-view-cell media">
-                <img class="media-object pull-left crop" src="{{this.fields.pic}}">
+<!--                <img class="media-object pull-left crop" src="{{this.fields.pic}}">-->
+                            <div class="img-100px">
+                               <div style="background-image:url({{this.fields.pic}});" class="crop-size"> </div>
+                            </div>
                 <div class="media-body">
                     <a href="{{this.fields.url}}"> 
                         {{this.fields.name}}
@@ -334,7 +340,10 @@ Add item
 <h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
 <br>
 <div class="text-center">
-       <img class="crop" src="{{gift.pic}}">
+<!--       <img class="crop" src="{{gift.pic}}">-->
+                            <div class="img-100px">
+                               <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
+                            </div>
 <br>
 <br>
         <p class="table-heading">{{ gift.name }}</p>
@@ -435,7 +444,10 @@ Invite more Friends
         {{#if gifts}}
         {{#each gifts}}
         <li class="table-view-cell media">
-                <img class="media-object pull-left crop" src="{{fields.pic}}">
+<!--                <img class="media-object pull-left crop" src="{{fields.pic}}"> -->
+                            <div class="img-100px">
+                               <div style="background-image:url({{fields.pic}});" class="crop-size"> </div>
+                            </div>
                 <div class="media-body">
                     <a href="{{fields.url}}"> 
                         {{fields.name}}
@@ -482,7 +494,10 @@ Ask to add a gift
 <h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
 <br>
 <div class="text-center">
-       <img class="crop" src="{{gift.pic}}">
+<!--       <img class="crop" src="{{gift.pic}}"> -->
+                            <div class="img-100px">
+                               <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
+                            </div>
 <br>
 <br>
         <p class="table-heading">{{ gift.name }}</p>
@@ -645,7 +660,10 @@ Ask to add a gift
 <h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h2>
 <br>
 <div class="text-center">
-       <img class="crop" src="{{contribution.gift_pic}}">
+<!--       <img class="crop" src="{{contribution.gift_pic}}">-->
+                            <div class="img-100px">
+                               <div style="background-image:url({{contribution.gift_pic}});" class="crop-size"> </div>
+                            </div>
 <br>
 <br>
         <p class="table-heading">{{ contribution.gift_name }}</p>
