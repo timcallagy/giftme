@@ -98,10 +98,6 @@
             setTimeout(init, 3000);
         }
         var getStatus = function () {
-                                    homeView = new HomeView();
-                                    homeView.render();
-                                    slider.slidePage(homeView.$el);
-/*
             if (typeof facebookConnectPlugin != 'undefined'){
                 facebookConnectPlugin.getLoginStatus(
                         function (response) {
@@ -195,7 +191,6 @@
                 console.log('facebookConnectPlugin not ready');
                 setTimeout(getStatus, 500);
             }
-       */
         }
         getStatus();
     });
