@@ -99,6 +99,9 @@ Invite more Friends
 </button></a>
                 <br>
         {{#each gifts}}
+                            <div class="img-100px">
+                               <div style="background-image:url({{pic}});" class="crop-size"> </div>
+                            </div>
                 <a href="#give-gift/{{ owner_id }}/{{ id }}/">
                <table width="100%">
                     <tr>
@@ -344,8 +347,8 @@ Add item
     </div>
 </td>
 <td>
-<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
-    <p class="table-heading text-center">&nbsp;{{ gift.name }}</p>
+<h2 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+    <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
 </table>
@@ -503,8 +506,8 @@ Ask to add a gift
     </div>
 </td>
 <td>
-<h2 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
-    <p class="table-heading text-center">&nbsp;{{ gift.name }}</p>
+<h2 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h2>
+    <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
 </table>
