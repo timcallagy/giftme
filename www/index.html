@@ -23,7 +23,7 @@
 </header>
 <div class="content content-padded">
 <br>
-<a href="#wishlist/"><button class="btn btn-purple btn-block ">
+<a href="#wishlist/"><button class="btn btn-primary btn-block ">
 Make a Wish
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
 </button></a>
@@ -127,7 +127,7 @@ Make a Wish
                 </a>
                 <br>
         {{/each}}
-<a href="#friendsPopover"><button class="btn btn-cyan btn-block ">
+<a href="#friendsPopover"><button class="btn btn-primary btn-block ">
 Invite more Friends 
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span>
 </button></a>
@@ -161,7 +161,7 @@ Invite more Friends
                 </a>
                 <br>
         {{/each}}
-<a href="#addGift/"><button class="btn btn-cyan btn-block ">
+<a href="#addGift/"><button class="btn btn-primary btn-block ">
 Add an item to your Wishlist
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-heart-white"></span>
 </button></a>
@@ -228,7 +228,6 @@ See more
 -->
 <br>
 <br>
-<br>
 </div>
 {{> bottom-menu }}
 
@@ -257,7 +256,7 @@ Login with Facebook
         <div style="background-image:url(img/header.png);" class="crop-size"> </div>
     </div>
 </header>
-<h2>&nbsp;&nbsp;Error&nbsp;&nbsp;</h2>
+<h2 class="maroon">&nbsp;&nbsp;Error&nbsp;&nbsp;</h2>
 <div id="generic-error" >
 &nbsp;Oops! Something went wrong with the app!
 </div>
@@ -280,9 +279,9 @@ Login with Facebook
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">My Wishlist</h2>
+<h2 class="text-center maroon">My Wishlist</h2>
 <br>
-<a href="#addGift/"><button class="btn btn-cyan btn-block ">
+<a href="#addGift/"><button class="btn btn-primary btn-block ">
 Add item
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-plus"></span></button></a>
 <br>
@@ -356,7 +355,7 @@ Add item
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">Add an Item</h2>
+<h2 class="text-center maroon">Add an Item</h2>
 <br>
 <div id="add-gift-holder>
 <form id="add-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
@@ -380,7 +379,7 @@ Add item
 </form>
 </div>
 <br>
-<button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
+<button id="add-gift-btn" class="btn btn-primary btn-block">Add</button>
 <br>
 <br>
 </div>
@@ -411,7 +410,7 @@ Add item
 <table width="100%">
 <tr>
 <td>
-<h3 class="pull-left padding" style="color:#929292;"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </td>
 </tr>
 <tr>
@@ -458,11 +457,11 @@ Add item
 <div class="content content-padded">
 <br>
 <div class="text-center">
-<h2>My Friends</h2>
+<h2 class="maroon">My Friends</h2>
 </div>
 <div class="text-center">
 <br>
-<a href="#friendsPopover"><button class="btn btn-cyan btn-block ">
+<a href="#friendsPopover"><button class="btn btn-primary btn-block ">
 Invite more Friends
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-user-plus-white"></span></button></a>
                 <br>
@@ -496,7 +495,7 @@ Invite more Friends
 
 <div class="content content-padded">
 <br>
-<h2 class="text-center">Wishlist</h2>
+<h2 class="text-center maroon">Wishlist</h2>
 <br>
  <table width="100%">
       <tr>
@@ -565,9 +564,8 @@ Invite more Friends
 <br>
             <div class="text-center">
                 <p>{{friend.name}} hasn't added any gifts yet.</p>
-                <p>Ask them to add some gifts!</p>
             </div>
-<a href="#friendsWishlistPopover"><button class="btn btn-cyan btn-block ">
+<a href="#friendsWishlistPopover"><button class="btn btn-primary btn-block ">
 Ask to add a gift
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-gift-white"></span></button></a>
 <br>
@@ -606,7 +604,7 @@ Ask to add a gift
 <table width="100%">
 <tr>
 <td>
-<h3 class="pull-left padding" style="color:#929292;"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </td>
 </tr>
 <tr>
@@ -799,7 +797,7 @@ Ask to add a gift
 <br>
 <p>Do you know someone else who would like to chip in?</p>
 <br>
-<a href="#chipInInvitePopover"><button class="btn btn-cyan btn-block ">Invite</button></a>
+<a href="#chipInInvitePopover"><button class="btn btn-primary btn-block ">Invite</button></a>
 <br>
 <br>
 <br>
@@ -830,7 +828,7 @@ Ask to add a gift
 <div class="content content-padded">
 <br>
 <div class="text-center">
-<h2>Settings</h2>
+<h2 class="maroon">Settings</h2>
 </div>
 <div id="settings-error-msg" style="display:none;">
     <button class="btn btn-outlined btn-negative">Error - Something went wrong at GiftMe</button>
@@ -891,7 +889,7 @@ Birthday:
 <div class="content content-padded">
 <br>
 <div class="text-center">
-<h2>How it works</h2>
+<h2 class="maroon">How it works</h2>
 </div>
 <p>When you want to get something nice for a friend, just pick an item from their GiftMe wishlist and start a crowdfunding campaign.</p>
 
