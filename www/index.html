@@ -256,13 +256,17 @@ Login with Facebook
         <div style="background-image:url(img/header.png);" class="crop-size"> </div>
     </div>
 </header>
+<div class="content content-padded">
+<br>
 <h2 class="maroon">&nbsp;&nbsp;Error&nbsp;&nbsp;</h2>
-<div id="generic-error" >
+<p><div id="generic-error" >
 &nbsp;Oops! Something went wrong with the app!
-</div>
-<div id="custom-error" >
-</div>
+</div></p>
+<br>
+<p><div id="custom-error" >
+</div></p>
 <div id="error-url" >
+</div>
 </div>
 </script>
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
@@ -303,8 +307,8 @@ Add item
                             </tr> 
                             <tr> 
                                 <td class="pull-left" width="90%">   
-                                    <p>Price: ${{ this.fields.price }}</p>
-                                    <p>Crowdfunded: ${{ this.fields.crowdfunded }}</p>
+                                    <p>Price: ${{ this.fields.price }}<br>
+                                    Crowdfunded: ${{ this.fields.crowdfunded }}</p>
                                 </td>
                             </tr>
                             <tr>
@@ -534,13 +538,13 @@ Invite more Friends
                             <table width="100%">
                             <tr> 
                                 <td>
-                                <p  class="table-heading pull-left">{{ fields.name }}</p>
+                                <p class="table-heading pull-left">{{ fields.name }}</p>
                                 </td>
                             </tr> 
                             <tr> 
                                 <td class="pull-left" width="90%">   
-                                    <p>Price: ${{ fields.price }}</p>
-                                    <p>Crowdfunded: ${{ fields.crowdfunded }}</p>
+                                    <p>Price: ${{ fields.price }}<br>
+                                    Crowdfunded: ${{ fields.crowdfunded }}</p>
                                 </td>
                                 <td>
                     <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
@@ -665,7 +669,6 @@ Ask to add a gift
 <input id="friend-id" type="hidden" value="{{ friend_id }}">
 <input id="friend-name" type="hidden" value="{{ gift.owner_name }}">
 </form>
-    <br>
 <button id="give-gift-btn" class="btn btn-primary btn-block">Give Gift</button>
 <br>
 <br>
@@ -777,17 +780,30 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h3 class="text-center"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h3>
-<br>
-<div class="text-center">
-<!--       <img class="crop" src="{{contribution.gift_pic}}">-->
-                            <div class="img-100px">
-                               <div style="background-image:url({{contribution.gift_pic}});" class="crop-size"> </div>
-                            </div>
-<br>
-<br>
-        <p class="table-heading">{{ contribution.gift_name }}</p>
-</div>
+<table width="100%">
+<tr>
+<td class="padding">
+    <div class="img-100px">
+       <div style="background-image:url({{contribution.gift_pic}});" class="crop-size"> </div>
+    </div>
+</td>
+<td>
+<table width="100%">
+<tr>
+<td>
+<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h3>
+</td>
+</tr>
+<tr>
+<td>
+    <p class="table-heading pull-left">&nbsp;{{ contribution.gift_name }}</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
 <br>
 <button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
 
