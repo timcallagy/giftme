@@ -14,6 +14,7 @@
     PaymentConfirmationView.prototype.template = Handlebars.compile($("#payment-confirmation-tpl").html());
     ErrorView.prototype.template = Handlebars.compile($("#error-tpl").html());
     SettingsView.prototype.template = Handlebars.compile($("#settings-tpl").html());
+    InstructionsView.prototype.template = Handlebars.compile($("#instructions-tpl").html());
     Handlebars.registerPartial("bottom-menu", $("#bottom-menu").html());
 
     var slider = new PageSlider($('body'));
@@ -83,6 +84,11 @@
             settingsView = new SettingsView();
             settingsView.render();
             slider.slidePage(settingsView.$el);
+        });
+        router.addRoute('instructions/', function() {
+            instructionsView = new InstructionsView();
+            instructionsView.render();
+            slider.slidePage(instructionsView.$el);
         });
 
         router.start();

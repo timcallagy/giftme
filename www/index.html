@@ -23,12 +23,38 @@
 </header>
 <div class="content content-padded">
 
-<div class="text-center">
 <br>
+                <a href="#instructions/">
+               <table width="100%">
+                    <tr>
+                        <td class="padding pull-left">
+      <img class="media-object emp-pic" src="http://graph.facebook.com/{{ my_id }}/picture?width=70&height=70"><br>
+                        </td>
+                        <td class="padding">
+                            <table width="100%">
+                            <tr>
+                                <p class="table-heading text-center">Welcome to GiftMe!</p>
+                            </tr>
+                            <tr> 
+                                <td class="padding text-center" width="90%">   
+                                <p> Click here to see how it works</p>
+                                </td>   
+                                <td class="padding" width="10%">   
+                                <span class="icon icon-info2"></span>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+                    </tr>
+               </table>
+                </a>
+
+<!--
+<div class="text-center">
 <p class="table-heading">Welcome to GiftMe!</p>
 <a href=""><p>How it works</p></a>
 
-<!--<ul class="table-view">
+<ul class="table-view">
 <br>
   <li class="table-view-cell media">
       <img class="media-object emp-pic" src="http://graph.facebook.com/{{ my_id }}/picture?width=120&height=120"><br>
@@ -38,14 +64,15 @@
       </div>
   </li>
 </ul>
+<br>
+</div>
 -->
 <br>
 <a href="#wishlist/"><button class="btn btn-purple btn-block ">
-My Wishlist
+Make a Wish
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-star-filled"></span>
 </button></a>
 <br>
-</div>
         {{#each birthdays}}
                 <a href="#friend-wishlist/{{ userID }}/">
                <table width="100%">
@@ -351,9 +378,7 @@ Add item
 </form>
 </div>
 <br>
-<br>
 <button id="add-gift-btn" class="btn btn-positive btn-block">Add</button>
-<br>
 <br>
 <br>
 </div>
@@ -381,7 +406,7 @@ Add item
     </div>
 </td>
 <td>
-<h3 class="pull-left padding" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="pull-left padding"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
@@ -566,7 +591,7 @@ Ask to add a gift
     </div>
 </td>
 <td class="padding">
-<h3 class="pull-left" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="pull-left table-heading"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
     <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
 </td>
 </tr>
@@ -643,7 +668,7 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h3 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="text-center"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 <div class="text-center">
 <br>
         <p class="table-heading">US${{amount}} for '{{ gift.name }}'</p>
@@ -732,7 +757,7 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<h3 class="text-center" style="color:#929292"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h3>
+<h3 class="text-center"><span class="icon icon-gift"></span>&nbsp;{{contribution.contributed_to_name}}</h3>
 <br>
 <div class="text-center">
 <!--       <img class="crop" src="{{contribution.gift_pic}}">-->
@@ -834,6 +859,39 @@ Birthday:
 <!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
 
 
+<!-- %%%%%%%%%%%%   HOW IT WORKS   %%%%%%%%%%%%%%%%% -->
+<script id="instructions-tpl" type="text/template">
+<header class="bar bar-nav">
+    <div class="img-header">
+        <div style="background-image:url(img/header.png);" class="crop-size"> </div>
+    </div>
+</header>
+<div class="content content-padded">
+<br>
+<div class="text-center">
+<h2>How it works</h2>
+</div>
+<p>When you want to get something nice for a friend, just pick an item from their GiftMe wishlist and start a crowdfunding campaign.</p>
+
+<p>If they don’t have a wish list, ask them to create one!</p> 
+
+<h3 class="table-heading">Crowdfunding for a friend</h3>
+<p>First, view your friend's wishlist by clicking on 'Friends' in the menu bar below and selecting your friend. If your friend is not on the 'Friends' screen, invite them to use GiftMe by clicking on the 'Invite' button in the menu bar below. If your friend doesn't have any items on their wishlist, you can ask them to add items by clicking on the 'Ask to add a gift' button on their wishlist screen.</p>
+<p>Choose a gift that you would like to buy for them, click on the 'Chip In' button, then follow the instructions. Your friend will get a notification about your gift, so don't forget to leave them a nice message!</p>
+<p>Anyone who knows your friend can chip in to buy that nice present. GiftMe takes care of collecting the money, purchasing the gift, and sending it to your friend. If the crowd doesn't manage to reach the target, your friend can contribute his or her own funds towards the item, or transfer the funds to other items in their wishlist.</p>
+<h3 class="table-heading">Crowdfunding for yourself</h3>
+<p>If you chip in for a gift for a friend, they might decide to buy you something nice too! We'll send them a reminder when you have an upcoming birthday.</p>
+<p>But before they can chip in, you have to create a wishlist. On the 'Home' screen, click on the 'Make a wish' button to go to your wishlist. Then click on the 'Add item' button and fill in the form. You must enter a link to the online shop where your gift is sold, so that we can buy the gift for you when you reach your target. Also, don't forget to include the price of shipping. Don't worry if you don't get this exactly right - we will contact you when buying the gift.
+<br>
+<br>
+<br>
+</div>
+{{> bottom-menu }}
+
+</script>
+<!-- %%%%%%%%%%%%%%%%%%%%%%%%%%%%% -->
+
+
 <!-- %%%%%%%%%%%%   PARTIALS   %%%%%%%%%%%%%%%%% -->
 
 <script id="bottom-menu" type="text/x-handlebars-template">
@@ -908,6 +966,7 @@ Birthday:
 <script src="js/PayPageView.js"></script>
 <script src="js/PaymentConfirmationView.js"></script>
 <script src="js/SettingsView.js"></script>
+<script src="js/InstructionsView.js"></script>
 <script src="js/fastclick.js"></script>
 <script src="https://js.stripe.com/v2/"></script>
 <script src="js/giftme.js"></script>
