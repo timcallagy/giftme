@@ -599,35 +599,55 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
-<table width="100%">
-<tr>
-<td class="padding">
-    <div class="img-100px">
-       <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
-    </div>
-</td>
-<td>
-<table width="100%">
-<tr>
-<td>
-<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
-</td>
-</tr>
-<tr>
-<td>
-    <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
-</td>
-</tr>
-</table>
-</td>
-</tr>
-</table>
 <div class="text-center">
-        <p>Target: US${{gift.price}}   
-        <p>Crowdfunded so far: US${{gift.crowdfunded}}</p>
-        <p>{{gift.description}}</p>
-<br>
+<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </div>
+<table width="100%">
+    <tr>
+        <td class="padding pull-left" width="20%">
+            <div class="img-100px">
+           <div style="background-image:url({{gift.pic}});" class="crop-size"> </div>
+            </div>
+        </td>
+                        <td class="padding" width="80%">
+                            <table width="100%">
+                            <tr> 
+                                <td>
+                                <p class="table-heading pull-left">{{ gift.name }}</p>
+                                </td>
+                            </tr> 
+                            <tr> 
+                                <td class="pull-left" width="90%">   
+                                    <p>Price: ${{ gift.price }}<br>
+                                    Crowdfunded: ${{ gift.crowdfunded }}</p>
+                                </td>
+                                <td>
+                    <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
+                                </td>   
+                            </tr>
+                            </table>
+                        </td>
+<!--
+        <td>
+            <table width="100%">
+                <tr>
+                    <td>
+                        <h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
+                    </td>
+                </tr>
+            </table>
+        </td>
+-->
+    </tr>
+    <tr>
+        <p>{{gift.description}}</p>
+    </tr>
+</table>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
