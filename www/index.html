@@ -291,7 +291,8 @@ Add item
 <br>
         {{#if this }}
         {{#each this}}
-               <table id="gift-{{this.pk}}" width="100%">
+                <div id="gift-{{this.pk}}">
+               <table width="100%">
                     <tr>
                         <td class="padding pull-left" width="10%">
                             <div class="img-100px">
@@ -335,6 +336,7 @@ Add item
                </table>
                 <br>
                 <br>
+        </div>
         {{/each}}
         {{else}}
             <p>Your wishlist is empty.</p>
