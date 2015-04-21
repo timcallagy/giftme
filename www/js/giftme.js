@@ -254,6 +254,7 @@ $(document).on('backbutton', function(e){
     if (dest === "start") {
         var retVal = confirm("Exit GiftMe?");
         if (retVal === true){
+            window.location = "#home/";
             navigator.app.exitApp();
         } else {
             navigation_stack.push('start');
@@ -281,14 +282,8 @@ function logout() {
             facebookConnectPlugin.logout(
                     function (response) {
                         console.log("logged out - success");
-                    //    navigator.app.exitApp();
-                        if(navigator.app){
-                        console.log("logged out - navigator.app");
-                                    navigator.app.exitApp();
-                        }else if(navigator.device){
-                        console.log("logged out - navigator.device");
-                                    navigator.device.exitApp();
-                        }
+                        window.location = "#login/";
+                        navigator.app.exitApp();
                     },
                     function (response) { 
                         console.log("logged out - failure");
