@@ -281,6 +281,8 @@ function logout() {
             facebookConnectPlugin.logout(
                     function (response) {
                         console.log("logged out - success");
+                        navigator.app.exitApp();
+
                     },
                     function (response) { 
                         console.log("logged out - failure");
