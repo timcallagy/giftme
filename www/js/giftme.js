@@ -281,8 +281,14 @@ function logout() {
             facebookConnectPlugin.logout(
                     function (response) {
                         console.log("logged out - success");
-                        navigator.app.exitApp();
-
+                    //    navigator.app.exitApp();
+                        if(navigator.app){
+                        console.log("logged out - navigator.app");
+                                    navigator.app.exitApp();
+                        }else if(navigator.device){
+                        console.log("logged out - navigator.device");
+                                    navigator.device.exitApp();
+                        }
                     },
                     function (response) { 
                         console.log("logged out - failure");
