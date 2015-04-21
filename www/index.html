@@ -600,7 +600,7 @@ Ask to add a gift
 <div class="content content-padded">
 <br>
 <div class="text-center">
-<h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </div>
 <table width="100%">
     <tr>
@@ -627,27 +627,9 @@ Ask to add a gift
                             </tr>
                             </table>
                         </td>
-<!--
-        <td>
-            <table width="100%">
-                <tr>
-                    <td>
-                        <h3 class="pull-left padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <p class="table-heading pull-left">&nbsp;{{ gift.name }}</p>
-                    </td>
-                </tr>
-            </table>
-        </td>
--->
-    </tr>
-    <tr>
-        <p>{{gift.description}}</p>
     </tr>
 </table>
+        <p>{{gift.description}}</p>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
