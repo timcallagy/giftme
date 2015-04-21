@@ -399,8 +399,8 @@ p {
 }
 .btn-primary:active, .btn-primary.active {
     color: #fff;
-    background-color: #3071a9;
-    border: 1px solid #3071a9;
+    background-color: #00606A;
+    border: 1px solid #00606A;
 }
 
 .btn-positive {
