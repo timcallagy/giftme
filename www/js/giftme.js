@@ -274,3 +274,19 @@ $('body').on('click', function (e) {
         }
     });
 });
+
+
+function logout() {
+        if (typeof facebookConnectPlugin != 'undefined'){
+            facebookConnectPlugin.logout(
+                    function (response) {
+                        console.log("logged out - success");
+                    },
+                    function (response) { 
+                        console.log("logged out - failure");
+                    });
+        } else {
+            console.log('FB NOT READY');
+        }
+    
+}
