@@ -394,8 +394,8 @@ p {
 
 .btn-primary {
     color: #fff;
-    background-color: #428bca;
-    border: 1px solid #428bca;
+    background-color: #00A0B0;
+    border: 1px solid #00A0B0;
 }
 .btn-primary:active, .btn-primary.active {
     color: #fff;
