@@ -268,6 +268,14 @@ $(document).on('backbutton', function(e){
 $('body').on('click', function (e) {
     $('#menu-invite').each(function () {
         if ($('#friendsPopover').is(":visible")){
+            if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email" || e.target.id == "send-FBTimeline" || e.target.id == "send-FBMessage"){
+            } else {
+                e.preventDefault();
+            }
+        }
+    });
+    $('#friendsWishlist-invite').each(function () {
+        if ($('#friendsWishlistPopover').is(":visible")){
             if (e.target.id == "send-sms" || e.target.id == "send-whatsapp" || e.target.id == "send-email"){
             } else {
                 e.preventDefault();
@@ -320,9 +328,11 @@ function facebook_message_share() {
                     },
                     function (response) {
                         console.log("Share - success");
+                        console.log(response);
                     },
                     function (response) { 
                         console.log("Share - failure");
+                        console.log(response);
                     });
         } else {
             console.log('FB NOT READY');
