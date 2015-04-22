@@ -294,23 +294,37 @@ function logout() {
     
 }
 
-function facebook_share() {
+function facebook_timeline_share() {
         if (typeof facebookConnectPlugin != 'undefined'){
             facebookConnectPlugin.showDialog(
                     {
                         method: 'share',
-                        href: 'https://developers.facebook.com/docs/',
+                        href: 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me',
                     },
                     function (response) {
                         console.log("Share - success");
-                        alert("Share - success");
                     },
                     function (response) { 
                         console.log("Share - failure");
-                        alert("Share - failure");
                     });
         } else {
             console.log('FB NOT READY');
         }
-    
+}
+function facebook_message_share() {
+        if (typeof facebookConnectPlugin != 'undefined'){
+            facebookConnectPlugin.showDialog(
+                    {
+                        method: 'send',
+                        href: 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me',
+                    },
+                    function (response) {
+                        console.log("Share - success");
+                    },
+                    function (response) { 
+                        console.log("Share - failure");
+                    });
+        } else {
+            console.log('FB NOT READY');
+        }
 }
