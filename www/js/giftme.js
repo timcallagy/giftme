@@ -197,6 +197,14 @@ function send_whatsapp(message) {
                 alert(errormsg)
             });
 }
+function send_facebook(message) {
+    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('message', null /* img */, null /* url */, 'Paste it dude!', function() {
+            console.log('share ok')
+            }, 
+            function(errormsg){
+                alert(errormsg)
+            });
+}
 
 $(function() {
     return $("body").on("click", "#settings-btn", function() {
