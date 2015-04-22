@@ -198,7 +198,7 @@ function send_whatsapp(message) {
             });
 }
 function send_facebook(message) {
-    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint('message', null /* img */, null /* url */, 'Paste it dude!', function() {
+    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me', 'Use Paste to add the default GiftMe message', function() {
             console.log('share ok')
             }, 
             function(errormsg){
