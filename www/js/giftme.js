@@ -293,3 +293,24 @@ function logout() {
         }
     
 }
+
+function facebook_share() {
+        if (typeof facebookConnectPlugin != 'undefined'){
+            facebookConnectPlugin.showDialog(
+                    {
+                        method: 'share',
+                        href: 'https://developers.facebook.com/docs/',
+                    },
+                    function (response) {
+                        console.log("Share - success");
+                        alert("Share - success");
+                    },
+                    function (response) { 
+                        console.log("Share - failure");
+                        alert("Share - failure");
+                    });
+        } else {
+            console.log('FB NOT READY');
+        }
+    
+}
