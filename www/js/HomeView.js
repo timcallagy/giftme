@@ -28,7 +28,7 @@ var HomeView = function (service) {
                 data: {'accessToken': accessToken, 'userID': userID},
                 success: function(data) {
                     my_name = window.localStorage.getItem("my_name");
-                    render_with_data(data, my_name);
+                    render_with_data(data, my_name, userID);
                     /*
                        data = JSON.parse(data);
                        contributions_to = JSON.parse(data.contributions_to);
@@ -53,14 +53,14 @@ var HomeView = function (service) {
                         function(response) {
 
                             $.ajax({
-                                url: backend_url + "get_notifications/" + userID + "/",
+                                url: backend_url + "get_notifications/" + response.id + "/",
                             type: 'post',
-                            data: {'accessToken': accessToken, 'userID': userID},
+                            data: {'accessToken': accessToken, 'userID': response.id},
                             success: function(data) {
                                 my_name = response.first_name + " " + response.last_name;
-                                render_with_data(data, my_name);
                                 window.localStorage.setItem("id", response.id);
                                 window.localStorage.setItem("my_name", my_name);
+                                render_with_data(data, my_name, response.id);
                                 /*
                                    data = JSON.parse(data);
                                    contributions_to = JSON.parse(data.contributions_to);
@@ -76,6 +76,7 @@ var HomeView = function (service) {
                             },
                             error: function() {
                                 console.log('Error');
+                                console.log(response);
                             }
                             });
                         },
@@ -89,16 +90,15 @@ var HomeView = function (service) {
             }
         }
 
-        function render_with_data(data, my_name) {
+        function render_with_data(data, my_name, my_id) {
             data = JSON.parse(data);
             contributions_to = JSON.parse(data.contributions_to);
             contributions_from = JSON.parse(data.contributions_from);
             gifts = JSON.parse(data.gifts);
             birthdays = JSON.parse(data.birthdays);
             recent_friends = JSON.parse(data.recent_friends);
-            self.$el.html(self.template({'my_name': my_name, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts, 'birthdays': birthdays, 'my_id': userID}));
+            self.$el.html(self.template({'my_name': my_name, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts, 'birthdays': birthdays, 'my_id': my_id}));
             return self;
-
         }
     };
 
