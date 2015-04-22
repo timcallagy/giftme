@@ -316,7 +316,7 @@ function facebook_message_share() {
             facebookConnectPlugin.showDialog(
                     {
                         method: 'send',
-                        href: 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me',
+                        link: 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me',
                     },
                     function (response) {
                         console.log("Share - success");
