@@ -35,7 +35,6 @@ var ppApp= {
         //  <button id="buyInFutureBtn"> Pay in Future !</button>
         //  <button id="profileSharingBtn"> ProfileSharing !</button>
 
-        /*
         var buyNowBtn = document.getElementById("paypal-btn");
 
         buyNowBtn.onclick = function(e) {
@@ -43,11 +42,6 @@ var ppApp= {
             // single payment
             PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
         };
-        */
-        $('#paypal-btn').on('click', function(){
-            $(this).data('clicked', true);
-        });
-
     },
     onPayPalMobileInit : function() {
             console.log('GIFTME - Preparing to Render');
@@ -59,7 +53,3 @@ var ppApp= {
         console.log(result);
     }
 };
-if ($('#paypal-btn').data('clicked')) {
-    console.log('triggered');
-    PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
-}
