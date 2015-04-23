@@ -30,7 +30,10 @@
         <param name="APP_ID" value="1554065974846279" />
         <param name="APP_NAME" value="GiftMe - Test1" />
     </gap:plugin>  -->
+    
     <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
+
+    <gap:plugin name="com.paypal.cordova.mobilesdk" source="plugins.cordova.io" />
 
     <!--<icon src="ic_launcher.png" />-->
     <icon src="ic_launcher_GiftMe_icon.png" />
