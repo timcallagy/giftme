@@ -34,9 +34,6 @@
     <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
 
     <gap:plugin name="com.paypal.cordova.mobilesdk" source="plugins.cordova.io" />
-    <feature name="PayPalMobile"> 
-                  <param name="android-package" value="com.paypal.android.sdk.phonegap.PayPalMobilePGPlugin" />
-    </feature>
 
     <!--<icon src="ic_launcher.png" />-->
     <icon src="ic_launcher_GiftMe_icon.png" />
