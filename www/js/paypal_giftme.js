@@ -1,4 +1,4 @@
-var ppapp= {
+var ppApp= {
 
     initPaymentUI : function () {
         console.log('GIFTME - paypal init');
@@ -6,7 +6,7 @@ var ppapp= {
             "PayPalEnvironmentProduction": "YOUR_PRODUCTION_CLIENT_ID",
             "PayPalEnvironmentSandbox": "AU7A9JUVu3utWFPTs4UdAKc9a7c5YOGRwDah8TE-fIeZAZym5IgxmOoV1cy7t59bwrP05j2H4pgayRoX"
         };
-        PayPalMobile.init(clientIDs, app.onPayPalMobileInit);
+        PayPalMobile.init(clientIDs, ppApp.onPayPalMobileInit);
     },
 
     onSuccesfulPayment : function(payment) {
@@ -39,14 +39,14 @@ var ppapp= {
         buyNowBtn.onclick = function(e) {
             console.log('GIFTME - buy now clicked');
             // single payment
-            PayPalMobile.renderSinglePaymentUI(ppapp.createPayment(), ppapp.onSuccesfulPayment, ppapp.onUserCanceled);
+            PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
         };
     },
     onPayPalMobileInit : function() {
             console.log('GIFTME - Preparing to Render');
         // must be called
         // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
-        PayPalMobile.prepareToRender("PayPalEnvironmentSandbox", app.configuration(), app.onPrepareRender);
+        PayPalMobile.prepareToRender("PayPalEnvironmentSandbox", ppApp.configuration(), ppApp.onPrepareRender);
     },
     onUserCanceled : function(result) {
         console.log(result);
