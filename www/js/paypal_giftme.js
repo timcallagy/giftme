@@ -52,5 +52,3 @@ var ppapp= {
         console.log(result);
     }
 };
-
-ppapp.initPaymentUI();

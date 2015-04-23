@@ -204,6 +204,7 @@
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
         // These lines fix the iOS7 status bar problem
+        ppapp.initPaymentUI();
         StatusBar.overlaysWebView( false );
         StatusBar.backgroundColorByHexString('#ffffff');
         StatusBar.styleDefault();       

@@ -19,23 +19,16 @@
     <access origin="sms:*" launch-external="yes"/>
     <!--<access origin="whatsapp:*" launch-external="yes" />-->
     <access origin="mailto:*" launch-external="yes" />
-    <!-- Live Facebook app -->
+    
     <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" >
         <param name="APP_ID" value="1533444716908405" />
         <param name="APP_NAME" value="GiftMe" />
     </gap:plugin> 
-    <!-- Test Facebook app -->
-    <!--
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.9.0" >
-        <param name="APP_ID" value="1554065974846279" />
-        <param name="APP_NAME" value="GiftMe - Test1" />
-    </gap:plugin>  -->
     
     <gap:plugin name="nl.x-services.plugins.socialsharing" source="plugins.cordova.io"/>
 
     <gap:plugin name="com.paypal.cordova.mobilesdk" source="plugins.cordova.io" />
 
-    <!--<icon src="ic_launcher.png" />-->
     <icon src="ic_launcher_GiftMe_icon.png" />
 
     <!--

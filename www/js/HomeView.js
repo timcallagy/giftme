@@ -29,17 +29,6 @@ var HomeView = function (service) {
                 success: function(data) {
                     my_name = window.localStorage.getItem("my_name");
                     render_with_data(data, my_name, userID);
-                    /*
-                       data = JSON.parse(data);
-                       contributions_to = JSON.parse(data.contributions_to);
-                       contributions_from = JSON.parse(data.contributions_from);
-                       gifts = JSON.parse(data.gifts);
-                       birthdays = JSON.parse(data.birthdays);
-                       recent_friends = JSON.parse(data.recent_friends);
-                       var my_name = window.localStorage.getItem("my_name");
-                       self.$el.html(self.template({'my_name': my_name, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts, 'birthdays': birthdays, 'my_id': userID}));
-                       return self;
-                       */
                 },
                 error: function() {
                     console.log('Error');
@@ -61,18 +50,6 @@ var HomeView = function (service) {
                                 window.localStorage.setItem("id", response.id);
                                 window.localStorage.setItem("my_name", my_name);
                                 render_with_data(data, my_name, response.id);
-                                /*
-                                   data = JSON.parse(data);
-                                   contributions_to = JSON.parse(data.contributions_to);
-                                   contributions_from = JSON.parse(data.contributions_from);
-                                   gifts = JSON.parse(data.gifts);
-                                   birthdays = JSON.parse(data.birthdays);
-                                   recent_friends = JSON.parse(data.recent_friends);
-                                   window.localStorage.setItem("id", response.id);
-                                   window.localStorage.setItem("my_name", response.first_name + " " + response.last_name);
-                                   self.$el.html(self.template({'profile': response, 'contributions_to': contributions_to, 'contributions_from': contributions_from, 'recent_friends': recent_friends, 'gifts': gifts, 'birthdays': birthdays}));
-                                   return self;
-                                   */
                             },
                             error: function() {
                                 console.log('Error');
