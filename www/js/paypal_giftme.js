@@ -11,6 +11,7 @@ var ppApp= {
 
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
+        alert('GIFTME - PayPal payment successful');
     },
     onAuthorizationCallback : function(authorization) {
         console.log("authorization: " + JSON.stringify(authorization, null, 4));
@@ -47,7 +48,7 @@ var ppApp= {
             console.log('GIFTME - Preparing to Render');
         // must be called
         // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
-        PayPalMobile.prepareToRender("PayPalEnvironmentSandbox", ppApp.configuration(), ppApp.onPrepareRender);
+        PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", ppApp.configuration(), ppApp.onPrepareRender);
     },
     onUserCanceled : function(result) {
         console.log(result);

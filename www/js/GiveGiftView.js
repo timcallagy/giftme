@@ -16,6 +16,9 @@ var GiveGiftView = function (id, pk) {
         buyNowBtn.onclick = function(e) {
             console.log('GIFTME - buy now clicked');
             // single payment
+            amount = $('#amount').val();
+            var paymentDetails = new PayPalPaymentDetails(amount, "0.00", "0.00");
+            var payment = new PayPalPayment(amount, "USD", "GiftMe gift", "Sale", paymentDetails);
             PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
         };
             return this;

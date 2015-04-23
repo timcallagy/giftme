@@ -632,7 +632,12 @@ Ask to add a gift
 <textarea id="gift-message" name="gift-message" rows="4" cols="50" placeholder="Add a Personal Message for {{gift.owner_name}} (optional)"></textarea>
     <br>
     <br>
+<table>
+<tr>
+<td width="30%">
 <p>Your gift: &nbsp;&nbsp;&nbsp;&nbsp;</p>
+</td>
+<td width="70%">
 <select id="amount" class="input-row" name="amount">
 <option value="5">US$ 5.00</option>
 <option value="10">US$ 10.00</option>
@@ -665,6 +670,9 @@ Ask to add a gift
 <option value="450">US$ 450.00</option>
 <option value="500">US$ 500.00</option>
 </select>
+</td>
+</tr>
+</table>
 <input id="gift-pk" name="gift-pk" type="hidden" value="{{ pk }}">
 <input id="friend-id" type="hidden" value="{{ friend_id }}">
 <input id="friend-name" type="hidden" value="{{ gift.owner_name }}">
