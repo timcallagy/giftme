@@ -12,48 +12,40 @@ var ppApp= {
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
         $("#pay-btn").attr("disabled", false);
-        if (response.error) {
-            $('#pay-btn').show();
-            $('#processing-btn').hide();
-            $('#payment-failed-msg').show();
-            $('#payment-error').html(response.error.message);
-            $('#payment-error').show();
-        } else {
-            var token = JSON.stringify(payment, null, 4);
-            var contributor_id = localStorage.getItem("id");
-            var accessToken = localStorage.getItem("accessToken");
-            var contributor_name = localStorage.getItem("my_name");
-            var contributed_to_name = $('#friend-name-payPage').val();
-            var gift_pk = $('#gift-pk').val();
-            var friend_id = $('#friend-id-payPage').val();
-            $.ajax({
-                url: backend_url + 'pay/' + gift_pk + '/',
-                type: 'post',
-                dataType: 'json',
-                data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), contributed_to_name: encodeURI(contributed_to_name), accessToken: accessToken, timestamp: Date.now()},
-                success: function(data) {
-                    if (data.indexOf('Error') > -1) {
-                        $('#payment-failed-msg').show();
-                        $('#payment-error').html("Something went wrong at GiftMe");
-                        $('#payment-error').show();
-                        $('#pay-btn').show();
-                        $('#processing-btn').hide();
-                        console.log('Error');
-                    } else {
-                        window.localStorage.setItem("contribution", JSON.stringify(data));
-                        window.location = "#payment-confirmation/";
-                    }
-                },
-                error: function() {
+        var token = JSON.stringify(payment, null, 4);
+        var contributor_id = localStorage.getItem("id");
+        var accessToken = localStorage.getItem("accessToken");
+        var contributor_name = localStorage.getItem("my_name");
+        var contributed_to_name = $('#friend-name-payPage').val();
+        var gift_pk = $('#gift-pk').val();
+        var friend_id = $('#friend-id-payPage').val();
+        $.ajax({
+            url: backend_url + 'pay/' + gift_pk + '/',
+            type: 'post',
+            dataType: 'json',
+            data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), contributed_to_name: encodeURI(contributed_to_name), accessToken: accessToken, timestamp: Date.now()},
+            success: function(data) {
+                if (data.indexOf('Error') > -1) {
                     $('#payment-failed-msg').show();
                     $('#payment-error').html("Something went wrong at GiftMe");
                     $('#payment-error').show();
                     $('#pay-btn').show();
                     $('#processing-btn').hide();
                     console.log('Error');
+                } else {
+                    window.localStorage.setItem("contribution", JSON.stringify(data));
+                    window.location = "#payment-confirmation/";
                 }
-            });
-        }
+            },
+            error: function() {
+                $('#payment-failed-msg').show();
+                $('#payment-error').html("Something went wrong at GiftMe");
+                $('#payment-error').show();
+                $('#pay-btn').show();
+                $('#processing-btn').hide();
+                console.log('Error');
+            }
+        });
     },
     onAuthorizationCallback : function(authorization) {
         console.log("authorization: " + JSON.stringify(authorization, null, 4));
