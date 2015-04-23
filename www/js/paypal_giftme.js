@@ -19,6 +19,7 @@ var ppApp= {
         var contributed_to_name = $('#friend-name-payPage').val();
         var gift_pk = $('#gift-pk').val();
         var friend_id = $('#friend-id-payPage').val();
+        var message = $('#gift-message').val();
         $.ajax({
             url: backend_url + 'pay/' + gift_pk + '/',
             type: 'post',
