@@ -51,12 +51,12 @@ var ppApp= {
         console.log("authorization: " + JSON.stringify(authorization, null, 4));
     },
     //createPayment : function () {
-        // for simplicity use predefined amount
-        // optional payment details for more information check [helper js file](https://github.com/paypal/PayPal-Cordova-Plugin/blob/master/www/paypal-mobile-js-helper.js)
+    // for simplicity use predefined amount
+    // optional payment details for more information check [helper js file](https://github.com/paypal/PayPal-Cordova-Plugin/blob/master/www/paypal-mobile-js-helper.js)
     //    var paymentDetails = new PayPalPaymentDetails("50.00", "0.00", "0.00");
     //    var payment = new PayPalPayment("50.00", "USD", "Awesome Sauce", "Sale", paymentDetails);
     //    return payment;
-   // },
+    // },
     configuration : function () {
         console.log('GIFTME - config');
         // for more options see `paypal-mobile-js-helper.js`
@@ -70,13 +70,13 @@ var ppApp= {
         //  <button id="buyInFutureBtn"> Pay in Future !</button>
         //  <button id="profileSharingBtn"> ProfileSharing !</button>
 
-//        var buyNowBtn = document.getElementById("paypal-btn");
+        //        var buyNowBtn = document.getElementById("paypal-btn");
 
-//        buyNowBtn.onclick = function(e) {
-//            console.log('GIFTME - buy now clicked');
-            // single payment
-//            PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
-        };
+        //        buyNowBtn.onclick = function(e) {
+        //            console.log('GIFTME - buy now clicked');
+        // single payment
+        //            PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
+//    };
     },
 
     onPayPalMobileInit : function() {
