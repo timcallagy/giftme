@@ -11,7 +11,9 @@ var ppApp= {
 
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
-        console.log("payment ID: " + JSON.stringify(payment.id));
+        console.log("payment ID: " + payment.success.id));
+        console.log("payment ID: " + payment.success.response.id));
+        console.log("payment ID: " + payment[0];
         $("#pay-btn").attr("disabled", false);
         var token = JSON.stringify(payment.id);
         var contributor_id = localStorage.getItem("id");
