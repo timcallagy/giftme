@@ -203,8 +203,9 @@
 
     /* --------------------------------- Event Registration -------------------------------- */
     document.addEventListener('deviceready', function() {
-        // These lines fix the iOS7 status bar problem
+        // This line initialises the PayPal plugin
         ppApp.initPaymentUI();
+        // These lines fix the iOS7 status bar problem
         StatusBar.overlaysWebView( false );
         StatusBar.backgroundColorByHexString('#ffffff');
         StatusBar.styleDefault();       
