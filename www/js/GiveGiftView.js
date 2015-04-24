@@ -18,7 +18,7 @@ var GiveGiftView = function (id, pk) {
                 amount = $('#amount').val();
                 var paymentDetails = new PayPalPaymentDetails(amount, "0.00", "0.00");
                 var payment = new PayPalPayment(amount, "USD", "GiftMe gift", "Sale", paymentDetails);
-                PayPalMobile.renderSinglePaymentUI(ppApp.createPayment(), ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
+                PayPalMobile.renderSinglePaymentUI(payment, ppApp.onSuccesfulPayment, ppApp.onUserCanceled);
             };
             return this;
         });
