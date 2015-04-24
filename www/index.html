@@ -626,6 +626,10 @@ Ask to add a gift
     </tr>
 </table>
         <p>{{gift.description}}</p>
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!')">
+   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
+    </div></div>
+<br>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>

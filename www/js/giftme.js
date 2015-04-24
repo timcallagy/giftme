@@ -310,7 +310,7 @@ function logout() {
     }
 
 }
-
+/*
 function facebook_timeline_share() {
     if (typeof facebookConnectPlugin != 'undefined'){
         facebookConnectPlugin.showDialog(
@@ -328,3 +328,4 @@ function facebook_timeline_share() {
         console.log('FB NOT READY');
     }
 }
+*/
