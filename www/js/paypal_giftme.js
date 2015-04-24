@@ -15,7 +15,7 @@ var ppApp= {
         console.log("payment ID: " + payment.response.id);
         //console.log("payment ID: " + payment[0]);
         $("#pay-btn").attr("disabled", false);
-        var token = JSON.stringify(payment.id);
+        var token = JSON.stringify(payment.response.id);
         var contributor_id = localStorage.getItem("id");
         var accessToken = localStorage.getItem("accessToken");
         var contributor_name = localStorage.getItem("my_name");
