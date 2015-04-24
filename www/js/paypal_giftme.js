@@ -11,8 +11,9 @@ var ppApp= {
 
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
+        console.log("payment ID: " + JSON.stringify(payment.id));
         $("#pay-btn").attr("disabled", false);
-        var token = JSON.stringify(payment, null, 4);
+        var token = JSON.stringify(payment.id);
         var contributor_id = localStorage.getItem("id");
         var accessToken = localStorage.getItem("accessToken");
         var contributor_name = localStorage.getItem("my_name");
@@ -21,7 +22,7 @@ var ppApp= {
         var friend_id = $('#friend-id-payPage').val();
         var message = $('#gift-message').val();
         $.ajax({
-            url: backend_url + 'pay/' + gift_pk + '/',
+            url: backend_url + 'pay_new/' + gift_pk + '/',
             type: 'post',
             dataType: 'json',
             data: {token: token, amount: amount, message: message, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), contributed_to_name: encodeURI(contributed_to_name), accessToken: accessToken, timestamp: Date.now()},
