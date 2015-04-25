@@ -10,7 +10,7 @@ var GiveGiftView = function (id, pk) {
     this.render = function() {
         $.get(backend_url + "get_gift/" + pk + "/", function( data ) {
             data = JSON.parse(data);
-            self.$el.html(self.template({friend_id: id, pk: pk, gift: data[0].fields}));
+            self.$el.html(self.template({gift_id: pk, gift: data[0].fields}));
 
             var buyNowBtn = document.getElementById("paypal-btn");
             buyNowBtn.onclick = function(e) {
