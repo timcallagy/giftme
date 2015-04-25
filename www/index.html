@@ -206,7 +206,7 @@ Add an item to your Wishlist
                                 <span class="icon icon-gift"></span>
                                 </td>   
                                 <td class="padding pull-left" width="90%">   
-                                <p> Gave US${{amount}} for '{{gift_name}}'</p>
+                                <p> Gave US${{amount}} for {{gift_name}}</p>
                                 </td>   
                             </tr>
                             </table>
@@ -290,7 +290,6 @@ Add item
 <br>
         {{#if this }}
         {{#each this}}
-                <a href="#contributions/{{ this.pk }}/">
                 <div id="gift-{{this.pk}}">
                <table width="100%">
                     <tr>
@@ -337,7 +336,6 @@ Add item
                 <br>
                 <br>
         </div>
-        </a>
         {{/each}}
         {{else}}
             <p>Your wishlist is empty.</p>
@@ -610,7 +608,7 @@ Ask to add a gift
 </div>
 </td>
 <td width="15%">
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'https://giftmeserver.herokuapp.com/web/{{ gift.owner_id }}/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'https://giftmeserver.herokuapp.com/web_pay/{{ gift.id }}/')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
@@ -826,7 +824,7 @@ Ask to add a gift
 <br>
 <p>You gave US${{ contribution.amount}}</p>
 <br>
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Help us crowdfund this for {{ contribution.contributed_to_name }}: {{contribution.gift_name}}!', 'https://giftmeserver.herokuapp.com/web/{{ contribution.contributed_to }}/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Help us crowdfund this for {{ contribution.contributed_to_name }}: {{contribution.gift_name}}!', 'https://giftmeserver.herokuapp.com/web_pay/{{ contribution.gift_id }}/')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 
