@@ -133,12 +133,12 @@ $(function() {
         $('#pay-btn').hide();
         $('#processing-btn').show();
 
-        var = amount = $('#amount').val();
-        var = message = $('#gift-message').val();
-        var = card_number = $('#card-number').val();
-        var = card_cvc = $('#card-cvc').val();
-        var = expiry_month = $('#expiry-month').val();
-        var = expiry_year = $('#expiry-year').val();
+        var amount = $('#amount').val();
+        var message = $('#gift-message').val();
+        var card_number = $('#card-number').val();
+        var card_cvc = $('#card-cvc').val();
+        var expiry_month = $('#expiry-month').val();
+        var expiry_year = $('#expiry-year').val();
 
         Stripe.card.createToken({
             number: card_number,
@@ -208,7 +208,7 @@ function send_whatsapp(message) {
 // This shares on Facebook (when a user clicks Invite and selects WhatsApp, but also when a user clicks the Facebook Share button).
 function send_facebook(message, url) {
     if (!url) {
-        var = url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
+        var url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
     }
     window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, url, 'Use Paste to add the default GiftMe message', function() {
             console.log('share ok')
@@ -254,10 +254,10 @@ $(function() {
     return $("body").on("click", "#creditcard-btn", function() {
         $("#creditcard-btn").attr("disabled", true);
         $('#gift-message-error').hide();
-        var = friend_id = $('#friend-id').val();
-        var = gift_pk = $('#gift-pk').val();
-        var = amount = $('#amount').val();
-        var = message = $('#gift-message').val();
+        var friend_id = $('#friend-id').val();
+        var gift_pk = $('#gift-pk').val();
+        var amount = $('#amount').val();
+        var message = $('#gift-message').val();
         if (message.length > 5000){
             $('#gift-message-error').show();
         }

@@ -785,7 +785,10 @@ Ask to add a gift
 <button id="pay-btn" class="btn btn-primary btn-block">Pay</button>
 <button id="processing-btn" class="btn btn-primary btn-block" style="display:none;" disabled>Processing...</button>
 <div class="text-center">
-<img src="img/stripe2.png">
+<!--<img src="img/stripe2.png"> -->
+    <div class="img-200px" style="display: inline-block;">
+      <div style="background-image:url(img/stripe2.png);" class="crop-size"> </div>
+    </div>
 </div>
 <br>
 <br>
@@ -810,12 +813,12 @@ Ask to add a gift
 <br>
 <table width="100%">
 <tr>
-<td class="padding">
+<td class="padding" width="20%">
     <div class="img-100px">
        <div style="background-image:url({{contribution.gift_pic}});" class="crop-size"> </div>
     </div>
 </td>
-<td>
+<td width="80%">
 <table width="100%">
 <tr>
 <td>
@@ -834,9 +837,9 @@ Ask to add a gift
 
 <br>
 <!--<button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button> -->
-<h1 class="blue-green"><strong>SUCCESS!</strong></h1>
-
 <div class="text-center">
+<h2 class="blue-green"><strong>SUCCESS!</strong></h2>
+
 <br>
 <p>You gave US${{ contribution.amount}}</p>
 <br>
