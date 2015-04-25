@@ -290,6 +290,7 @@ Add item
 <br>
         {{#if this }}
         {{#each this}}
+                <a href="#contributions/{{ this.pk }}/">
                 <div id="gift-{{this.pk}}">
                <table width="100%">
                     <tr>
@@ -336,6 +337,7 @@ Add item
                 <br>
                 <br>
         </div>
+        </a>
         {{/each}}
         {{else}}
             <p>Your wishlist is empty.</p>
@@ -528,6 +530,7 @@ Invite more Friends
 
         {{#if gifts}}
         {{#each gifts}}
+                <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/">
                <table id="gift-{{this.pk}}" width="100%">
                     <tr>
                         <td class="padding pull-left" width="20%">
@@ -564,6 +567,7 @@ Invite more Friends
                </table>
                 <br>
                 <br>
+                </a>
         {{/each}}
         {{else}}
 <br>
@@ -598,9 +602,20 @@ Ask to add a gift
 
 <div class="content content-padded">
 <br>
+<table width="100%">
+<tr>
+<td>
 <div class="text-center">
 <h3 class="padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </div>
+</td>
+<td>
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!')">
+   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
+    </div></div>
+</td>
+<tr>
+<table>
 <table width="100%">
     <tr>
         <td class="padding pull-left" width="20%">
@@ -626,9 +641,6 @@ Ask to add a gift
     </tr>
 </table>
         <p>{{gift.description}}</p>
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!')">
-   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
-    </div></div>
 <br>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
