@@ -197,8 +197,11 @@ function send_whatsapp(message) {
                 alert(errormsg)
             });
 }
-function send_facebook(message) {
-    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me', 'Use Paste to add the default GiftMe message', function() {
+function send_facebook(message, url) {
+    if (!url) {
+        url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
+    }
+    window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, url, 'Use Paste to add the default GiftMe message', function() {
             console.log('share ok')
             }, 
             function(errormsg){

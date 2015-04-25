@@ -604,13 +604,13 @@ Ask to add a gift
 <br>
 <table width="100%">
 <tr>
-<td>
+<td width="75%">
 <div class="text-center">
-<h3 class="padding gray"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
+<h3 class="padding gray pull-left"><span class="icon icon-gift"></span>&nbsp;{{gift.owner_name}}</h3>
 </div>
 </td>
-<td>
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!')">
+<td width="25%">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'http://giftmeserver.herokuapp.com/web/{{ gift.owner_id }}/')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
