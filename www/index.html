@@ -610,7 +610,7 @@ Ask to add a gift
 </div>
 </td>
 <td width="25%">
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'http://giftmeserver.herokuapp.com/web/{{ gift.owner_id }}/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'https://giftmeserver.herokuapp.com/web/{{ gift.owner_id }}/')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
@@ -697,7 +697,7 @@ Ask to add a gift
 <button id="give-gift-btn" class="btn btn-primary btn-block">Give Gift</button>
 -->
 <button id="paypal-btn" class="btn btn-primary btn-half-block">PayPal</button>
-<button id="give-gift-btn" class="btn btn-primary btn-half-block">Credit Card</button>
+<button id="creditcard-btn" class="btn btn-primary btn-half-block">Credit Card</button>
 <br>
 <br>
 <br>
@@ -736,7 +736,7 @@ Ask to add a gift
 <p>Card Number:  &nbsp;&nbsp;&nbsp;&nbsp;</p>
 </td>
 <td width="30%">
-<p>CVC:</p>
+<p>CCV:</p>
 </td>
 </tr>
 <tr>
@@ -833,16 +833,23 @@ Ask to add a gift
 </table>
 
 <br>
-<button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button>
+<!--<button id="success-btn" class="btn btn-positive btn-block"">SUCCESS!</button> -->
+<h1 class="blue-green"><strong>SUCCESS!</strong></h1>
 
 <div class="text-center">
 <br>
 <p>You gave US${{ contribution.amount}}</p>
 <br>
+<!--
 <p>Do you know someone else who would like to chip in?</p>
 <br>
 <a href="#chipInInvitePopover"><button class="btn btn-primary btn-block ">Invite</button></a>
 <br>
+-->
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('I'm helping {{ contribution.contributed_to_name }} to crowdfund a {{contribution.gift_name}}! Help me reach the target!', 'https://giftmeserver.herokuapp.com/web/{{ contribution.contributed_to }}/')">
+   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
+    </div></div>
+
 <br>
 <br>
 </div>

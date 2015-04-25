@@ -5,14 +5,14 @@ if (!window.cordova) {
     // else, use these variables.
 } else {
     var backend_url = 'https://giftmeserver.herokuapp.com/'; 
-        Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
+    Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
 }
 
-var navigation_stack=new Array();
-//navigation_stack.push("start");
+var navigation_stack = new Array();
 
 var counter = 0;
 
+// Called when Facebook Login button on Login page is clicked.
 function facebook_login(){
     $("#login-btn").attr("disabled", true);
     var checkFB = function(){
@@ -47,6 +47,8 @@ function facebook_login(){
     }
     checkFB();
 }
+
+// This button is for adding gifts.
 // This function must be structured this way to allow the button to fire multiple click events.
 $(function() {
     return $("body").on("click", "#add-gift-btn", function() {
@@ -99,6 +101,8 @@ $(function() {
         });
     });
 });
+
+// This is for the Delete button on wishlists.
 function delete_gift(pk) {
     gift = $("#gift-" + pk);
     accessToken = window.localStorage.getItem("accessToken");
@@ -120,6 +124,7 @@ function delete_gift(pk) {
     });
 }
 
+// This is for the Pay button on the Credit Card payment page.
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
         $("#pay-btn").attr("disabled", true);
@@ -128,12 +133,12 @@ $(function() {
         $('#pay-btn').hide();
         $('#processing-btn').show();
 
-        amount = $('#amount').val();
-        message = $('#gift-message').val();
-        card_number = $('#card-number').val();
-        card_cvc = $('#card-cvc').val();
-        expiry_month = $('#expiry-month').val();
-        expiry_year = $('#expiry-year').val();
+        var = amount = $('#amount').val();
+        var = message = $('#gift-message').val();
+        var = card_number = $('#card-number').val();
+        var = card_cvc = $('#card-cvc').val();
+        var = expiry_month = $('#expiry-month').val();
+        var = expiry_year = $('#expiry-year').val();
 
         Stripe.card.createToken({
             number: card_number,
@@ -162,7 +167,7 @@ $(function() {
                     url: backend_url + 'pay/' + gift_pk + '/',
                     type: 'post',
                     dataType: 'json',
-                    data: {token: token, amount: amount, message: message, card_number: card_number, card_cvc: card_cvc, expiry_month: expiry_month, expiry_year: expiry_year, contributor_id: contributor_id, contributor_name: encodeURI(contributor_name), contributed_to_name: encodeURI(contributed_to_name), accessToken: accessToken, timestamp: Date.now()},
+                    data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now()},
                     success: function(data) {
                         if (data.indexOf('Error') > -1) {
                             $('#payment-failed-msg').show();
@@ -189,6 +194,8 @@ $(function() {
         }
     });
 });
+
+// This sends a WhatsApp message (when user clicks Invite and selects WhatsApp).
 function send_whatsapp(message) {
     window.plugins.socialsharing.shareViaWhatsApp(message, null /* img */, 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me' /* url */, function() {
             console.log('share ok')
@@ -197,9 +204,11 @@ function send_whatsapp(message) {
                 alert(errormsg)
             });
 }
+
+// This shares on Facebook (when a user clicks Invite and selects WhatsApp, but also when a user clicks the Facebook Share button).
 function send_facebook(message, url) {
     if (!url) {
-        url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
+        var = url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
     }
     window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, url, 'Use Paste to add the default GiftMe message', function() {
             console.log('share ok')
@@ -209,6 +218,7 @@ function send_facebook(message, url) {
             });
 }
 
+// This controls the Settings save functionality.
 $(function() {
     return $("body").on("click", "#settings-btn", function() {
         $("#settings-btn").attr("disabled", true);
@@ -239,28 +249,28 @@ $(function() {
     });
 });
 
+// This is for the Credit Card button on the Give Gift page.
 $(function() {
-    return $("body").on("click", "#give-gift-btn", function() {
-        console.log("GIFTME - give gift button clicked");
-        $("#give-gift-btn").attr("disabled", true);
+    return $("body").on("click", "#creditcard-btn", function() {
+        $("#creditcard-btn").attr("disabled", true);
         $('#gift-message-error').hide();
-        friend_id = $('#friend-id').val();
-        gift_pk = $('#gift-pk').val();
-        amount = $('#amount').val();
-        message = $('#gift-message').val();
+        var = friend_id = $('#friend-id').val();
+        var = gift_pk = $('#gift-pk').val();
+        var = amount = $('#amount').val();
+        var = message = $('#gift-message').val();
         if (message.length > 5000){
             $('#gift-message-error').show();
         }
         window.localStorage.setItem("amount", amount);
         window.localStorage.setItem("gift-message", message);
-        $("#give-gift-btn").attr("disabled", false);
+        $("#creditcard-btn").attr("disabled", false);
         window.location = "#pay-page/" + friend_id + "/" + gift_pk + "/";
     });
 });
 
+// This prevents the app from accidentally exiting when the user presses the back button on the home page. 
 $(document).on('backbutton', function(e){
     e.preventDefault();
-    //alert(window.location);
     current_loc = navigation_stack.pop();
     dest = navigation_stack.pop();
     if (dest === "start") {
@@ -277,6 +287,7 @@ $(document).on('backbutton', function(e){
     }
 });
 
+// This temporarily disables the buttons and links on the app that are behind the popover when the popover is showing. Otherwise users click outside the popover to close it, but instead are accidentally brought to some page (and the popover is still open).
 $('body').on('click', function (e) {
     $('#menu-invite').each(function () {
         if ($('#friendsPopover').is(":visible")){
@@ -296,7 +307,6 @@ $('body').on('click', function (e) {
     });
 });
 
-
 function logout() {
     if (typeof facebookConnectPlugin != 'undefined'){
         facebookConnectPlugin.logout(
@@ -313,22 +323,3 @@ function logout() {
     }
 
 }
-/*
-function facebook_timeline_share() {
-    if (typeof facebookConnectPlugin != 'undefined'){
-        facebookConnectPlugin.showDialog(
-                {
-                    method: 'share',
-            href: 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me',
-                },
-                function (response) {
-                    console.log("Share - success");
-                },
-                function (response) { 
-                    console.log("Share - failure");
-                });
-    } else {
-        console.log('FB NOT READY');
-    }
-}
-*/
