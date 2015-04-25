@@ -124,6 +124,25 @@ function delete_gift(pk) {
     });
 }
 
+// This is for the Credit Card button on the Give Gift page.
+$(function() {
+    return $("body").on("click", "#creditcard-btn", function() {
+        $("#creditcard-btn").attr("disabled", true);
+        $('#gift-message-error').hide();
+        var friend_id = $('#friend-id').val();
+        var gift_pk = $('#gift-pk').val();
+        var amount = $('#amount').val();
+        var message = $('#gift-message').val();
+        if (message.length > 5000){
+            $('#gift-message-error').show();
+        }
+        window.localStorage.setItem("amount", amount);
+        window.localStorage.setItem("gift-message", message);
+        $("#creditcard-btn").attr("disabled", false);
+        window.location = "#pay-page/" + friend_id + "/" + gift_pk + "/";
+    });
+});
+
 // This is for the Pay button on the Credit Card payment page.
 $(function() {
     return $("body").on("click", "#pay-btn", function() {
@@ -135,6 +154,7 @@ $(function() {
 
         var amount = $('#amount').val();
         var message = $('#gift-message').val();
+        var provider = 'stripe';
         var card_number = $('#card-number').val();
         var card_cvc = $('#card-cvc').val();
         var expiry_month = $('#expiry-month').val();
@@ -164,10 +184,10 @@ $(function() {
                 var gift_pk = $('#gift-pk').val();
                 var friend_id = $('#friend-id-payPage').val();
                 $.ajax({
-                    url: backend_url + 'pay/' + gift_pk + '/',
+                    url: backend_url + 'pay_new/' + gift_pk + '/',
                     type: 'post',
                     dataType: 'json',
-                    data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now()},
+                    data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
                     success: function(data) {
                         if (data.indexOf('Error') > -1) {
                             $('#payment-failed-msg').show();
@@ -246,25 +266,6 @@ $(function() {
                 $("#settings-error-msg").show();
             }
         });
-    });
-});
-
-// This is for the Credit Card button on the Give Gift page.
-$(function() {
-    return $("body").on("click", "#creditcard-btn", function() {
-        $("#creditcard-btn").attr("disabled", true);
-        $('#gift-message-error').hide();
-        var friend_id = $('#friend-id').val();
-        var gift_pk = $('#gift-pk').val();
-        var amount = $('#amount').val();
-        var message = $('#gift-message').val();
-        if (message.length > 5000){
-            $('#gift-message-error').show();
-        }
-        window.localStorage.setItem("amount", amount);
-        window.localStorage.setItem("gift-message", message);
-        $("#creditcard-btn").attr("disabled", false);
-        window.location = "#pay-page/" + friend_id + "/" + gift_pk + "/";
     });
 });
 

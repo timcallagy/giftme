@@ -25,24 +25,17 @@ var ppApp= {
             dataType: 'json',
             data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
             success: function(data) {
-                if (data.indexOf('Error') > -1) {
-                    $('#payment-failed-msg').show();
-                    $('#payment-error').html("Something went wrong at GiftMe");
-                    $('#payment-error').show();
-                    $('#pay-btn').show();
-                    $('#processing-btn').hide();
-                    console.log('Error');
-                } else {
-                    window.localStorage.setItem("contribution", JSON.stringify(data));
-                    window.location = "#payment-confirmation/";
-                }
+                window.localStorage.setItem("contribution", JSON.stringify(data));
+                window.location = "#payment-confirmation/";
             },
             error: function() {
+                /*
                 $('#payment-failed-msg').show();
                 $('#payment-error').html("Something went wrong at GiftMe");
                 $('#payment-error').show();
                 $('#pay-btn').show();
                 $('#processing-btn').hide();
+                */
                 console.log('Error');
             }
         });
