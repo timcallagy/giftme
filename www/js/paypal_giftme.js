@@ -12,7 +12,9 @@ var ppApp= {
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
         $("#pay-btn").attr("disabled", false);
-        var token = JSON.stringify(payment.response.id);
+        //var token = JSON.stringify(payment.response.id, null, 4);
+        console.log('PAYMENT response id: ' + payment.response.id);
+        var token = payment.response.id;
         var contributor_id = localStorage.getItem("id");
         var accessToken = localStorage.getItem("accessToken");
         var gift_pk = $('#gift-pk').val();
@@ -24,8 +26,8 @@ var ppApp= {
             type: 'post',
             dataType: 'json',
             data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
-            success: function(data) {
-                window.localStorage.setItem("contribution", JSON.stringify(data));
+            success: function(response) {
+                window.localStorage.setItem("contribution", JSON.stringify(response));
                 window.location = "#payment-confirmation/";
             },
             error: function() {
@@ -56,8 +58,8 @@ var ppApp= {
         console.log('GIFTME - Preparing to Render');
         // must be called
         // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
-        //PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", ppApp.configuration(), ppApp.onPrepareRender);
-        PayPalMobile.prepareToRender("PayPalEnvironmentProduction", ppApp.configuration(), ppApp.onPrepareRender);
+        PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", ppApp.configuration(), ppApp.onPrepareRender);
+        //PayPalMobile.prepareToRender("PayPalEnvironmentProduction", ppApp.configuration(), ppApp.onPrepareRender);
     },
     onUserCanceled : function(result) {
         console.log(result);
