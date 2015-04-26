@@ -25,7 +25,7 @@ var ppApp= {
             type: 'post',
             dataType: 'json',
            // data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
-            data: {provider: provider},
+            data: {amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
             success: function(response) {
                 window.localStorage.setItem("contribution", JSON.stringify(response));
                 window.location = "#payment-confirmation/";
