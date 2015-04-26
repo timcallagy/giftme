@@ -58,8 +58,8 @@ var ppApp= {
         console.log('GIFTME - Preparing to Render');
         // must be called
         // use PayPalEnvironmentNoNetwork mode to get look and feel of the flow
-        PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", ppApp.configuration(), ppApp.onPrepareRender);
-        //PayPalMobile.prepareToRender("PayPalEnvironmentProduction", ppApp.configuration(), ppApp.onPrepareRender);
+        //PayPalMobile.prepareToRender("PayPalEnvironmentNoNetwork", ppApp.configuration(), ppApp.onPrepareRender);
+        PayPalMobile.prepareToRender("PayPalEnvironmentProduction", ppApp.configuration(), ppApp.onPrepareRender);
     },
     onUserCanceled : function(result) {
         console.log(result);
