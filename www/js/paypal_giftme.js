@@ -12,7 +12,6 @@ var ppApp= {
     onSuccesfulPayment : function(payment) {
         console.log("payment success: " + JSON.stringify(payment, null, 4));
         $("#pay-btn").attr("disabled", false);
-        //var token = JSON.stringify(payment.response.id, null, 4);
         console.log('PAYMENT response id: ' + payment.response.id);
         var token = payment.response.id;
         var contributor_id = localStorage.getItem("id");
@@ -25,7 +24,8 @@ var ppApp= {
             url: backend_url + 'pay_new/' + gift_pk + '/',
             type: 'post',
             dataType: 'json',
-            data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
+           // data: {token: token, amount: amount, message: message, contributor_id: contributor_id, accessToken: accessToken, timestamp: Date.now(), provider: provider},
+            data: {provider: provider},
             success: function(response) {
                 window.localStorage.setItem("contribution", JSON.stringify(response));
                 window.location = "#payment-confirmation/";
