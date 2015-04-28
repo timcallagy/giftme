@@ -282,14 +282,25 @@ Login with Facebook
 
 <div class="content content-padded">
 <br>
+<table>
+<tr>
+<td width="85%">
 <h2 class="text-center maroon">My Wishlist</h2>
+</td>
+<td width="15%">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Check out my wishlist on GiftMe! Help me crowdfund a gift, or start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ userID  }}/0/')">
+   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
+    </div></div>
+</td>
+</tr>
+</table>
 <br>
 <a href="#addGift/"><button class="btn btn-primary btn-block ">
 Add item
 &nbsp;&nbsp;&nbsp;&nbsp;<span class="icon icon-plus"></span></button></a>
 <br>
-        {{#if this }}
-        {{#each this}}
+        {{#if gifts }}
+        {{#each gifts}}
                 <div id="gift-{{this.pk}}">
                <table width="100%">
                     <tr>
@@ -500,7 +511,18 @@ Invite more Friends
 
 <div class="content content-padded">
 <br>
+<table>
+<tr>
+<td width="85%">
 <h2 class="text-center maroon">Wishlist</h2>
+</td>
+<td width="15%">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{ friend.name }} created a wishlist! Go to GiftMe to crowdfund a gift from the wishlist or to start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ friend.id  }}/0/')">
+   <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
+    </div></div>
+</td>
+</tr>
+</table>
 <br>
  <table width="100%">
       <tr>

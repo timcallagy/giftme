@@ -19,7 +19,7 @@ var WishlistView = function (service) {
         $.get(backend_url + "get_gifts/" + userID + "/", function( data ) {
             window.localStorage.setItem("gifts", data);
             data = JSON.parse(data);
-            self.$el.html(self.template(data));
+            self.$el.html(self.template({'gifts': data, 'userID': userID}));
             return this;
         });
     }
