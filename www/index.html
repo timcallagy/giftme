@@ -569,7 +569,7 @@ Invite more Friends
                                 {{#if fields.crowdfunding_complete}}
                                 <td class="pull-left" width="90%">   
                                     <p>Price: ${{ fields.price }}<br>
-                                    <div class="alert alert-success"><strong>Crowdfunding complete!</strong></div>
+                                    Crowdfunded: ${{ fields.crowdfunded }}</p>
                                 </td>
                                 {{else}}
                                 <td class="pull-left" width="90%">   
@@ -586,6 +586,9 @@ Invite more Friends
                         </td>
                     </tr>
                </table>
+                                {{#if fields.crowdfunding_complete}}
+                                    <div class="alert alert-success"><strong>Crowdfunding completed!</strong></div>
+                                {{/if}}
                <table>
                     <tr>
                         <td>
@@ -668,12 +671,11 @@ Ask to add a gift
                         </td>
     </tr>
 </table>
-        <p>{{gift.description}}</p>
-        <br>
-
         {{#if gift.crowdfunding_complete}}
-        <div class="alert alert-success"><strong>Crowdfunding complete!</strong></div>
+        <div class="alert alert-success"><strong>Crowdfunding completed!</strong></div>
+        <p>{{gift.description}}</p>
         {{else}}
+        <p>{{gift.description}}</p>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
