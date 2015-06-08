@@ -566,12 +566,6 @@ Invite more Friends
                                 </td>
                             </tr> 
                             <tr> 
-                                {{#if fields.crowdfunding_complete}}
-                                <td class="pull-left" width="90%">   
-                                    <p>Price: ${{ fields.price }}<br>
-                                    <div class="alert alert-success"><strong>Crowdfunding complete!</strong></div>
-                                </td>
-                                {{else}}
                                 <td class="pull-left" width="90%">   
                                     <p>Price: ${{ fields.price }}<br>
                                     Crowdfunded: ${{ fields.crowdfunded }}</p>
@@ -579,8 +573,6 @@ Invite more Friends
                                 <td>
                     <a href="#give-gift/{{ fields.owner_id }}/{{ pk }}/"><button class="btn btn-primary">Chip In</button></a>
                                 </td>   
-
-                                {{/if}}
                             </tr>
                             </table>
                         </td>
@@ -669,11 +661,7 @@ Ask to add a gift
     </tr>
 </table>
         <p>{{gift.description}}</p>
-        <br>
-
-        {{#if gift.crowdfunding_complete}}
-        <div class="alert alert-success"><strong>Crowdfunding complete!</strong></div>
-        {{else}}
+<br>
 <form id="give-gift-form" action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
 
     <button id="gift-message-error" class="btn btn-outlined btn-negative" style="display:none;">Message limit is 5000 characters</button>
@@ -686,10 +674,37 @@ Ask to add a gift
 <p>Your gift: &nbsp;&nbsp;&nbsp;&nbsp;</p>
 </td>
 <td width="70%">
-    <select id="amount" class="input-row" name="amount">
-{{#each amount}}
-<option value="{{this}}">US$ {{this}}</option>
-{{/each}}
+<select id="amount" class="input-row" name="amount">
+<option value="5">US$ 5.00</option>
+<option value="10">US$ 10.00</option>
+<option value="15">US$ 15.00</option>
+<option value="20">US$ 20.00</option>
+<option value="25">US$ 25.00</option>
+<option value="30">US$ 30.00</option>
+<option value="35">US$ 35.00</option>
+<option value="40">US$ 40.00</option>
+<option value="45">US$ 45.00</option>
+<option value="50">US$ 50.00</option>
+<option value="60">US$ 60.00</option>
+<option value="70">US$ 70.00</option>
+<option value="80">US$ 80.00</option>
+<option value="90">US$ 90.00</option>
+<option value="100">US$ 100.00</option>
+<option value="120">US$ 120.00</option>
+<option value="130">US$ 130.00</option>
+<option value="140">US$ 140.00</option>
+<option value="150">US$ 150.00</option>
+<option value="160">US$ 160.00</option>
+<option value="170">US$ 170.00</option>
+<option value="180">US$ 180.00</option>
+<option value="190">US$ 190.00</option>
+<option value="200">US$ 200.00</option>
+<option value="250">US$ 250.00</option>
+<option value="300">US$ 300.00</option>
+<option value="350">US$ 350.00</option>
+<option value="400">US$ 400.00</option>
+<option value="450">US$ 450.00</option>
+<option value="500">US$ 500.00</option>
 </select>
 </td>
 </tr>
@@ -700,7 +715,6 @@ Ask to add a gift
 </form>
 <button id="paypal-btn" class="btn btn-primary btn-half-block">PayPal</button>
 <button id="creditcard-btn" class="btn btn-primary btn-half-block">Credit Card</button>
-{{/if}}
 <br>
 <br>
 <br>

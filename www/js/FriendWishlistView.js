@@ -17,8 +17,14 @@ var FriendWishlistView = function (id) {
             }
         }
         $.get(backend_url + "get_friends_gifts/" + id + "/", function( data ) {
-            data = JSON.parse(data);
-            self.$el.html(self.template({gifts: data, id: id, friend: friend}));
+            gifts = JSON.parse(data);
+            for (var g in gifts) {
+                if (gifts[g].fields.price == gifts[g].fields.crowdfunded) {
+                    gifts[g].fields.crowdfunding_complete = true;
+                    console.log(gifts[g].fields);
+                }
+            }
+            self.$el.html(self.template({gifts: gifts, id: id, friend: friend}));
             return this;
         });
     };
