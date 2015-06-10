@@ -88,14 +88,22 @@ $(function() {
                     $('#error-add').hide();
                     $('#error-url').show();
                     $('#error-price').hide();
+                    $('#error-not-amazon').hide();
                 } else if (response.responseText == "Invalid amount") {
                     $('#error-add').hide();
                     $('#error-url').hide();
                     $('#error-price').show();
+                    $('#error-not-amazon').hide();
+                } else if (response.responseText == "Not Amazon") {
+                    $('#error-add').hide();
+                    $('#error-url').hide();
+                    $('#error-price').hide();
+                    $('#error-not-amazon').show();
                 } else {
                     $('#error-add').show();
                     $('#error-url').hide();
                     $('#error-price').hide();
+                    $('#error-not-amazon').hide();
                 }
             }
         });
