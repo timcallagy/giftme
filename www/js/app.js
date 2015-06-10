@@ -110,7 +110,7 @@
                             $.ajax({
                                 url: backend_url + 'wakeup/',
                                 type: 'post',
-                                data: {'clientVersion': '0.0.24'}, 
+                                data: {'clientVersion': '0.0.25'}, 
                                 success: function(data) {
                                     console.log('Received response from version check.');
                                     if ( data == 'Success' ) {
