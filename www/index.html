@@ -288,7 +288,7 @@ Login with Facebook
 <h2 class="text-center maroon">My Wishlist</h2>
 </td>
 <td width="15%">
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Check out my wishlist on GiftMe! Help me crowdfund a gift, or start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ userID  }}/0/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Check out my wishlist on GiftMe! Help me crowdfund a gift, or start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ userID  }}/0/', 'User shared her own wishlist on Facebook')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
@@ -518,7 +518,7 @@ Invite more Friends
 <h2 class="text-center maroon">Wishlist</h2>
 </td>
 <td width="15%">
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{ friend.name }} created a wishlist! Go to GiftMe to crowdfund a gift from the wishlist or to start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ friend.id  }}/0/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{ friend.name }} created a wishlist! Go to GiftMe to crowdfund a gift from the wishlist or to start your own wishlist!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ friend.id  }}/0/', 'User shared her friend's wishlist on Facebook')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
@@ -642,7 +642,7 @@ Ask to add a gift
 </div>
 </td>
 <td width="15%">
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ gift.owner_id  }}/{{ gift_id }}/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('{{gift.owner_name}} has added {{gift.name}} to their wishlist! Help me crowdfund it!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ gift.owner_id  }}/{{ gift_id }}/', 'User shares a friend's gift on Facebook')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 </td>
@@ -835,7 +835,7 @@ Ask to add a gift
 <br>
 <p>You gave US${{ contribution.amount}}</p>
 <br>
-    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Help us crowdfund this for {{ contribution.contributed_to_name }}: {{contribution.gift_name}}!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ contribution.contributed_to }}/{{ contribution.gift }}/')">
+    <div class="text-center"><div class="img-150px-btn" style="display: inline-block;" onclick="send_facebook('Help us crowdfund this for {{ contribution.contributed_to_name }}: {{contribution.gift_name}}!', 'https://giftmeserver.herokuapp.com/web_gifts/{{ contribution.contributed_to }}/{{ contribution.gift }}/', 'User shared her friend's gift on Facebook after contributing')">
    <div style="background-image:url(img/fbshare.png);" class="crop-size"> </div>
     </div></div>
 
@@ -992,7 +992,7 @@ Birthday:
         <li id="send-whatsapp" class="table-view-cell" onclick="send_whatsapp('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:');" >WhatsApp</li>
         <li class="table-view-cell"><a id="send-email" href="mailto:?subject=GiftMe&body=Hi!%20Help%20me%20buy%20something%20for%20your%20birthday%20by%20creating%20a%20wishlist%20using%20GiftMe.%20%0AYou%20can%20also%20view%20my%20wishlist%20for%20gift%20ideas!%20%0AGet%20GiftMe%20for%20Android:%20https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me!">Email</a></li>
         <!-- <li id="send-FBTimeline" class="table-view-cell" onclick="facebook_timeline_share()">Facebook</li> -->
-        <li id="send-FBTimeline" class="table-view-cell" onclick="send_facebook('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:')">Facebook</li> 
+        <li id="send-FBTimeline" class="table-view-cell" onclick="send_facebook('Hi! Help me buy you something nice by creating a wishlist using GiftMe. You can also view my wishlist for gift ideas! Get GiftMe for Android:', 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me', 'User invited a friend to create a wishlist on GiftMe through Facebook')">Facebook</li> 
     </ul>
 </div>
 

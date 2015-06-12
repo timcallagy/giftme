@@ -5,7 +5,7 @@ if (!window.cordova) {
     // else, use these variables.
 } else {
     var backend_url = 'https://giftmeserver.herokuapp.com/'; 
-    Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
+        Stripe.setPublishableKey('pk_live_rzB00nH8Ua6HTGoh77BGXtuy');
 }
 
 var navigation_stack = new Array();
@@ -234,16 +234,29 @@ function send_whatsapp(message) {
 }
 
 // This shares on Facebook (when a user clicks Invite and selects WhatsApp, but also when a user clicks the Facebook Share button).
-function send_facebook(message, url) {
+function send_facebook(message, url, type) {
+    var id = window.localStorage.getItem("id");
     if (!url) {
         var url = 'https://play.google.com/store/apps/details?id=co.giftmeapp.gift_me';
     }
     window.plugins.socialsharing.shareViaFacebookWithPasteMessageHint(message, null /* img */, url, 'Use Paste to add the default GiftMe message', function() {
-            console.log('share ok')
-            }, 
-            function(errormsg){
-                alert(errormsg)
-            });
+        console.log('share ok')
+    }, 
+    function(errormsg){
+        alert(errormsg)
+    });
+    $.ajax({
+        url: backend_url + 'notification_of_facebook_share/',
+        type: 'post',
+        dataType: 'json',
+        data: {userID: id, shareType: type},
+        success: function(data) {
+            console.log('success - notification sent')
+        },
+        error: function(data) {
+            console.log('error - notification not sent')
+        }
+    });
 }
 
 // This controls the Settings save functionality.
